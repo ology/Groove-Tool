@@ -51,8 +51,8 @@ sub process {
     my ($self) = @_;
 
     $self->drummer->sync(
-        sub { drums($self) },
-        sub { bass($self) },
+        sub { $self->drums() },
+        sub { $self->bass() },
     );
 
     $self->drummer->write;
@@ -63,7 +63,7 @@ sub process {
 sub drums {
     my ($self) = @_;
 
-    return if $self->do_drums && $self->dvolume;
+    return unless $self->dvolume;
 
     my $bars = $self->drummer->bars * $self->repeat;
 
