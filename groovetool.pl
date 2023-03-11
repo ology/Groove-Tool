@@ -14,8 +14,8 @@ get '/' => sub ($c) {
   my $submit  = $c->param('submit')  || 0;
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
-  my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
   my $euclid  = $c->param('euclid')  || ''; # "kick,snare" onsets
+  my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
   my $dvolume = $c->param('dvolume') // 60; # 0 - 127
   my $reverb  = $c->param('reverb')  // 15; # 0 - 127
   my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
@@ -165,6 +165,18 @@ __DATA__
       <div class="col">
         <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats of the given parts phrase">
       </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
+        <label class="form-check-label" for="countin">Bass</label>
+      </div>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
     </div>
   </div>
 
