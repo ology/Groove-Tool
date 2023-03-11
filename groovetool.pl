@@ -16,13 +16,13 @@ get '/' => sub ($c) {
   my $phrases = $c->param('phrases')  || 1; # number of times to repeat
   my $dvolume = $c->param('dvolume')  // 60; # 0 - 127
   my $reverb  = $c->param('reverb')   // 15; # 0 - 127
-  my $do_bass = $c->param('do_bass')  || 0;
   my $boctave = $c->param('boctave')  || 1;
   my $bpatch  = $c->param('bpatch')   || 35; # 0 - 127
   my $bvolume = $c->param('bvolume')  // 90; # 0 - 127
   my $pool    = $c->param('pool')     || 'dhn hn qn en'; # MIDI-Perl note durations
   my $weights = $c->param('weights')  // '1 2 3 2'; # weights of the note duration pool
   my $groups  = $c->param('groups')   // '1 1 1 2'; # groupings of the pool notes
+  my $max     = $c->param('max')      || 2;
 
   _purge($c); # purge defunct midi files
 
@@ -42,10 +42,10 @@ get '/' => sub ($c) {
       repeat     => 1,
       dvolume    => $dvolume,
       reverb     => $reverb,
-      do_bass    => $do_bass,
       my_pool    => $pool,
       my_weights => $weights,
       my_groups  => $groups,
+      max        => $max,
     );
 
     $msgs = $rock->process;
@@ -62,7 +62,6 @@ get '/' => sub ($c) {
     phrases  => $phrases,
     dvolume  => $dvolume,
     reverb   => $reverb,
-    do_bass  => $do_bass ? 1 : 0,
     pool     => $pool,
     weights  => $weights,
     groups   => $groups,
