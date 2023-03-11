@@ -75,7 +75,7 @@ sub init_grooves {
 
     # initialize the kick and snare onsets
     my @grooves;
-    for my $item ($self->euclid->@*) {
+    for my $item (@$euclid) {
         my ($kick, $snare) = split /,/, $item;
         push @grooves, {
             kick  => $kick,
