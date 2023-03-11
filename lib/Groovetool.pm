@@ -70,6 +70,91 @@ sub drums {
     ...;
 }
 
+sub counterpart {
+    my ($self) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->count_in($self->drummer->bars);
+}
+
+sub euclidean_part {
+    my ($self, $snare_ons, $kick_ons) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
+    my $bars = $self->drummer->bars - 1;
+    my $hh = '1' x ($self->size / 2);
+    $self->drummer->sync(
+        sub { $self->drummer->pattern( instrument => $self->drummer->closed_hh, patterns => [ ($hh) x $bars ] ) },
+        sub { $self->drummer->pattern( instrument => $self->drummer->snare,     patterns => [ (rotate_sequence($snare_ons)) x $bars ] ) },
+        sub { $self->drummer->pattern( instrument => $self->drummer->kick,      patterns => [ ($self->drummer->euclidean($kick_ons, $self->size)) x $bars ] ) },
+        sub { $self->bass($bars) },
+    );
+    $self->drummer->sync(
+        sub { $self->fill($snare_ons, $kick_ons) },
+        sub { $self->bass(1) },
+    );
+}
+
+sub fill {
+    my ($self, $snare_onset, $kick_onset) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
+    my $hh = '1' x ($self->size / 2);
+    $self->drummer->add_fill(
+        sub { $self->_fill },
+        $self->drummer->closed_hh => [ $hh ],
+        $self->drummer->snare     => [ rotate_sequence($snare_onset) ],
+        $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
+    );
+}
+
+sub _fill {
+    my ($self) = @_;
+    my $snare_ons = 1 + int rand($self->size / 2);
+    my $hh = '0' x ($self->size / 2);
+    (my $kick = $hh) =~ s/^0/1/;
+    return {
+        duration                  => $self->size,
+        $self->drummer->closed_hh => $hh,
+        $self->drummer->snare     => $self->drummer->euclidean($snare_ons, $self->size / 2),
+        $self->drummer->kick      => $kick,
+    };
+}
+
+sub rotate_sequence {
+    my ($self, $onsets) = @_;
+    my $mcr = Music::CreatingRhythms->new;
+    my $sequence = $mcr->euclid($onsets, $self->size);
+    $sequence = $mcr->rotate_n(2, $sequence);
+    my $sequence_string = join '', @$sequence;
+    return $sequence_string;
+}
+
+sub kick_onsets {
+    my ($self, $onsets) = @_;
+    unless ($onsets) {
+        $onsets = $self->rand_onset;
+        while ($onsets < 3) {
+            $onsets = $self->rand_onset;
+        }
+    }
+    return $onsets;
+}
+
+sub snare_onsets {
+    my ($self, $onsets, $kick) = @_;
+    unless ($onsets) {
+        $onsets = $self->rand_onset;
+        while ($onsets >= $kick) {
+            $onsets = $self->rand_onset;
+        }
+    }
+    return $onsets;
+}
+
+sub rand_onset {
+    my ($self, $n) = @_;
+    $n ||= $self->size / 2;
+    return 1 + int rand($n - 1);
+}
+
 sub bass {
     my ($self, $bars) = @_;
 
