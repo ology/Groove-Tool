@@ -15,7 +15,6 @@ use namespace::clean;
 
 has filename   => (is => 'ro', required => 1); # MIDI file name
 has my_bpm     => (is => 'ro');
-has phrases    => (is => 'ro');
 has euclid     => (is => 'ro');
 has repeat     => (is => 'ro');
 has dvolume    => (is => 'ro');
