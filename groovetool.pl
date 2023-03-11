@@ -13,7 +13,7 @@ use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 get '/' => sub ($c) {
   my $submit  = $c->param('submit')   || 0;
   my $my_bpm  = $c->param('my_bpm')   || 90; # 1 - ?
-  my $phrases = $c->param('phrases')  || 1; # number of times to repeat
+  my $repeat  = $c->param('repeat')   || 1; # number of times to repeat
   my $euclid  = $c->param('euclid')   || ''; # "kick,snare" onsets
   my $dvolume = $c->param('dvolume')  // 60; # 0 - 127
   my $reverb  = $c->param('reverb')   // 15; # 0 - 127
@@ -41,9 +41,8 @@ get '/' => sub ($c) {
     my $groove = Groovetool->new(
       filename   => 'public' . $filename,
       my_bpm     => $my_bpm,
-      phrases    => $phrases,
+      repeat     => $repeat,
       euclid     => $euclid,
-      repeat     => 1,
       dvolume    => $dvolume,
       reverb     => $reverb,
       boctave    => $boctave,
@@ -68,7 +67,7 @@ get '/' => sub ($c) {
     msgs     => $msgs,
     filename => $filename,
     my_bpm   => $my_bpm,
-    phrases  => $phrases,
+    repeat   => $repeat,
     euclid   => $euclid,
     dvolume  => $dvolume,
     reverb   => $reverb,
@@ -183,10 +182,10 @@ __DATA__
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <label for="phrases">Repeat:</label>
+        <label for="repeat">Repeat:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="phrases" name="phrases" min="1" max="64" value="<%= $phrases %>" title="1 to 64 repeats of the given parts phrase">
+        <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats of the given parts phrase">
       </div>
     </div>
   </div>
