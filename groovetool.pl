@@ -170,6 +170,8 @@ __DATA__
 
   <div class="row">
     <div class="col">
+    </div>
+    <div class="col">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
         <label class="form-check-label" for="countin">Count-in</label>
@@ -178,6 +180,8 @@ __DATA__
   </div>
 
   <div class="row">
+    <div class="col">
+    </div>
     <div class="col">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
@@ -188,12 +192,16 @@ __DATA__
 
   <div class="row">
     <div class="col">
+    </div>
+    <div class="col">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="verbose" name="verbose" <%= $verbose ? 'checked' : '' %> title="be overly snoopy">
         <label class="form-check-label" for="verbose">Verbose</label>
       </div>
     </div>
   </div>
+
+  <p></p>
 
   <div class="row">
     <div class="col">
