@@ -38,7 +38,7 @@ get '/' => sub ($c) {
   if ($submit) {
     $filename = '/' . time() . '.mid';
 
-    my $rock = Groovetool->new(
+    my $groove = Groovetool->new(
       filename   => 'public' . $filename,
       my_bpm     => $my_bpm,
       phrases    => $phrases,
@@ -60,7 +60,7 @@ get '/' => sub ($c) {
       verbose    => $verbose,
     );
 
-    $msgs = $rock->process;
+    $msgs = $groove->process;
   }
 
   $c->render(
