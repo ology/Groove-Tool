@@ -140,7 +140,7 @@ __DATA__
         <label for="repeat">Repeat:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats of the given parts phrase">
+        <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
       </div>
     </div>
   </div>
