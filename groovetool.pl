@@ -29,7 +29,6 @@ get '/' => sub ($c) {
   my $duel    = $c->param('duel')     || 0; # alternate with the hihat-only, counterpart section
   my $countin = $c->param('countin')  || 0; # play 4 hihat notes to start things off
   my $verbose = $c->param('verbose')  || 0; # be overly snoopy
-  my $quiet   = $c->param('quiet')    || 0; # be silent
 
   _purge($c); # purge defunct midi files
 
@@ -59,7 +58,6 @@ get '/' => sub ($c) {
       duel       => $duel,
       countin    => $countin,
       verbose    => $verbose,
-      quiet      => $quiet,
     );
 
     $msgs = $rock->process;
@@ -69,16 +67,23 @@ get '/' => sub ($c) {
     template => 'index',
     msgs     => $msgs,
     filename => $filename,
+    my_bpm   => $my_bpm,
+    phrases  => $phrases,
+    euclid   => $euclid,
+    dvolume  => $dvolume,
+    reverb   => $reverb,
     boctave  => $boctave,
     bpatch   => $bpatch,
     bvolume  => $bvolume,
-    my_bpm   => $my_bpm,
-    phrases  => $phrases,
-    dvolume  => $dvolume,
-    reverb   => $reverb,
+    bnote    => $bnote,
+    bscale   => $bscale,
     pool     => $pool,
     weights  => $weights,
     groups   => $groups,
+    max      => $max,
+    duel     => $duel,
+    countin  => $countin,
+    verbose  => $verbose,
   );
 } => 'index';
 
