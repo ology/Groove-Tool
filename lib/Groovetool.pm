@@ -40,7 +40,7 @@ sub _build_drummer {
     my ($self) = @_;
     my $d = MIDI::Drummer::Tiny->new(
         file   => $self->filename,
-        bars   => 4 * $self->phrases,
+        bars   => 4 * $self->repeat,
         bpm    => $self->my_bpm,
         reverb => $self->reverb,
         volume => $self->dvolume,
