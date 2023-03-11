@@ -1,0 +1,11 @@
+requires 'Data::Dumper::Compact';
+requires 'File::Find::Rule';
+requires 'MIDI::Drummer::Tiny';
+requires 'MIDI::Util';
+requires 'Mojolicious';
+requires 'Moo';
+requires 'Music::CreatingRhythms';
+requires 'Music::Duration::Partition';
+requires 'Music::Scales';
+requires 'Music::VoiceGen';
+requires 'Time::HiRes';
