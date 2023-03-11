@@ -167,6 +167,7 @@ __DATA__
     </div>
   </div>
 
+<!--
   <div class="row">
     <div class="col">
     </div>
@@ -177,6 +178,7 @@ __DATA__
       </div>
     </div>
   </div>
+-->
 
   <p></p>
 
