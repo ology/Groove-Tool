@@ -14,15 +14,15 @@ use Music::VoiceGen ();
 use namespace::clean;
 
 has filename   => (is => 'ro', required => 1); # MIDI file name
-has boctave    => (is => 'ro');
-has bpatch     => (is => 'ro');
-has bvolume    => (is => 'ro');
 has my_bpm     => (is => 'ro');
 has phrases    => (is => 'ro');
 has repeat     => (is => 'ro');
 has dvolume    => (is => 'ro');
 has reverb     => (is => 'ro');
 has do_bass    => (is => 'ro');
+has boctave    => (is => 'ro');
+has bpatch     => (is => 'ro');
+has bvolume    => (is => 'ro');
 has my_pool    => (is => 'ro');
 has my_weights => (is => 'ro');
 has my_groups  => (is => 'ro');
