@@ -16,7 +16,7 @@ get '/' => sub ($c) {
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
   my $euclid  = $c->param('euclid')  || '2,3 3,2'; # "kick,snare" onsets
   my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
-  my $dvolume = $c->param('dvolume') // 60; # 0 - 127
+  my $dvolume = $c->param('dvolume') // 100; # 0 - 127
   my $reverb  = $c->param('reverb')  // 15; # 0 - 127
   my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
   my $bpatch  = $c->param('bpatch')  || 35; # 0 - 127 and -1 = off
