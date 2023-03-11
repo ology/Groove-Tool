@@ -126,44 +126,11 @@ __DATA__
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <label for="parts">Parts:</label>
+        <label for="euclid">Euclid:</label>
       </div>
       <div class="col">
-        <input type="text" class="form-control form-control-sm" id="parts" name="parts" value="<%= $parts %>" title="Space-separated chord progression parts" aria-describedby="partsHelp">
-        <small id="partsHelp" class="form-text text-muted">Form: &lt;Note>&lt;Major|minor>&lt;verse|chorus></small>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="cpatch">Patch:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>" title="0 to 127 defining the chord patch">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="cvolume">Volume:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="cvolume" name="cvolume" min="0" max="127" value="<%= $cvolume %>" title="0 to 127 defining the chord volume">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="coctave">Octave:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="coctave" name="coctave" min="3" max="6" value="<%= $coctave %>" title="Chord octave from 3 to 6">
+        <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
+        <small id="euclidHelp" class="form-text text-muted">Form: &lt;kick_onsets>,&lt;snare_onsets>&lt;</small>
       </div>
     </div>
   </div>
@@ -192,10 +159,6 @@ __DATA__
 
   <div class="row">
     <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="do_bass" name="do_bass" <%= $do_bass ? 'checked' : '' %> title="Play a randomized bassline">
-        <label class="form-check-label" for="do_bass">Bass</label>
-      </div>
     </div>
     <div class="col">
       <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
@@ -242,17 +205,6 @@ __DATA__
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <label for="motifs">Motifs:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="motifs" name="motifs" min="1" max="16" value="<%= $motifs %>" title="1 to 16 bass motifs">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
         <label for="pool">Pool:</label>
       </div>
       <div class="col">
@@ -292,10 +244,6 @@ __DATA__
 
   <div class="row">
     <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="do_drums" name="do_drums" <%= $do_drums ? 'checked' : '' %> title="Play a 4/4 drum pattern">
-        <label class="form-check-label" for="do_drums">Drums</label>
-      </div>
     </div>
     <div class="col">
       <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#drumSettings">Drum Settings</button>
@@ -324,22 +272,6 @@ __DATA__
       </div>
       <div class="col">
         <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="0 to 127 drum reverb amount">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="hihat">Hihat:</label>
-      </div>
-      <div class="col">
-        <select class="form-control form-control-sm" id="hihat" name="hihat" title="Set the hi-hat metronome patch">
-          <option value="" <%= !$hihat ? 'selected' : '' %>>None</option>
-% for my $i (qw(pedal closed open)) {
-          <option value="<%= $i %>" <%= $i eq $hihat ? 'selected' : '' %>><%= ucfirst $i %></option>
-% }
-        </select>
       </div>
     </div>
   </div>
