@@ -175,9 +175,6 @@ __DATA__
         <label class="form-check-label" for="countin">Count-in</label>
       </div>
     </div>
-    <div class="col">
-      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
-    </div>
   </div>
 
   <div class="row">
@@ -187,9 +184,6 @@ __DATA__
         <label class="form-check-label" for="duel">Duel</label>
       </div>
     </div>
-    <div class="col">
-      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
-    </div>
   </div>
 
   <div class="row">
@@ -198,9 +192,6 @@ __DATA__
         <input class="form-check-input" type="checkbox" id="verbose" name="verbose" <%= $verbose ? 'checked' : '' %> title="be overly snoopy">
         <label class="form-check-label" for="verbose">Verbose</label>
       </div>
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
     </div>
   </div>
 
