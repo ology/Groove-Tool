@@ -71,9 +71,11 @@ sub drums {
 }
 
 sub bass {
-    my ($self) = @_;
+    my ($self, $bars) = @_;
 
     return unless $self->bpatch > 0 && $self->bvolume;
+
+    $bars ||= $self->drummer->bars;
 
     set_chan_patch($self->drummer->score, 1, $self->bpatch);
 
@@ -84,14 +86,32 @@ sub bass {
     my $groups  = [ split /[\s,-]+/, $self->my_groups ];
 
     my $mdp = Music::Duration::Partition->new(
-        size => $self->drummer->beats,
+        size => $self->drummer->beats - 1,
         pool => $pool,
         $self->my_weights ? (weights => $weights) : (),
-        $self->my_groups ? (groups => $groups) : (),
+        $self->my_groups  ? (groups => $groups)   : (),
     );
-    my @motifs = map { $mdp->motif } 1 .. $self->bass_motifs;
+    my @motifs = map { $mdp->motif } 1 .. 2;
 
-    for (1 .. $self->repeat * $self->phrases) {
+    my @pitches = get_scale_MIDI($self->bnote, $self->boctave, $self->bscale);
+
+    my $voice = Music::VoiceGen->new(
+        pitches   => \@pitches,
+        intervals => [qw/-4 -3 -2 2 3 4/],
+    );
+
+    my @notes1 = map { $voice->rand } $motifs[0]->@*;
+
+    for my $i (1 .. $bars) {
+        if ($i % 2) {
+            $mdp->add_to_score($self->drummer->score, $motifs[0], \@notes1);
+        }
+        else {
+            my @notes2 = map { $voice->rand } $motifs[1]->@*;
+            $mdp->add_to_score($self->drummer->score, $motifs[1], \@notes2);
+        }
+
+        $self->drummer->rest($self->drummer->quarter);
     }
 }
 
