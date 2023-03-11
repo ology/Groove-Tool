@@ -32,6 +32,7 @@ has duel       => (is => 'ro');
 has countin    => (is => 'ro');
 has verbose    => (is => 'ro');
 has size       => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
+has rotate_by  => (is => 'ro', default => sub { 4 });  # number of steps to rotate (snare usually)
 has msgs       => (is => 'rw', default => sub { [] }); # bucket for output messages
 has drummer    => (is => 'lazy');
 
@@ -122,7 +123,7 @@ sub rotate_sequence {
     my ($self, $onsets) = @_;
     my $mcr = Music::CreatingRhythms->new;
     my $sequence = $mcr->euclid($onsets, $self->size);
-    $sequence = $mcr->rotate_n(2, $sequence);
+    $sequence = $mcr->rotate_n($self->rotate_by, $sequence);
     my $sequence_string = join '', @$sequence;
     return $sequence_string;
 }
