@@ -83,7 +83,7 @@ sub euclidean_part {
     my $hh = '1' x ($self->size / 2);
     $self->drummer->sync(
         sub { $self->drummer->pattern( instrument => $self->drummer->closed_hh, patterns => [ ($hh) x $bars ] ) },
-        sub { $self->drummer->pattern( instrument => $self->drummer->snare,     patterns => [ (rotate_sequence($snare_ons)) x $bars ] ) },
+        sub { $self->drummer->pattern( instrument => $self->drummer->snare,     patterns => [ ($self->rotate_sequence($snare_ons)) x $bars ] ) },
         sub { $self->drummer->pattern( instrument => $self->drummer->kick,      patterns => [ ($self->drummer->euclidean($kick_ons, $self->size)) x $bars ] ) },
         sub { $self->bass($bars) },
     );
@@ -100,7 +100,7 @@ sub fill {
     $self->drummer->add_fill(
         sub { $self->_fill },
         $self->drummer->closed_hh => [ $hh ],
-        $self->drummer->snare     => [ rotate_sequence($snare_onset) ],
+        $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
         $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
     );
 }
