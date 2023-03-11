@@ -93,7 +93,10 @@ sub init_grooves {
         # slower grooves go first
         @grooves = sort { $a->{kick} <=> $b->{kick} || $a->{snare} <=> $b->{snare} } @grooves;
     }
-    print 'Onsets: ', ddc(\@grooves);
+
+    my @msgs; # Message accumulator
+    push @msgs, map { ddc($_) } @grooves;
+    $self->msgs(\@msgs);
 
     return \@grooves;
 }
