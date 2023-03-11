@@ -130,7 +130,7 @@ __DATA__
       </div>
       <div class="col">
         <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
-        <small id="euclidHelp" class="form-text text-muted">Form: &lt;kick_onsets>,&lt;snare_onsets>&lt;</small>
+        <small id="euclidHelp" class="form-text text-muted">Form: &lt;kick_onsets>,&lt;snare_onsets></small>
       </div>
     </div>
   </div>
