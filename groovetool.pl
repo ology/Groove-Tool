@@ -172,7 +172,31 @@ __DATA__
     <div class="col">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
-        <label class="form-check-label" for="countin">Bass</label>
+        <label class="form-check-label" for="countin">Count-in</label>
+      </div>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
+        <label class="form-check-label" for="duel">Duel</label>
+      </div>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="verbose" name="verbose" <%= $verbose ? 'checked' : '' %> title="be overly snoopy">
+        <label class="form-check-label" for="verbose">Verbose</label>
       </div>
     </div>
     <div class="col">
