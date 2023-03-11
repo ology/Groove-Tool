@@ -26,6 +26,8 @@ has bvolume    => (is => 'ro');
 has my_pool    => (is => 'ro');
 has my_weights => (is => 'ro');
 has my_groups  => (is => 'ro');
+has max        => (is => 'ro');
+has size       => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
 has msgs       => (is => 'rw', default => sub { [] }); # bucket for output messages
 has drummer    => (is => 'lazy');
 
