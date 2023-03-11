@@ -11,24 +11,24 @@ use constant MIDI_GLOB  => '*.mid';
 use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
-  my $submit  = $c->param('submit')   || 0;
-  my $my_bpm  = $c->param('my_bpm')   || 90; # 1 - ?
-  my $repeat  = $c->param('repeat')   || 1; # number of times to repeat
-  my $euclid  = $c->param('euclid')   || ''; # "kick,snare" onsets
-  my $dvolume = $c->param('dvolume')  // 60; # 0 - 127
-  my $reverb  = $c->param('reverb')   // 15; # 0 - 127
-  my $boctave = $c->param('boctave')  || 1; # 1, 2, ...?
-  my $bpatch  = $c->param('bpatch')   || 35; # 0 - 127 and -1 = off
-  my $bvolume = $c->param('bvolume')  // 90; # 0 - 127
-  my $bnote   = $c->param('bnote')    // 'A'; # C, C#, Db, D, ... B
-  my $bscale  = $c->param('bscale')   // 'pminor'; # see Music::Scales
-  my $pool    = $c->param('pool')     || 'dhn hn qn en'; # MIDI-Perl note durations
-  my $weights = $c->param('weights')  // '1 2 3 2'; # weights of the note duration pool
-  my $groups  = $c->param('groups')   // '1 1 1 2'; # groupings of the pool notes
-  my $max     = $c->param('max')      || 2; # number of random grooves to generate unless given euclids
-  my $duel    = $c->param('duel')     || 0; # alternate with the hihat-only, counterpart section
-  my $countin = $c->param('countin')  || 0; # play 4 hihat notes to start things off
-  my $verbose = $c->param('verbose')  || 0; # be overly snoopy
+  my $submit  = $c->param('submit')  || 0;
+  my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
+  my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
+  my $euclid  = $c->param('euclid')  || ''; # "kick,snare" onsets
+  my $dvolume = $c->param('dvolume') // 60; # 0 - 127
+  my $reverb  = $c->param('reverb')  // 15; # 0 - 127
+  my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
+  my $bpatch  = $c->param('bpatch')  || 35; # 0 - 127 and -1 = off
+  my $bvolume = $c->param('bvolume') // 90; # 0 - 127
+  my $bnote   = $c->param('bnote')   // 'A'; # C, C#, Db, D, ... B
+  my $bscale  = $c->param('bscale')  // 'pminor'; # see Music::Scales
+  my $pool    = $c->param('pool')    || 'dhn hn qn en'; # MIDI-Perl note durations
+  my $weights = $c->param('weights') // '1 2 3 2'; # weights of the note duration pool
+  my $groups  = $c->param('groups')  // '1 1 1 2'; # groupings of the pool notes
+  my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
+  my $duel    = $c->param('duel')    || 0; # alternate with the hihat-only, counterpart section
+  my $countin = $c->param('countin') || 0; # play 4 hihat notes to start things off
+  my $verbose = $c->param('verbose') || 0; # be overly snoopy
 
   _purge($c); # purge defunct midi files
 
