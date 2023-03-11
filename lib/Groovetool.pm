@@ -58,9 +58,9 @@ sub process {
     $self->drummer->count_in(1) if $self->countin;
 
     for my $groove (@$grooves) {
-        euclidean_part($groove->{snare}, $groove->{kick});
+        $self->euclidean_part($groove->{snare}, $groove->{kick});
 
-        counterpart() if $self->duel;
+        $self->counterpart() if $self->duel;
     }
 
     $self->drummer->write;
