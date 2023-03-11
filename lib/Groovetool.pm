@@ -16,16 +16,23 @@ use namespace::clean;
 has filename   => (is => 'ro', required => 1); # MIDI file name
 has my_bpm     => (is => 'ro');
 has phrases    => (is => 'ro');
+has euclid     => (is => 'ro');
 has repeat     => (is => 'ro');
 has dvolume    => (is => 'ro');
 has reverb     => (is => 'ro');
 has boctave    => (is => 'ro');
 has bpatch     => (is => 'ro');
 has bvolume    => (is => 'ro');
+has bnote      => (is => 'ro');
+has bscale     => (is => 'ro');
 has my_pool    => (is => 'ro');
 has my_weights => (is => 'ro');
 has my_groups  => (is => 'ro');
 has max        => (is => 'ro');
+has duel       => (is => 'ro');
+has countin    => (is => 'ro');
+has verbose    => (is => 'ro');
+has quiet      => (is => 'ro');
 has size       => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
 has msgs       => (is => 'rw', default => sub { [] }); # bucket for output messages
 has drummer    => (is => 'lazy');
