@@ -14,6 +14,7 @@ get '/' => sub ($c) {
   my $submit  = $c->param('submit')  || 0;
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
+  my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
   my $euclid  = $c->param('euclid')  || ''; # "kick,snare" onsets
   my $dvolume = $c->param('dvolume') // 60; # 0 - 127
   my $reverb  = $c->param('reverb')  // 15; # 0 - 127
@@ -25,7 +26,6 @@ get '/' => sub ($c) {
   my $pool    = $c->param('pool')    || 'dhn hn qn en'; # MIDI-Perl note durations
   my $weights = $c->param('weights') // '1 2 3 2'; # weights of the note duration pool
   my $groups  = $c->param('groups')  // '1 1 1 2'; # groupings of the pool notes
-  my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
   my $duel    = $c->param('duel')    || 0; # alternate with the hihat-only, counterpart section
   my $countin = $c->param('countin') || 0; # play 4 hihat notes to start things off
   my $verbose = $c->param('verbose') || 0; # be overly snoopy
@@ -168,6 +168,28 @@ __DATA__
 <div class="collapse" id="bassSettings">
 
   <p></p>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="bnote">Note:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" title="C, C#, Db, D, ... B bass scale starting note">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="bscale">Scale:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
+      </div>
+    </div>
+  </div>
 
   <div class="form-group">
     <div class="row">
