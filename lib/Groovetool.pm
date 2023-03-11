@@ -68,7 +68,29 @@ sub drums {
 
     my $bars = $self->drummer->bars * $self->repeat;
 
-    ...;
+    my $euclid = [ split /\s+/, $self->euclid ];
+
+    # initialize the kick and snare onsets
+    my @grooves;
+    for my $item ($self->euclid->@*) {
+        my ($kick, $snare) = split /,/, $item;
+        push @grooves, {
+            kick  => $kick,
+            snare => $snare,
+        };
+    }
+    unless (@grooves) {
+        for my $i (1 .. $self->max) {
+            my $kick = $self->kick_onsets;
+            push @grooves, {
+                kick  => $kick,
+                snare => $self->snare_onsets(0, $kick),
+            };
+        }
+        # slower grooves go first
+        @grooves = sort { $a->{kick} <=> $b->{kick} || $a->{snare} <=> $b->{snare} } @grooves;
+    }
+    print 'Onsets: ', ddc(\@grooves);
 }
 
 sub counterpart {
