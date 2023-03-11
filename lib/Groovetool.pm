@@ -51,12 +51,17 @@ sub _build_drummer {
 sub process {
     my ($self) = @_;
 
-    my $bars = $self->drummer->bars * $self->repeat;
+    my $bars = $self->drummer->bars;# * $self->repeat;
 
-    $self->drummer->sync(
-        sub { $self->drums() },
-        sub { $self->bass() },
-    );
+    my $grooves = $self->init_grooves;
+
+    $self->drummer->count_in(1) if $self->countin;
+
+    for my $groove (@$grooves) {
+        euclidean_part($groove->{snare}, $groove->{kick});
+
+        counterpart() if $self->duel;
+    }
 
     $self->drummer->write;
 
@@ -65,8 +70,6 @@ sub process {
 
 sub init_grooves {
     my ($self) = @_;
-
-    return unless $self->dvolume;
 
     my $euclid = [ split /\s+/, $self->euclid ];
 
