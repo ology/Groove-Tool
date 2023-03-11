@@ -138,6 +138,17 @@ __DATA__
   <div class="form-group">
     <div class="row">
       <div class="col">
+        <label for="max">Max:</label>
+      </div>
+      <div class="col">
+        <input type="number" class="form-control form-control-sm" id="max" name="max" min="1" max="16" value="<%= $max %>" title="number of random grooves to generate unless given a euclid list">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
         <label for="my_bpm">BPM:</label>
       </div>
       <div class="col">
