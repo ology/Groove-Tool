@@ -198,7 +198,7 @@ __DATA__
         <label for="bnote">Note:</label>
       </div>
       <div class="col">
-        <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" title="C, C#, Db, D, ... B bass scale starting note">
+        <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
       </div>
     </div>
   </div>
