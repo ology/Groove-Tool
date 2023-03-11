@@ -19,7 +19,6 @@ has phrases    => (is => 'ro');
 has repeat     => (is => 'ro');
 has dvolume    => (is => 'ro');
 has reverb     => (is => 'ro');
-has do_bass    => (is => 'ro');
 has boctave    => (is => 'ro');
 has bpatch     => (is => 'ro');
 has bvolume    => (is => 'ro');
@@ -69,7 +68,7 @@ sub drums {
 sub bass {
     my ($self) = @_;
 
-    return unless $self->do_bass && $self->bvolume;
+    return unless $self->bpatch > 0 && $self->bvolume;
 
     set_chan_patch($self->drummer->score, 1, $self->bpatch);
 
