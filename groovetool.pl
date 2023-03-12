@@ -234,7 +234,7 @@ MIDI: &nbsp;
   <div class="part">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
-      <select id="strike" class="form-select" aria-label="Drum pad">
+      <select id="strike" class="form-select" aria-label="Drum strike">
         <option value="44">Pedal Hihat</option>
         <option value="42">Closed Hihat</option>
         <option value="46">Open Hihat</option>
