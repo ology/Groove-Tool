@@ -168,13 +168,13 @@ MIDI: &nbsp;
 <div class="collapse" id="drumSettings">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
+    <label for="eumax">Max:</label>
+  </div>
+  <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
     <label for="euclid">Euclid:</label>
     <small id="euclidHelp" class="form-text text-muted">kick_onsets,snare_onsets</small>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
-    <label for="eumax">Max:</label>
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
