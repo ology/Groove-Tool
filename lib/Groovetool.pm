@@ -25,9 +25,9 @@ has bpatch     => (is => 'ro');
 has bvolume    => (is => 'ro');
 has bnote      => (is => 'ro');
 has bscale     => (is => 'ro');
-has my_pool    => (is => 'ro');
-has my_weights => (is => 'ro');
-has my_groups  => (is => 'ro');
+has bpool      => (is => 'ro');
+has bweights   => (is => 'ro');
+has bgroups    => (is => 'ro');
 has duel       => (is => 'ro');
 has countin    => (is => 'ro');
 has verbose    => (is => 'ro');
@@ -197,15 +197,15 @@ sub bass {
 
     $self->drummer->score->Volume($self->bvolume);
 
-    my $pool    = [ split /[\s,-]+/, $self->my_pool ];
-    my $weights = [ split /[\s,-]+/, $self->my_weights ];
-    my $groups  = [ split /[\s,-]+/, $self->my_groups ];
+    my $pool    = [ split /[\s,-]+/, $self->bpool ];
+    my $weights = [ split /[\s,-]+/, $self->bweights ];
+    my $groups  = [ split /[\s,-]+/, $self->bgroups ];
 
     my $mdp = Music::Duration::Partition->new(
         size => $self->drummer->beats - 1,
         pool => $pool,
-        $self->my_weights ? (weights => $weights) : (),
-        $self->my_groups  ? (groups => $groups)   : (),
+        $self->bweights ? (weights => $weights) : (),
+        $self->bgroups  ? (groups => $groups)   : (),
     );
     my @motifs = map { $mdp->motif } 1 .. 2;
 
