@@ -247,6 +247,22 @@ MIDI: &nbsp;
       <label for="strike">Strike:</label>
     </div>
     <p></p>
+    <div class="d-inline-flex align-items-center">
+      <input class="form-check-input" type="radio" name="style" id="quarter_style" value="">
+      &nbsp;
+      &nbsp;
+      <label for="quarter_style">Quarter notes</label>
+    </div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <div class="d-inline-flex align-items-center">
+      <input class="form-check-input" type="radio" name="style" id="eighth_style" value="">
+      &nbsp;
+      &nbsp;
+      <label for="eighth_style">Eighth notes</label>
+    </div>
+    <p></p>
     <input class="form-check-input" type="radio" name="style" id="euclid_style" value="">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
