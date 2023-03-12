@@ -14,7 +14,7 @@ get '/' => sub ($c) {
   my $submit  = $c->param('submit')  || 0;
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
-  my $euclid  = $c->param('euclid')  // '2,3 3,2'; # "kick,snare" onsets
+  my $euclid  = $c->param('euclid')  // '2'; # onsets
   my $eumax   = $c->param('eumax')   // 4; # number of random grooves to generate unless given euclids
   my $christo = $c->param('christo') // 'u-11-5,u-11-5 l-11-5,l-11-5'; # "kick,snare" onsets
   my $chmax   = $c->param('chmax')   // 4; # number of random grooves to generate unless given christoffels
@@ -246,14 +246,19 @@ MIDI: &nbsp;
       </select>
       <label for="strike">Strike:</label>
     </div>
+    <p></p>
+    <input class="form-check-input" type="radio" name="style" id="euclid_style" value="">
+    &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
-      <label for="eumax">Max:</label>
+      <input type="number" class="form-control form-control-sm" id="euclid" name="euclid" min="1" max="16" value="<%= $euclid %>" title="number of onsets">
+      <label for="euclid">Euclid onsets:</label>
     </div>
+    <p></p>
+    <input class="form-check-input" type="radio" name="style" id="christo_style" value="">
+    &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
-      <label for="euclid">Euclid:</label>
-      <small id="euclidHelp" class="form-text text-muted">kick_onsets,snare_onsets</small>
+      <input type="number" class="form-control form-control-sm" id="christo" name="christo" min="1" max="16" value="<%= '$christo' %>" title="number of onsets">
+      <label for="christo">Christoffel onsets:</label>
     </div>
     <p></p>
     <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
