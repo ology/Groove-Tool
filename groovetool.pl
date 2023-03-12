@@ -139,7 +139,7 @@ MIDI: &nbsp;
   <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#generalSettings">General Settings</button>
   <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum Settings</button>
   <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
-  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#addPart">Add Part</button>
+  <button type="button" id="btnAddPart" class="btn btn-success btn-sm">Add Part</button>
 </div>
 
 <div class="collapse" id="generalSettings">
@@ -229,7 +229,37 @@ MIDI: &nbsp;
   </div>
 </div>
 
+<div class="parts"></div>
+<div class="defaultPart d-none">
+  <div class="part">
+    <p></p>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
+      <label for="eumax">Max:</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
+      <label for="euclid">Euclid:</label>
+      <small id="euclidHelp" class="form-text text-muted">kick_onsets,snare_onsets</small>
+    </div>
+    <p></p>
+    <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
+  </div>
+</div>
+
 </form>
+
+<script>
+$(document).ready(function () {
+  $("body").on("click", ".btnRemovePart", function() {
+    $(this).closest(".part").remove();
+  });
+  $("#btnAddPart").click(function () {
+    var $appendItem = $(".defaultPart").html();
+    $($appendItem).appendTo('.parts');
+  });
+});
+</script>
 
 @@ help.html.ep
 % layout 'default';
