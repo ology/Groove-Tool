@@ -15,9 +15,11 @@ use namespace::clean;
 
 has filename  => (is => 'ro', required => 1); # MIDI file name
 has my_bpm    => (is => 'ro');
+has repeat    => (is => 'ro');
 has euclid    => (is => 'ro');
 has eumax     => (is => 'ro');
-has repeat    => (is => 'ro');
+has christoff => (is => 'ro');
+has chmax     => (is => 'ro');
 has dvolume   => (is => 'ro');
 has reverb    => (is => 'ro');
 has boctave   => (is => 'ro');
