@@ -28,7 +28,6 @@ get '/' => sub ($c) {
   my $groups  = $c->param('groups')  // '1 2 4'; # groupings of the pool notes
   my $duel    = $c->param('duel')    || 0; # alternate with the hihat-only, counterpart section
   my $countin = $c->param('countin') || 0; # play 4 hihat notes to start things off
-  my $verbose = $c->param('verbose') || 0; # be overly snoopy
 
   _purge($c); # purge defunct midi files
 
@@ -56,7 +55,6 @@ get '/' => sub ($c) {
       max        => $max,
       duel       => $duel,
       countin    => $countin,
-      verbose    => $verbose,
     );
 
     $msgs = $groove->process;
@@ -82,7 +80,6 @@ get '/' => sub ($c) {
     max      => $max,
     duel     => $duel,
     countin  => $countin,
-    verbose  => $verbose,
   );
 } => 'index';
 
@@ -166,19 +163,6 @@ __DATA__
       </div>
     </div>
   </div>
-
-<!--
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="verbose" name="verbose" <%= $verbose ? 'checked' : '' %> title="be overly snoopy">
-        <label class="form-check-label" for="verbose">Verbose</label>
-      </div>
-    </div>
-  </div>
--->
 
   <p></p>
 
