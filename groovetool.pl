@@ -234,6 +234,19 @@ MIDI: &nbsp;
   <div class="part">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
+      <select id="strike" class="form-select" aria-label="Drum pad">
+        <option value="44">Pedal Hihat</option>
+        <option value="42">Closed Hihat</option>
+        <option value="46">Open Hihat</option>
+        <option value="37">Side Stick</option>
+        <option value="38">Acoustic Snare</option>
+        <option value="40">Electric Snare</option>
+        <option value="35">Bass Drum</option>
+        <option value="36">Electric Drum</option>
+      </select>
+      <label for="strike">Strike:</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
       <label for="eumax">Max:</label>
     </div>
