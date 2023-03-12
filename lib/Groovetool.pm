@@ -16,7 +16,7 @@ use namespace::clean;
 has filename  => (is => 'ro', required => 1); # MIDI file name
 has my_bpm    => (is => 'ro');
 has euclid    => (is => 'ro');
-has max       => (is => 'ro');
+has eumax     => (is => 'ro');
 has repeat    => (is => 'ro');
 has dvolume   => (is => 'ro');
 has reverb    => (is => 'ro');
@@ -82,7 +82,7 @@ sub init_grooves {
         };
     }
     unless (@grooves) {
-        for my $i (1 .. $self->max) {
+        for my $i (1 .. $self->eumax) {
             my $kick = $self->kick_onsets;
             push @grooves, {
                 kick  => $kick,
