@@ -117,34 +117,9 @@ __DATA__
 
 <form>
 
-<div class="form-floating d-inline-flex align-items-center">
-  <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
-  <label for="my_bpm">BPM:</label>
-</div>
-<div class="form-floating d-inline-flex align-items-center">
-  <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
-  <label for="repeat">Repeat:</label>
-</div>
-
-<p></p>
-<div class="d-inline-flex align-items-center">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
-    <label class="form-check-label" for="countin">Count-in</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
-    <label class="form-check-label" for="duel">Duel</label>
-  </div>
-</div>
-
-<p></p>
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
 
-</form>
-
 % if ($filename) {
-<p></p>
 MIDI: &nbsp;
 <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><i class="fa-solid fa-play"></i></a>
 &nbsp; | &nbsp;
@@ -161,8 +136,33 @@ MIDI: &nbsp;
 
 <p></p>
 <div>
-  <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum Settings</button>
-  <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#generalSettings">General Settings</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum Settings</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#addPart">Add Part</button>
+</div>
+
+<div class="collapse" id="generalSettings">
+  <p></p>
+<div class="form-floating d-inline-flex align-items-center">
+  <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
+  <label for="my_bpm">BPM:</label>
+</div>
+<div class="form-floating d-inline-flex align-items-center">
+  <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
+  <label for="repeat">Repeat:</label>
+</div>
+<p></p>
+<div class="d-inline-flex align-items-center">
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
+    <label class="form-check-label" for="countin">Count-in</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
+    <label class="form-check-label" for="duel">Duel</label>
+  </div>
+</div>
 </div>
 
 <div class="collapse" id="drumSettings">
@@ -285,6 +285,8 @@ MIDI: &nbsp;
     </div>
   </div>
 </div>
+
+</form>
 
 @@ help.html.ep
 % layout 'default';
