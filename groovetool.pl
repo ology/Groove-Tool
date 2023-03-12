@@ -115,183 +115,61 @@ __DATA__
 % layout 'default';
 % title 'Groove Generator';
 
-<div class="row">
-  <label for="my_bpm">BPM:</label>
-  <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
-</div>
-
-<div class="row">
-  <div class="col-6">
-
-<p></p>
-
 <form>
 
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="my_bpm">BPM:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="repeat">Repeat:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
-        <label class="form-check-label" for="countin">Count-in</label>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
-        <label class="form-check-label" for="duel">Duel</label>
-      </div>
-    </div>
-  </div>
-
-  <p></p>
-
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#bassSettings">Bass Settings</button>
-    </div>
-  </div>
-
-<div class="collapse" id="bassSettings">
-
-  <p></p>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="bnote">Note:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="bscale">Scale:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="bpatch">Patch:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="bvolume">Volume:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="boctave">Octave:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="pool">Pool:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="pool" name="pool" value="<%= $pool %>" title="Allowed bass durations" aria-describedby="poolHelp">
-        <small id="poolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="weights">Weights:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="weights" name="weights" value="<%= $weights %>" title="Weights of bass durations" aria-describedby="weightsHelp">
-        <small id="weightsHelp" class="form-text text-muted">Weights of each pool duration</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="groups">Groups:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="groups" name="groups" value="<%= $groups %>" title="Groupings of bass durations" aria-describedby="groupsHelp">
-        <small id="groupsHelp" class="form-text text-muted">Groups of pool durations (e.g. ten = 3)</small>
-      </div>
-    </div>
-  </div>
-
+<div class="form-floating d-inline-flex align-items-center">
+  <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
+  <label for="my_bpm">BPM:</label>
+</div>
+<div class="form-floating d-inline-flex align-items-center">
+  <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
+  <label for="repeat">Repeat:</label>
 </div>
 
 <p></p>
+<div class="d-inline-flex align-items-center">
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
+    <label class="form-check-label" for="countin">Count-in</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
+    <label class="form-check-label" for="duel">Duel</label>
+  </div>
+</div>
 
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-toggle="collapse" data-target="#drumSettings">Drum Settings</button>
+<p></p>
+<input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
+
+</form>
+
+% if ($filename) {
+<p></p>
+MIDI: &nbsp;
+<a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><i class="fa-solid fa-play"></i></a>
+&nbsp; | &nbsp;
+<a href="#" onClick="MIDIjs.stop();" title="Stop MIDI"><i class="fa-solid fa-stop"></i></a>
+&nbsp; | &nbsp;
+<a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
+<p></p>
+<ol>
+%   for my $msg (@$msgs) {
+  <li><%== $msg %></li>
+%   }
+</ol>
+% }
+
+<p></p>
+<div>
+  <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum Settings</button>
+  <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
+</div>
+
     </div>
   </div>
+</div>
 
 <div class="collapse" id="drumSettings">
-
-  <p></p>
-
   <div class="form-group">
     <div class="row">
       <div class="col">
@@ -303,7 +181,6 @@ __DATA__
       </div>
     </div>
   </div>
-
   <div class="form-group">
     <div class="row">
       <div class="col">
@@ -314,7 +191,6 @@ __DATA__
       </div>
     </div>
   </div>
-
   <div class="form-group">
     <div class="row">
       <div class="col">
@@ -325,7 +201,6 @@ __DATA__
       </div>
     </div>
   </div>
-
   <div class="form-group">
     <div class="row">
       <div class="col">
@@ -336,34 +211,91 @@ __DATA__
       </div>
     </div>
   </div>
-
 </div>
 
-  <p></p>
-
-  <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
-
-</form>
-
+<div class="collapse" id="bassSettings">
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="bnote">Note:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
+      </div>
+    </div>
   </div>
-  <div class="col-6">
-
-% if ($filename) {
-    <p></p>
-    MIDI: &nbsp;
-    <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><i class="fa-solid fa-play"></i></a>
-    &nbsp; | &nbsp;
-    <a href="#" onClick="MIDIjs.stop();" title="Stop MIDI"><i class="fa-solid fa-stop"></i></a>
-    &nbsp; | &nbsp;
-    <a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
-    <p></p>
-    <ol>
-%   for my $msg (@$msgs) {
-      <li><%== $msg %></li>
-%   }
-    </ol>
-% }
-
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="bscale">Scale:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="bpatch">Patch:</label>
+      </div>
+      <div class="col">
+        <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="bvolume">Volume:</label>
+      </div>
+      <div class="col">
+        <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="boctave">Octave:</label>
+      </div>
+      <div class="col">
+        <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="pool">Pool:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="pool" name="pool" value="<%= $pool %>" title="Allowed bass durations" aria-describedby="poolHelp">
+        <small id="poolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="weights">Weights:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="weights" name="weights" value="<%= $weights %>" title="Weights of bass durations" aria-describedby="weightsHelp">
+        <small id="weightsHelp" class="form-text text-muted">Weights of each pool duration</small>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="groups">Groups:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" id="groups" name="groups" value="<%= $groups %>" title="Groupings of bass durations" aria-describedby="groupsHelp">
+        <small id="groupsHelp" class="form-text text-muted">Groups of pool durations (e.g. ten = 3)</small>
+      </div>
+    </div>
   </div>
 </div>
 
