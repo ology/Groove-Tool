@@ -165,10 +165,6 @@ MIDI: &nbsp;
   <button type="button" class="btn btn-outline-dark btn-sm btn-block" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
 </div>
 
-    </div>
-  </div>
-</div>
-
 <div class="collapse" id="drumSettings">
   <div class="form-group">
     <div class="row">
@@ -214,14 +210,19 @@ MIDI: &nbsp;
 </div>
 
 <div class="collapse" id="bassSettings">
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
+    <label for="my_bpm">BPM:</label>
+  </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
+    <label for="repeat">Repeat:</label>
+  </div>
+
   <div class="form-group">
     <div class="row">
-      <div class="col">
         <label for="bnote">Note:</label>
-      </div>
-      <div class="col">
         <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
-      </div>
     </div>
   </div>
   <div class="form-group">
