@@ -170,7 +170,7 @@ MIDI: &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
     <label for="euclid">Euclid:</label>
-    <small id="euclidHelp" class="form-text text-muted">&lt;kick_onsets&gt;,&lt;snare_onsets&gt;</small>
+    <small id="euclidHelp" class="form-text text-muted">kick_onsets,snare_onsets</small>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
@@ -197,69 +197,35 @@ MIDI: &nbsp;
     <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
     <label for="bscale">Scale:</label>
   </div>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="bpatch">Patch:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
-      </div>
-    </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
+    <label for="bpatch">Patch:</label>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="bvolume">Volume:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
-      </div>
-    </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
+    <label for="bvolume">Volume:</label>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="boctave">Octave:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
-      </div>
-    </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
+    <label for="boctave">Octave:</label>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="pool">Pool:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="pool" name="pool" value="<%= $pool %>" title="Allowed bass durations" aria-describedby="poolHelp">
-        <small id="poolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
-      </div>
-    </div>
+  <p></p>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="text" class="form-control form-control-sm" id="pool" name="pool" value="<%= $pool %>" title="Allowed bass durations" aria-describedby="poolHelp">
+    <label for="pool">Pool:</label>
+    <small id="poolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="weights">Weights:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="weights" name="weights" value="<%= $weights %>" title="Weights of bass durations" aria-describedby="weightsHelp">
-        <small id="weightsHelp" class="form-text text-muted">Weights of each pool duration</small>
-      </div>
-    </div>
+  <br>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="text" class="form-control form-control-sm" id="weights" name="weights" value="<%= $weights %>" title="Weights of bass durations" aria-describedby="weightsHelp">
+    <label for="weights">Weights:</label>
+    <small id="weightsHelp" class="form-text text-muted">pool duration weights</small>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="groups">Groups:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="groups" name="groups" value="<%= $groups %>" title="Groupings of bass durations" aria-describedby="groupsHelp">
-        <small id="groupsHelp" class="form-text text-muted">Groups of pool durations (e.g. ten = 3)</small>
-      </div>
-    </div>
+  <br>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="text" class="form-control form-control-sm" id="groups" name="groups" value="<%= $groups %>" title="Groupings of bass durations" aria-describedby="groupsHelp">
+    <label for="groups">Groups:</label>
+    <small id="groupsHelp" class="form-text text-muted">pool duration groups (e.g. ten = 3)</small>
   </div>
 </div>
 
