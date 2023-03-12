@@ -167,46 +167,25 @@ MIDI: &nbsp;
 
 <div class="collapse" id="drumSettings">
   <p></p>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="euclid">Euclid:</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
-        <small id="euclidHelp" class="form-text text-muted">Form: &lt;kick_onsets>,&lt;snare_onsets></small>
-      </div>
-    </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
+    <label for="eumax">Max:</label>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="eumax">Max:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
-      </div>
-    </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
+    <label for="euclid">Euclid:</label>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="dvolume">Volume:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
-      </div>
-    </div>
+  <div>
+    <small id="euclidHelp" class="form-text text-muted">Form: &lt;kick_onsets&gt;,&lt;snare_onsets&gt;</small>
+    <p></p>
   </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for="reverb">Reverb:</label>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="0 to 127 drum reverb amount">
-      </div>
-    </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
+    <label for="dvolume">Volume:</label>
+  </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="0 to 127 drum reverb amount">
+    <label for="reverb">Reverb:</label>
   </div>
 </div>
 
