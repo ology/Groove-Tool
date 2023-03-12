@@ -18,7 +18,7 @@ has my_bpm    => (is => 'ro');
 has repeat    => (is => 'ro');
 has euclid    => (is => 'ro');
 has eumax     => (is => 'ro');
-has christoff => (is => 'ro');
+has christo   => (is => 'ro');
 has chmax     => (is => 'ro');
 has dvolume   => (is => 'ro');
 has reverb    => (is => 'ro');
