@@ -15,7 +15,7 @@ get '/' => sub ($c) {
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
   my $euclid  = $c->param('euclid')  // '2,3 3,2'; # "kick,snare" onsets
-  my $max     = $c->param('max')     || 2; # number of random grooves to generate unless given euclids
+  my $max     = $c->param('max')     // 2; # number of random grooves to generate unless given euclids
   my $dvolume = $c->param('dvolume') // 100; # 0 - 127
   my $reverb  = $c->param('reverb')  // 15; # 0 - 127
   my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
@@ -303,7 +303,7 @@ __DATA__
         <label for="max">Max:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="max" name="max" min="1" max="16" value="<%= $max %>" title="number of random grooves to generate unless given a euclid list">
+        <input type="number" class="form-control form-control-sm" id="max" name="max" min="0" max="16" value="<%= $max %>" title="number of random grooves to generate unless given a euclid list">
       </div>
     </div>
   </div>
