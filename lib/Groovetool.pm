@@ -30,7 +30,6 @@ has bweights   => (is => 'ro');
 has bgroups    => (is => 'ro');
 has duel       => (is => 'ro');
 has countin    => (is => 'ro');
-has verbose    => (is => 'ro');
 has size       => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
 has rotate_by  => (is => 'ro', default => sub { 4 });  # number of steps to rotate (snare usually)
 has msgs       => (is => 'rw', default => sub { [] }); # bucket for output messages
