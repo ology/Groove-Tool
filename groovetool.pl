@@ -144,25 +144,25 @@ MIDI: &nbsp;
 
 <div class="collapse" id="generalSettings">
   <p></p>
-<div class="form-floating d-inline-flex align-items-center">
-  <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
-  <label for="my_bpm">BPM:</label>
-</div>
-<div class="form-floating d-inline-flex align-items-center">
-  <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
-  <label for="repeat">Repeat:</label>
-</div>
-<p></p>
-<div class="d-inline-flex align-items-center">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
-    <label class="form-check-label" for="countin">Count-in</label>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
+    <label for="my_bpm">BPM:</label>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
-    <label class="form-check-label" for="duel">Duel</label>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
+    <label for="repeat">Repeat:</label>
   </div>
-</div>
+  <p></p>
+  <div class="d-inline-flex align-items-center">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
+      <label class="form-check-label" for="countin">Count-in</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
+      <label class="form-check-label" for="duel">Duel</label>
+    </div>
+  </div>
 </div>
 
 <div class="collapse" id="drumSettings">
