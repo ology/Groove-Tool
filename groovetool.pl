@@ -307,6 +307,8 @@ $(document).ready(function () {
     var $inputs = $('#part_' + i).find(':input');
     $inputs.each(function (index) {
         $(this).attr('id', $(this).attr('id') + '_' + i);
+        $(this).attr('name', $(this).attr('name') + '_' + i);
+        $(this).nextAll('label:first').attr('for', $(this).attr('id'));
     });
   });
   $("body").on("click", ".btnRemovePart", function() {
