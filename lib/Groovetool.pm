@@ -16,8 +16,6 @@ use namespace::clean;
 has filename  => (is => 'ro', required => 1); # MIDI file name
 has my_bpm    => (is => 'ro');
 has repeat    => (is => 'ro');
-has euclid    => (is => 'ro');
-has eumax     => (is => 'ro');
 has dvolume   => (is => 'ro');
 has reverb    => (is => 'ro');
 has boctave   => (is => 'ro');
@@ -52,52 +50,32 @@ sub process {
 
     my $bars = $self->drummer->bars;# * $self->repeat;
 
-    my $grooves = $self->init_grooves;
-
     $self->drummer->count_in(1) if $self->countin;
 
-    for my $groove (@$grooves) {
-        $self->euclidean_part($groove->{snare}, $groove->{kick});
+    for my $part ($self->phrases->@*) {
+        if ($part->{style} eq 'quarter') {
+            $self->beat_part(4, $part);
+        }
+        elsif ($part->{style} eq 'eighth') {
+            $self->beat_part(8, $part);
+        }
+        elsif ($part->{style} eq 'euclid') {
+            $self->euclidean_part($part);
+        }
+        elsif ($part->{style} eq 'christoffel') {
+            $self->christoffel_part($part);
+        }
 
         $self->counterpart() if $self->duel;
     }
 
+#    my @msgs; # Message accumulator
+#    push @msgs, map { ddc($_) } @grooves;
+#    $self->msgs(\@msgs);
+
     $self->drummer->write;
 
     return $self->msgs;
-}
-
-sub init_grooves {
-    my ($self) = @_;
-
-    my $euclid = [ split /\s+/, $self->euclid ];
-
-    # initialize the kick and snare onsets
-    my @grooves;
-    for my $item (@$euclid) {
-        my ($kick, $snare) = split /,/, $item;
-        push @grooves, {
-            kick  => $kick,
-            snare => $snare,
-        };
-    }
-    unless (@grooves) {
-        for my $i (1 .. $self->eumax) {
-            my $kick = $self->kick_onsets;
-            push @grooves, {
-                kick  => $kick,
-                snare => $self->snare_onsets(0, $kick),
-            };
-        }
-        # slower grooves go first
-        @grooves = sort { $a->{kick} <=> $b->{kick} || $a->{snare} <=> $b->{snare} } @grooves;
-    }
-
-    my @msgs; # Message accumulator
-    push @msgs, map { ddc($_) } @grooves;
-    $self->msgs(\@msgs);
-
-    return \@grooves;
 }
 
 sub counterpart {
@@ -118,24 +96,24 @@ sub euclidean_part {
         sub { $self->bass($bars) },
     );
     $self->drummer->sync(
-        sub { $self->fill($snare_ons, $kick_ons) },
+        sub { $self->euclid_fill($snare_ons, $kick_ons) },
         sub { $self->bass(1) },
     );
 }
 
-sub fill {
+sub euclid_fill {
     my ($self, $snare_onset, $kick_onset) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $hh = '1' x ($self->size / 2);
     $self->drummer->add_fill(
-        sub { $self->_fill },
+        sub { $self->_euclid_fill },
         $self->drummer->closed_hh => [ $hh ],
         $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
         $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
     );
 }
 
-sub _fill {
+sub _euclid_fill {
     my ($self) = @_;
     my $snare_ons = 1 + int rand($self->size / 2);
     my $hh = '0' x ($self->size / 2);
