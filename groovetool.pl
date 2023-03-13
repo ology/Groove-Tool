@@ -11,6 +11,8 @@ use constant MIDI_GLOB  => '*.mid';
 use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
+use Data::Dumper::Compact qw(ddc);
+warn __PACKAGE__,' L',__LINE__,' ',ddc($c->req->params->names, {max_width=>128});
   my $submit  = $c->param('submit')  || 0;
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
@@ -233,7 +235,7 @@ MIDI: &nbsp;
 <div class="defaultPart d-none">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <select id="strike" class="form-select" aria-label="Drum strike">
+    <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
       <option value="44">Pedal Hihat</option>
       <option value="42">Closed Hihat</option>
       <option value="46">Open Hihat</option>
@@ -284,14 +286,14 @@ MIDI: &nbsp;
     <label for="denominator">Denominator</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+    <select id="up_low" name="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
       <option value="u">Upper</option>
       <option value="l">Lower</option>
     </select>
     <label for="up_low">Case</label>
   </div>
   <p></p>
-  <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
+  <button type="button" id="btnRemove" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
 </div>
 
 </form>
