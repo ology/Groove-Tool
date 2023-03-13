@@ -115,7 +115,7 @@ __DATA__
 % layout 'default';
 % title 'Groove Generator';
 
-<form>
+<form id="groove_form">
 
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
 
@@ -304,6 +304,10 @@ $(document).ready(function () {
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + i }).append(
       $($appendItem)).appendTo('.parts');
+    var $inputs = $('#part_' + i).find(':input');
+    $inputs.each(function (index) {
+        $(this).attr('id', $(this).attr('id') + '_' + i);
+    });
   });
   $("body").on("click", ".btnRemovePart", function() {
     $(this).closest(".part").remove();
