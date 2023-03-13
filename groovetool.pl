@@ -303,12 +303,12 @@ $(document).ready(function () {
     i++;
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + i }).append(
-      $($appendItem)).appendTo('.parts');
-    var $inputs = $('#part_' + i).find(':input');
+      $($appendItem)).appendTo(".parts");
+    var $inputs = $("#part_" + i).find(":input");
     $inputs.each(function (index) {
-        $(this).attr('id', $(this).attr('id') + '_' + i);
-        $(this).attr('name', $(this).attr('name') + '_' + i);
-        $(this).nextAll('label:first').attr('for', $(this).attr('id'));
+        $(this).attr("id", $(this).attr("id") + "_" + i);
+        $(this).attr("name", $(this).attr("name") + "_" + i);
+        $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
   });
   $("body").on("click", ".btnRemovePart", function() {
