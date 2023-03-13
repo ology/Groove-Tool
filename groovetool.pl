@@ -14,8 +14,6 @@ get '/' => sub ($c) {
   my $submit  = $c->param('submit')  || 0;
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
-  my $euclid  = $c->param('euclid')  // '2,3 3,2'; # onsets
-  my $eumax   = $c->param('eumax')   // 4; # number of random grooves to generate unless given euclids
   my $dvolume = $c->param('dvolume') // 100; # 0 - 127
   my $reverb  = $c->param('reverb')  // 15; # 0 - 127
   my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
@@ -51,7 +49,6 @@ get '/' => sub ($c) {
       filename => 'public' . $filename,
       my_bpm   => $my_bpm,
       repeat   => $repeat,
-      euclid   => $euclid,
       phrases  => \%phrases,
       dvolume  => $dvolume,
       reverb   => $reverb,
@@ -63,7 +60,6 @@ get '/' => sub ($c) {
       bpool    => $pool,
       bweights => $weights,
       bgroups  => $groups,
-      eumax    => $eumax,
       duel     => $duel,
       countin  => $countin,
     );
@@ -77,7 +73,6 @@ get '/' => sub ($c) {
     filename => $filename,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
-    euclid   => $euclid,
     dvolume  => $dvolume,
     reverb   => $reverb,
     boctave  => $boctave,
@@ -88,7 +83,6 @@ get '/' => sub ($c) {
     pool     => $pool,
     weights  => $weights,
     groups   => $groups,
-    eumax    => $eumax,
     duel     => $duel,
     countin  => $countin,
   );
@@ -181,7 +175,7 @@ MIDI: &nbsp;
     <label for="eumax">Max</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
+    <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= '$euclid' %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
     <label for="euclid">Euclid</label>
     <small id="euclidHelp" class="form-text text-muted">kick_onsets,snare_onsets</small>
   </div>
