@@ -66,7 +66,7 @@ sub process {
             $self->christoffel_part($part);
         }
 
-        $self->counterpart() if $self->duel;
+        $self->counter_part() if $self->duel;
     }
 
 #    my @msgs; # Message accumulator
@@ -78,7 +78,12 @@ sub process {
     return $self->msgs;
 }
 
-sub counterpart {
+sub beat_part {
+    my ($self, $onsets, $part) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
+}
+
+sub counter_part {
     my ($self) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     $self->drummer->count_in($self->drummer->bars);
@@ -124,6 +129,11 @@ sub _euclid_fill {
         $self->drummer->snare     => $self->drummer->euclidean($snare_ons, $self->size / 2),
         $self->drummer->kick      => $kick,
     };
+}
+
+sub christoffel_part {
+    my ($self, $part) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
 }
 
 sub rotate_sequence {
