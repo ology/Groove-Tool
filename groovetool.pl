@@ -252,7 +252,7 @@ MIDI: &nbsp;
     </div>
     <p></p>
     <div class="d-inline-flex align-items-center">
-      <input class="form-check-input" type="radio" name="style" id="quarter_style" value="">
+      <input class="form-check-input" type="radio" name="style" id="quarter_style" value="" title="Simple quarter note">
       &nbsp;
       &nbsp;
       <label for="quarter_style">Quarter notes</label>
@@ -261,20 +261,20 @@ MIDI: &nbsp;
     &nbsp;
     &nbsp;
     <div class="d-inline-flex align-items-center">
-      <input class="form-check-input" type="radio" name="style" id="eighth_style" value="">
+      <input class="form-check-input" type="radio" name="style" id="eighth_style" value="" title="Simple eighth notes">
       &nbsp;
       &nbsp;
       <label for="eighth_style">Eighth notes</label>
     </div>
     <p></p>
-    <input class="form-check-input" type="radio" name="style" id="euclid_style" value="">
+    <input class="form-check-input" type="radio" name="style" id="euclid_style" value="" title="Euclidean word">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="euclid" name="euclid" min="1" max="16" value="<%= $euclid %>" title="Number of Euclidean onsets">
       <label for="euclid">Euclidean onsets:</label>
     </div>
     <p></p>
-    <input class="form-check-input" type="radio" name="style" id="christo_style" value="">
+    <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
       <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
