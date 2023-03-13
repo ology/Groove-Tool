@@ -246,6 +246,10 @@ MIDI: &nbsp;
       </select>
       <label for="strike">Strike:</label>
     </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
+      <label for="shift">Shift by:</label>
+    </div>
     <p></p>
     <div class="d-inline-flex align-items-center">
       <input class="form-check-input" type="radio" name="style" id="quarter_style" value="">
