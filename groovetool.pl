@@ -12,7 +12,7 @@ use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
 #use Data::Dumper::Compact qw(ddc);
-#warn __PACKAGE__,' L',__LINE__,' ',ddc($c->req->params->names, {max_width=>128});
+#warn __PACKAGE__,' L',__LINE__,' ',ddc($c->req->params->names);
   my $submit  = $c->param('submit')  || 0;
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
