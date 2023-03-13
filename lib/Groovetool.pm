@@ -33,6 +33,7 @@ has size      => (is => 'ro', default => sub { 16 }); # changing this will make 
 has rotate_by => (is => 'ro', default => sub { 4 });  # number of steps to rotate (snare usually)
 has msgs      => (is => 'rw', default => sub { [] }); # bucket for output messages
 has drummer   => (is => 'lazy');
+has creator   => (is => 'lazy');
 
 sub _build_drummer {
     my ($self) = @_;
@@ -44,6 +45,12 @@ sub _build_drummer {
         volume => $self->dvolume,
     );
     return $d;
+}
+
+sub _build_creator {
+    my ($self) = @_;
+    my $mcr = Music::CreatingRhythms->new;
+    return $mcr;
 }
 
 sub process {
@@ -103,8 +110,9 @@ sub counter_part {
 sub euclidean_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $pattern = $self->drummer->euclidean($part->{onsets}, $self->size);
-    $pattern = $self->rotate_sequence($part->{shift}, $pattern) if $part->{shift};
+    my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
+    $sequence = $self->creator->rotate_n($rotate_by, $sequence) if $part->{shift};
+    my $pattern = join '', @$sequence;
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
@@ -115,12 +123,12 @@ sub euclid_fill {
     my ($self, $snare_onset, $kick_onset) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $hh = '1' x ($self->size / 2);
-    $self->drummer->add_fill(
-        sub { $self->_euclid_fill },
-        $self->drummer->closed_hh => [ $hh ],
-        $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
-        $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
-    );
+#    $self->drummer->add_fill(
+#        sub { $self->_euclid_fill },
+#        $self->drummer->closed_hh => [ $hh ],
+#        $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
+#        $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
+#    );
 }
 
 sub _euclid_fill {
@@ -139,15 +147,6 @@ sub _euclid_fill {
 sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-}
-
-sub rotate_sequence {
-    my ($self, $onsets) = @_;
-    my $mcr = Music::CreatingRhythms->new;
-    my $sequence = $mcr->euclid($onsets, $self->size);
-    $sequence = $mcr->rotate_n($self->rotate_by, $sequence);
-    my $sequence_string = join '', @$sequence;
-    return $sequence_string;
 }
 
 sub kick_onsets {
