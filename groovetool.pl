@@ -266,15 +266,26 @@ MIDI: &nbsp;
     <input class="form-check-input" type="radio" name="style" id="euclid_style" value="">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="euclid" name="euclid" min="1" max="16" value="<%= $euclid %>" title="number of onsets">
+      <input type="number" class="form-control form-control-sm" id="euclid" name="euclid" min="1" max="16" value="<%= $euclid %>" title="Number of Euclidean onsets">
       <label for="euclid">Euclid onsets:</label>
     </div>
     <p></p>
     <input class="form-check-input" type="radio" name="style" id="christo_style" value="">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="christo" name="christo" min="1" max="16" value="<%= '$christo' %>" title="number of onsets">
-      <label for="christo">Christoffel onsets:</label>
+      <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+        <option value="u">Upper</option>
+        <option value="l">Lower</option>
+      </select>
+      <label for="up_low">Case:</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
+      <label for="numerator">Numerator:</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
+      <label for="denominator">Denominator:</label>
     </div>
     <p></p>
     <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
