@@ -53,27 +53,31 @@ sub process {
 
     $self->drummer->count_in(1) if $self->countin;
 
+    my @phrases;
+
     for my $key (sort { $a <=> $b} keys $self->phrases->%*) {
         my $part = $self->phrases->{$key};
         if ($part->{style} eq 'quarter') {
-            $self->beat_part(4, $part);
+            push @phrases, sub { $self->beat_part(4, $part) };
         }
         elsif ($part->{style} eq 'eighth') {
-            $self->beat_part(8, $part);
+            push @phrases, sub { $self->beat_part(8, $part) };
         }
         elsif ($part->{style} eq 'euclid') {
-            $self->euclidean_part($part);
+            push @phrases, sub { $self->euclidean_part($part) };
         }
         elsif ($part->{style} eq 'christoffel') {
-            $self->christoffel_part($part);
+            push @phrases, sub { $self->christoffel_part($part) };
         }
 
-        $self->counter_part() if $self->duel;
+        push @phrases, sub { $self->counter_part() if $self->duel };
     }
 
 #    my @msgs; # Message accumulator
 #    push @msgs, map { ddc($_) } @grooves;
 #    $self->msgs(\@msgs);
+
+    $self->drummer->sync(@phrases);
 
     $self->drummer->write;
 
