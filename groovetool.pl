@@ -18,8 +18,6 @@ get '/' => sub ($c) {
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
   my $euclid  = $c->param('euclid')  // '2,3 3,2'; # onsets
   my $eumax   = $c->param('eumax')   // 4; # number of random grooves to generate unless given euclids
-  my $christo = $c->param('christo') // 'u-11-5,u-11-5 l-11-5,l-11-5'; # "kick,snare" onsets
-  my $chmax   = $c->param('chmax')   // 4; # number of random grooves to generate unless given christoffels
   my $dvolume = $c->param('dvolume') // 100; # 0 - 127
   my $reverb  = $c->param('reverb')  // 15; # 0 - 127
   my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
@@ -47,8 +45,6 @@ get '/' => sub ($c) {
           $phrases{$order}->{$key} = $c->param($part);
       }
   }
-use Data::Dumper::Compact qw(ddc);
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
