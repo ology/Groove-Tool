@@ -37,10 +37,18 @@ get '/' => sub ($c) {
   for my $param ($c->req->params->names->@*) {
       next unless $param =~ /_\d+$/;
       next unless $c->param($param);
-      push @parts, { $param => $c->param($param) };
+      push @parts, $param;
+  }
+  my %phrases;
+  for my $part (@parts) {
+      if ($part =~ /^(\w+)_(\d+)$/) {
+          my $key   = $1;
+          my $order = $2;
+          $phrases{$order}->{$key} = $c->param($part);
+      }
   }
 use Data::Dumper::Compact qw(ddc);
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\@parts, {max_width=>128});
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
@@ -55,6 +63,7 @@ warn __PACKAGE__,' L',__LINE__,' ',ddc(\@parts, {max_width=>128});
       my_bpm   => $my_bpm,
       repeat   => $repeat,
       euclid   => $euclid,
+      phrases  => \%phrases,
       dvolume  => $dvolume,
       reverb   => $reverb,
       boctave  => $boctave,
@@ -262,7 +271,7 @@ MIDI: &nbsp;
   </div>
   <p></p>
   <div class="d-inline-flex align-items-center">
-    <input class="form-check-input" type="radio" name="style" id="quarter_style" value="quarter_style" title="Simple quarter note">
+    <input class="form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
     &nbsp;
     &nbsp;
     <label for="quarter_style">Quarter notes</label>
@@ -271,20 +280,20 @@ MIDI: &nbsp;
   &nbsp;
   &nbsp;
   <div class="d-inline-flex align-items-center">
-    <input class="form-check-input" type="radio" name="style" id="eighth_style" value="eighth_style" title="Simple eighth notes">
+    <input class="form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
     &nbsp;
     &nbsp;
     <label for="eighth_style">Eighth notes</label>
   </div>
   <p></p>
-  <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid_style" title="Euclidean word">
+  <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
   &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
     <label for="onsets">Euclidean onsets</label>
   </div>
   <p></p>
-  <input class="form-check-input" type="radio" name="style" id="christo_style" value="christo_style" title="Christoffel word">
+  <input class="form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
   &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
