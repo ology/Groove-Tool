@@ -33,6 +33,13 @@ get '/' => sub ($c) {
   my $duel    = $c->param('duel')    || 0; # alternate with the hihat-only, counterpart section
   my $countin = $c->param('countin') || 0; # play 4 hihat notes to start things off
 
+  my @parts;
+  for my $param ($c->req->params->names->@*) {
+      next unless $param =~ /_\d+$/;
+      next unless $c->param($param);
+      push @parts, { $param => $c->param($param) };
+  }
+
   _purge($c); # purge defunct midi files
 
   my $filename = '';
