@@ -129,6 +129,7 @@ __DATA__
 <form id="groove_form">
 
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
+<button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
 
 % if ($filename) {
 MIDI: &nbsp;
@@ -150,7 +151,6 @@ MIDI: &nbsp;
   <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#generalSettings">General Settings</button>
   <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum Settings</button>
   <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
-  <button type="button" id="btnAddPart" class="btn btn-success btn-sm">Add Part</button>
 </div>
 
 <div class="collapse" id="generalSettings">
@@ -308,13 +308,14 @@ MIDI: &nbsp;
 
 <p></p>
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
+<button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
 
 </form>
 
 <script>
 $(document).ready(function () {
   var i = 0;
-  $("#btnAddPart").click(function () {
+  $(".btnAddPart").click(function () {
     i++;
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + i }).append(
