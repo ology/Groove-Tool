@@ -85,9 +85,13 @@ sub process {
 }
 
 sub beat_part {
-    my ($self, $onsets, $part) = @_;
+    my ($self, $factor, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $hh = '1' x ($self->size / 2);
+    my $pattern = '1' x $factor;
+    $self->drummer->pattern(
+        instrument => $part->{strike},
+        patterns   => [ ($pattern) x $part->{bars} ],
+    );
 }
 
 sub counter_part {
@@ -99,20 +103,12 @@ sub counter_part {
 sub euclidean_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $bars = $self->drummer->bars;# - 1;
     my $pattern = $self->drummer->euclidean($part->{onsets}, $self->size);
     $pattern = $self->rotate_sequence($part->{shift}, $pattern) if $part->{shift};
-    $self->drummer->pattern(instrument => $part->{strike}, patterns => [ ($pattern) x $bars ]);
-#      $self->drummer->sync(
-#          sub { $self->drummer->pattern( instrument => $self->drummer->closed_hh, patterns => [ ($hh) x $bars ] ) },
-#          sub { $self->drummer->pattern( instrument => $self->drummer->snare,     patterns => [ ($self->rotate_sequence($snare_ons)) x $bars ] ) },
-#          sub { $self->drummer->pattern( instrument => $self->drummer->kick,      patterns => [ ($self->drummer->euclidean($kick_ons, $self->size)) x $bars ] ) },
-#          sub { $self->bass($bars) },
-#      );
-#      $self->drummer->sync(
-#          sub { $self->euclid_fill($snare_ons, $kick_ons) },
-#          sub { $self->bass(1) },
-#      );
+    $self->drummer->pattern(
+        instrument => $part->{strike},
+        patterns   => [ ($pattern) x $part->{bars} ],
+    );
 }
 
 sub euclid_fill {
