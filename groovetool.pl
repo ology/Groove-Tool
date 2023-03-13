@@ -294,6 +294,7 @@ MIDI: &nbsp;
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <select id="up_low" name="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+      <option value="">Choose...</option>
       <option value="u">Upper</option>
       <option value="l">Lower</option>
     </select>
