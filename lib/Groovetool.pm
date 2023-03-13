@@ -148,8 +148,13 @@ sub _euclid_fill {
 sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
-    $sequence = $self->creator->rotate_n($part->{shift}, $sequence) if $part->{shift};
+    my $sequence = $self->creator->chsequl(
+        $part->{case},
+        $part->{numerator}, $part->{denominator},
+        $self->size
+    );
+    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+        if $part->{shift};
     my $pattern = join '', @$sequence;
     $self->drummer->pattern(
         instrument => $part->{strike},
