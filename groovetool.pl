@@ -327,7 +327,8 @@ $(document).ready(function () {
     });
   });
   $("body").on("click", ".btnRemovePart", function() {
-    $(this).closest(".part").remove();
+    var result = confirm("Remove this part?");
+    if (result) $(this).closest(".part").remove();
   });
 });
 </script>
