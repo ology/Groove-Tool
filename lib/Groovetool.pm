@@ -91,6 +91,12 @@ sub process {
     return $self->msgs;
 }
 
+sub counter_part {
+    my ($self) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->count_in($self->drummer->bars);
+}
+
 sub beat_part {
     my ($self, $factor, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
@@ -99,12 +105,6 @@ sub beat_part {
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
     );
-}
-
-sub counter_part {
-    my ($self) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
-    $self->drummer->count_in($self->drummer->bars);
 }
 
 sub euclidean_part {
