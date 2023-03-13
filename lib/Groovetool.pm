@@ -70,7 +70,7 @@ sub process {
             push @phrases, sub { $self->christoffel_part($part) };
         }
 
-        push @phrases, sub { $self->counter_part() if $self->duel };
+        push @phrases, sub { $self->counter_part() } if $self->duel;
     }
 
 #    my @msgs; # Message accumulator
