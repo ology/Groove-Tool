@@ -121,7 +121,7 @@ __DATA__
 <form id="groove_form">
 
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
-<button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
+<button type="button" id="btnAddSection" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 % if ($filename) {
 MIDI: &nbsp;
@@ -232,7 +232,13 @@ MIDI: &nbsp;
   </div>
 </div>
 
-<div class="parts"></div>
+<div class="sections"></div>
+<div class="defaultSection d-none">
+  <p></p>
+  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
+  <p></p>
+  <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
+</div>
 <div class="defaultPart d-none">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
@@ -304,22 +310,33 @@ MIDI: &nbsp;
 
 <p></p>
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
-<button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
+<button type="button" id="btnAddSection" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 </form>
 
 <script>
 $(document).ready(function () {
   var i = 0;
-  $(".btnAddPart").click(function () {
+  var j = 0;
+  $(".btnAddSection").click(function () {
     i++;
+    var $appendItem = $(".defaultSection").html();
+    $("<div />", { "class":"section", id:"part_" + i }).append(
+      $($appendItem)).appendTo(".sections");
+  });
+  $("body").on("click", ".btnRemoveSection", function() {
+    var result = confirm("Remove this section?");
+    if (result) $(this).closest(".section").remove();
+  });
+  $(".btnAddPart").click(function () {
+    j++;
     var $appendItem = $(".defaultPart").html();
-    $("<div />", { "class":"part", id:"part_" + i }).append(
+    $("<div />", { "class":"part", id:"part_" + j }).append(
       $($appendItem)).appendTo(".parts");
-    var $inputs = $("#part_" + i).find(":input");
+    var $inputs = $("#part_" + j).find(":input");
     $inputs.each(function (index) {
-        $(this).attr("id", $(this).attr("id") + "_" + i);
-        $(this).attr("name", $(this).attr("name") + "_" + i);
+        $(this).attr("id", $(this).attr("id") + "_" + j);
+        $(this).attr("name", $(this).attr("name") + "_" + j);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
   });
