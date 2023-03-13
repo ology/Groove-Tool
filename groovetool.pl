@@ -306,6 +306,9 @@ MIDI: &nbsp;
   <button type="button" id="btnRemove" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
 </div>
 
+<p></p>
+<input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
+
 </form>
 
 <script>
