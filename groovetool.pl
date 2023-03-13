@@ -231,67 +231,67 @@ MIDI: &nbsp;
 
 <div class="parts"></div>
 <div class="defaultPart d-none">
-    <p></p>
-    <div class="form-floating d-inline-flex align-items-center">
-      <select id="strike" class="form-select" aria-label="Drum strike">
-        <option value="44">Pedal Hihat</option>
-        <option value="42">Closed Hihat</option>
-        <option value="46">Open Hihat</option>
-        <option value="37">Side Stick</option>
-        <option value="38">Acoustic Snare</option>
-        <option value="40">Electric Snare</option>
-        <option value="35">Bass Drum</option>
-        <option value="36">Electric Drum</option>
-      </select>
-      <label for="strike">Strike</label>
-    </div>
-    <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
-      <label for="shift">Shift by</label>
-    </div>
-    <p></p>
-    <div class="d-inline-flex align-items-center">
-      <input class="form-check-input" type="radio" name="style" id="quarter_style" value="" title="Simple quarter note">
-      &nbsp;
-      &nbsp;
-      <label for="quarter_style">Quarter notes</label>
-    </div>
+  <p></p>
+  <div class="form-floating d-inline-flex align-items-center">
+    <select id="strike" class="form-select" aria-label="Drum strike">
+      <option value="44">Pedal Hihat</option>
+      <option value="42">Closed Hihat</option>
+      <option value="46">Open Hihat</option>
+      <option value="37">Side Stick</option>
+      <option value="38">Acoustic Snare</option>
+      <option value="40">Electric Snare</option>
+      <option value="35">Bass Drum</option>
+      <option value="36">Electric Drum</option>
+    </select>
+    <label for="strike">Strike</label>
+  </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
+    <label for="shift">Shift by</label>
+  </div>
+  <p></p>
+  <div class="d-inline-flex align-items-center">
+    <input class="form-check-input" type="radio" name="style" id="quarter_style" value="" title="Simple quarter note">
     &nbsp;
     &nbsp;
+    <label for="quarter_style">Quarter notes</label>
+  </div>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <div class="d-inline-flex align-items-center">
+    <input class="form-check-input" type="radio" name="style" id="eighth_style" value="" title="Simple eighth notes">
     &nbsp;
-    <div class="d-inline-flex align-items-center">
-      <input class="form-check-input" type="radio" name="style" id="eighth_style" value="" title="Simple eighth notes">
-      &nbsp;
-      &nbsp;
-      <label for="eighth_style">Eighth notes</label>
-    </div>
-    <p></p>
-    <input class="form-check-input" type="radio" name="style" id="euclid_style" value="" title="Euclidean word">
     &nbsp;
-    <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
-      <label for="onsets">Euclidean onsets</label>
-    </div>
-    <p></p>
-    <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
-    &nbsp;
-    <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
-      <label for="numerator">Numerator</label>
-    </div>
-    <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
-      <label for="denominator">Denominator</label>
-    </div>
-    <div class="form-floating d-inline-flex align-items-center">
-      <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-        <option value="u">Upper</option>
-        <option value="l">Lower</option>
-      </select>
-      <label for="up_low">Case</label>
-    </div>
-    <p></p>
-    <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
+    <label for="eighth_style">Eighth notes</label>
+  </div>
+  <p></p>
+  <input class="form-check-input" type="radio" name="style" id="euclid_style" value="" title="Euclidean word">
+  &nbsp;
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
+    <label for="onsets">Euclidean onsets</label>
+  </div>
+  <p></p>
+  <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
+  &nbsp;
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
+    <label for="numerator">Numerator</label>
+  </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
+    <label for="denominator">Denominator</label>
+  </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+      <option value="u">Upper</option>
+      <option value="l">Lower</option>
+    </select>
+    <label for="up_low">Case</label>
+  </div>
+  <p></p>
+  <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
 </div>
 
 </form>
