@@ -271,7 +271,7 @@ MIDI: &nbsp;
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="euclid" name="euclid" min="1" max="16" value="<%= $euclid %>" title="Number of Euclidean onsets">
-      <label for="euclid">Euclid onsets:</label>
+      <label for="euclid">Euclidean onsets:</label>
     </div>
     <p></p>
     <input class="form-check-input" type="radio" name="style" id="christo_style" value="">
