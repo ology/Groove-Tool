@@ -16,6 +16,7 @@ use namespace::clean;
 has filename  => (is => 'ro', required => 1); # MIDI file name
 has my_bpm    => (is => 'ro');
 has repeat    => (is => 'ro');
+has phrases   => (is => 'ro');
 has dvolume   => (is => 'ro');
 has reverb    => (is => 'ro');
 has boctave   => (is => 'ro');
@@ -52,7 +53,8 @@ sub process {
 
     $self->drummer->count_in(1) if $self->countin;
 
-    for my $part ($self->phrases->@*) {
+    for my $key (sort { $a <=> $b} keys $self->phrases->%*) {
+        my $part = $self->phrases->{$key};
         if ($part->{style} eq 'quarter') {
             $self->beat_part(4, $part);
         }
@@ -81,6 +83,7 @@ sub process {
 sub beat_part {
     my ($self, $onsets, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
+    my $hh = '1' x ($self->size / 2);
 }
 
 sub counter_part {
@@ -90,20 +93,22 @@ sub counter_part {
 }
 
 sub euclidean_part {
-    my ($self, $snare_ons, $kick_ons) = @_;
+    my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $bars = $self->drummer->bars - 1;
-    my $hh = '1' x ($self->size / 2);
-    $self->drummer->sync(
-        sub { $self->drummer->pattern( instrument => $self->drummer->closed_hh, patterns => [ ($hh) x $bars ] ) },
-        sub { $self->drummer->pattern( instrument => $self->drummer->snare,     patterns => [ ($self->rotate_sequence($snare_ons)) x $bars ] ) },
-        sub { $self->drummer->pattern( instrument => $self->drummer->kick,      patterns => [ ($self->drummer->euclidean($kick_ons, $self->size)) x $bars ] ) },
-        sub { $self->bass($bars) },
-    );
-    $self->drummer->sync(
-        sub { $self->euclid_fill($snare_ons, $kick_ons) },
-        sub { $self->bass(1) },
-    );
+    my $bars = $self->drummer->bars;# - 1;
+    my $pattern = $self->drummer->euclidean($part->{onsets}, $self->size);
+    $pattern = $self->rotate_sequence($part->{shift}, $pattern) if $part->{shift};
+    $self->drummer->pattern(instrument => $part->{strike}, patterns => [ ($pattern) x $bars ]);
+#      $self->drummer->sync(
+#          sub { $self->drummer->pattern( instrument => $self->drummer->closed_hh, patterns => [ ($hh) x $bars ] ) },
+#          sub { $self->drummer->pattern( instrument => $self->drummer->snare,     patterns => [ ($self->rotate_sequence($snare_ons)) x $bars ] ) },
+#          sub { $self->drummer->pattern( instrument => $self->drummer->kick,      patterns => [ ($self->drummer->euclidean($kick_ons, $self->size)) x $bars ] ) },
+#          sub { $self->bass($bars) },
+#      );
+#      $self->drummer->sync(
+#          sub { $self->euclid_fill($snare_ons, $kick_ons) },
+#          sub { $self->bass(1) },
+#      );
 }
 
 sub euclid_fill {
