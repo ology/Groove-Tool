@@ -111,7 +111,8 @@ sub euclidean_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
-    $sequence = $self->creator->rotate_n($rotate_by, $sequence) if $part->{shift};
+    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+        if $part->{shift};
     my $pattern = join '', @$sequence;
     $self->drummer->pattern(
         instrument => $part->{strike},
@@ -147,34 +148,13 @@ sub _euclid_fill {
 sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-}
-
-sub kick_onsets {
-    my ($self, $onsets) = @_;
-    unless ($onsets) {
-        $onsets = $self->rand_onset;
-        while ($onsets < 3) {
-            $onsets = $self->rand_onset;
-        }
-    }
-    return $onsets;
-}
-
-sub snare_onsets {
-    my ($self, $onsets, $kick) = @_;
-    unless ($onsets) {
-        $onsets = $self->rand_onset;
-        while ($onsets >= $kick) {
-            $onsets = $self->rand_onset;
-        }
-    }
-    return $onsets;
-}
-
-sub rand_onset {
-    my ($self, $n) = @_;
-    $n ||= $self->size / 2;
-    return 1 + int rand($n - 1);
+    my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
+    $sequence = $self->creator->rotate_n($rotate_by, $sequence) if $part->{shift};
+    my $pattern = join '', @$sequence;
+    $self->drummer->pattern(
+        instrument => $part->{strike},
+        patterns   => [ ($pattern) x $part->{bars} ],
+    );
 }
 
 sub bass {
