@@ -146,11 +146,11 @@ MIDI: &nbsp;
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
-    <label for="my_bpm">BPM:</label>
+    <label for="my_bpm">BPM</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
-    <label for="repeat">Repeat:</label>
+    <label for="repeat">Repeat</label>
   </div>
   <p></p>
   <div class="d-inline-flex align-items-center">
@@ -169,21 +169,21 @@ MIDI: &nbsp;
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="eumax" name="eumax" min="0" max="16" value="<%= $eumax %>" title="number of random grooves to generate unless given a euclid list">
-    <label for="eumax">Max:</label>
+    <label for="eumax">Max</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="euclid" name="euclid" value="<%= $euclid %>" title="Space-separated kick,snare onset list" aria-describedby="euclidHelp">
-    <label for="euclid">Euclid:</label>
+    <label for="euclid">Euclid</label>
     <small id="euclidHelp" class="form-text text-muted">kick_onsets,snare_onsets</small>
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
-    <label for="dvolume">Volume:</label>
+    <label for="dvolume">Volume</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="0 to 127 drum reverb amount">
-    <label for="reverb">Reverb:</label>
+    <label for="reverb">Reverb</label>
   </div>
 </div>
 
@@ -191,40 +191,40 @@ MIDI: &nbsp;
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
-    <label for="bnote">Note:</label>
+    <label for="bnote">Note</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
-    <label for="bscale">Scale:</label>
+    <label for="bscale">Scale</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
-    <label for="bpatch">Patch:</label>
+    <label for="bpatch">Patch</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
-    <label for="bvolume">Volume:</label>
+    <label for="bvolume">Volume</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
-    <label for="boctave">Octave:</label>
+    <label for="boctave">Octave</label>
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="pool" name="pool" value="<%= $pool %>" title="Allowed bass durations" aria-describedby="poolHelp">
-    <label for="pool">Pool:</label>
+    <label for="pool">Pool</label>
     <small id="poolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
   </div>
   <br>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="weights" name="weights" value="<%= $weights %>" title="Weights of bass durations" aria-describedby="weightsHelp">
-    <label for="weights">Weights:</label>
+    <label for="weights">Weights</label>
     <small id="weightsHelp" class="form-text text-muted">pool duration weights</small>
   </div>
   <br>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="groups" name="groups" value="<%= $groups %>" title="Groupings of bass durations" aria-describedby="groupsHelp">
-    <label for="groups">Groups:</label>
+    <label for="groups">Groups</label>
     <small id="groupsHelp" class="form-text text-muted">pool duration groups (e.g. ten = 3)</small>
   </div>
 </div>
@@ -244,11 +244,11 @@ MIDI: &nbsp;
         <option value="35">Bass Drum</option>
         <option value="36">Electric Drum</option>
       </select>
-      <label for="strike">Strike:</label>
+      <label for="strike">Strike</label>
     </div>
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
-      <label for="shift">Shift by:</label>
+      <label for="shift">Shift by</label>
     </div>
     <p></p>
     <div class="d-inline-flex align-items-center">
@@ -271,7 +271,7 @@ MIDI: &nbsp;
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
-      <label for="onsets">Euclidean onsets:</label>
+      <label for="onsets">Euclidean onsets</label>
     </div>
     <p></p>
     <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
@@ -281,15 +281,15 @@ MIDI: &nbsp;
         <option value="u">Upper</option>
         <option value="l">Lower</option>
       </select>
-      <label for="up_low">Case:</label>
+      <label for="up_low">Case</label>
     </div>
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
-      <label for="numerator">Numerator:</label>
+      <label for="numerator">Numerator</label>
     </div>
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
-      <label for="denominator">Denominator:</label>
+      <label for="denominator">Denominator</label>
     </div>
     <p></p>
     <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
