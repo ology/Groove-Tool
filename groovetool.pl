@@ -291,12 +291,12 @@ MIDI: &nbsp;
     <label for="denominator">Denominator</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <select id="up_low" name="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+    <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
       <option value="">Choose...</option>
       <option value="u">Upper</option>
       <option value="l">Lower</option>
     </select>
-    <label for="up_low">Case</label>
+    <label for="case">Case</label>
   </div>
   <p></p>
   <button type="button" id="btnRemove" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
