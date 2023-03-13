@@ -314,13 +314,7 @@ $(document).ready(function () {
 % layout 'default';
 % title 'Help!';
 
-<p>For a list of the available patches, please see <a href="https://www.midi.org/specifications-old/item/gm-level-1-sound-set">this page</a>.</p>
-<p>Many settings are self explanatory, but the <b>bass</b> deserves a bit of attention.</p>
-<p>The <b>octave</b> is most naturally either <b>1</b> or <b>2</b>. Different patches sound ok at the lowest octave. Some sound better the next one up.</p>
-<p><b>Motifs</b> are the number of bass phrases or "figures." These are chosen at random during the progression. The more there are, the more random the bassline is.</p>
-<p>The <b>pool</b> is the required set of note durations that can happen. These are in "MIDI-Perl" format, where "hn" is a half-note, and "ten" is a triplet eighth-note, etc.</p>
-<p><b>Weights</b> are the optional probabilities that the corresponding pool entries will be chosen.</p>
-<p><b>Groups</b> are the optional indications for how many times to try to repeat a corresponding duration in succession.</p>
+<p>TBD...</p>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
