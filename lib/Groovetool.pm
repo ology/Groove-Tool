@@ -149,7 +149,7 @@ sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
-    $sequence = $self->creator->rotate_n($rotate_by, $sequence) if $part->{shift};
+    $sequence = $self->creator->rotate_n($part->{shift}, $sequence) if $part->{shift};
     my $pattern = join '', @$sequence;
     $self->drummer->pattern(
         instrument => $part->{strike},
