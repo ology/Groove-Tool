@@ -38,8 +38,6 @@ get '/' => sub ($c) {
       $phrases{$order}->{$key} = $c->param($param);
     }
   }
-use Data::Dumper::Compact qw(ddc);
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
