@@ -231,7 +231,6 @@ MIDI: &nbsp;
 
 <div class="parts"></div>
 <div class="defaultPart d-none">
-  <div class="part">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
       <select id="strike" class="form-select" aria-label="Drum strike">
@@ -293,16 +292,18 @@ MIDI: &nbsp;
     </div>
     <p></p>
     <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
-  </div>
 </div>
 
 </form>
 
 <script>
 $(document).ready(function () {
+  var i = 0;
   $("#btnAddPart").click(function () {
+    i++;
     var $appendItem = $(".defaultPart").html();
-    $($appendItem).appendTo('.parts');
+    $("<div />", { "class":"part", id:"part_" + i }).append(
+      $($appendItem)).appendTo('.parts');
   });
   $("body").on("click", ".btnRemovePart", function() {
     $(this).closest(".part").remove();
