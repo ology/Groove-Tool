@@ -270,8 +270,8 @@ MIDI: &nbsp;
     <input class="form-check-input" type="radio" name="style" id="euclid_style" value="" title="Euclidean word">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="euclid" name="euclid" min="1" max="16" value="<%= $euclid %>" title="Number of Euclidean onsets">
-      <label for="euclid">Euclidean onsets:</label>
+      <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
+      <label for="onsets">Euclidean onsets:</label>
     </div>
     <p></p>
     <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
