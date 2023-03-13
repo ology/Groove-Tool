@@ -277,19 +277,19 @@ MIDI: &nbsp;
     <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
     &nbsp;
     <div class="form-floating d-inline-flex align-items-center">
-      <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-        <option value="u">Upper</option>
-        <option value="l">Lower</option>
-      </select>
-      <label for="up_low">Case</label>
-    </div>
-    <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
       <label for="numerator">Numerator</label>
     </div>
     <div class="form-floating d-inline-flex align-items-center">
       <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
       <label for="denominator">Denominator</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <select id="up_low" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+        <option value="u">Upper</option>
+        <option value="l">Lower</option>
+      </select>
+      <label for="up_low">Case</label>
     </div>
     <p></p>
     <button type="button" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
