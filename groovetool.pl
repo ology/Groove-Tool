@@ -300,12 +300,12 @@ MIDI: &nbsp;
 
 <script>
 $(document).ready(function () {
-  $("body").on("click", ".btnRemovePart", function() {
-    $(this).closest(".part").remove();
-  });
   $("#btnAddPart").click(function () {
     var $appendItem = $(".defaultPart").html();
     $($appendItem).appendTo('.parts');
+  });
+  $("body").on("click", ".btnRemovePart", function() {
+    $(this).closest(".part").remove();
   });
 });
 </script>
