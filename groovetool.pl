@@ -29,20 +29,17 @@ get '/' => sub ($c) {
   my $duel    = $c->param('duel')    || 0; # alternate with the hihat-only, counterpart section
   my $countin = $c->param('countin') || 0; # play 4 hihat notes to start things off
 
-  my @parts;
-  for my $param ($c->req->params->names->@*) {
-    next unless $param =~ /_\d+$/;
-    next unless $c->param($param);
-    push @parts, $param;
-  }
   my %phrases;
-  for my $part (@parts) {
-    if ($part =~ /^(\w+)_(\d+)$/) {
+  for my $param ($c->req->params->names->@*) {
+    next unless $c->param($param);
+    if ($param =~ /^(\w+)_(\d+)$/) {
       my $key   = $1;
       my $order = $2;
-      $phrases{$order}->{$key} = $c->param($part);
+      $phrases{$order}->{$key} = $c->param($param);
     }
   }
+use Data::Dumper::Compact qw(ddc);
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
