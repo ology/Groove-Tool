@@ -31,17 +31,17 @@ get '/' => sub ($c) {
 
   my @parts;
   for my $param ($c->req->params->names->@*) {
-      next unless $param =~ /_\d+$/;
-      next unless $c->param($param);
-      push @parts, $param;
+    next unless $param =~ /_\d+$/;
+    next unless $c->param($param);
+    push @parts, $param;
   }
   my %phrases;
   for my $part (@parts) {
-      if ($part =~ /^(\w+)_(\d+)$/) {
-          my $key   = $1;
-          my $order = $2;
-          $phrases{$order}->{$key} = $c->param($part);
-      }
+    if ($part =~ /^(\w+)_(\d+)$/) {
+      my $key   = $1;
+      my $order = $2;
+      $phrases{$order}->{$key} = $c->param($part);
+    }
   }
 
   _purge($c); # purge defunct midi files
