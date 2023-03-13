@@ -13,27 +13,26 @@ use Music::Scales qw(get_scale_MIDI);
 use Music::VoiceGen ();
 use namespace::clean;
 
-has filename  => (is => 'ro', required => 1); # MIDI file name
-has my_bpm    => (is => 'ro');
-has repeat    => (is => 'ro');
-has phrases   => (is => 'ro');
-has dvolume   => (is => 'ro');
-has reverb    => (is => 'ro');
-has boctave   => (is => 'ro');
-has bpatch    => (is => 'ro');
-has bvolume   => (is => 'ro');
-has bnote     => (is => 'ro');
-has bscale    => (is => 'ro');
-has bpool     => (is => 'ro');
-has bweights  => (is => 'ro');
-has bgroups   => (is => 'ro');
-has duel      => (is => 'ro');
-has countin   => (is => 'ro');
-has size      => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
-has rotate_by => (is => 'ro', default => sub { 4 });  # number of steps to rotate (snare usually)
-has msgs      => (is => 'rw', default => sub { [] }); # bucket for output messages
-has drummer   => (is => 'lazy');
-has creator   => (is => 'lazy');
+has filename => (is => 'ro', required => 1); # MIDI file name
+has my_bpm   => (is => 'ro');
+has repeat   => (is => 'ro');
+has phrases  => (is => 'ro');
+has dvolume  => (is => 'ro');
+has reverb   => (is => 'ro');
+has boctave  => (is => 'ro');
+has bpatch   => (is => 'ro');
+has bvolume  => (is => 'ro');
+has bnote    => (is => 'ro');
+has bscale   => (is => 'ro');
+has bpool    => (is => 'ro');
+has bweights => (is => 'ro');
+has bgroups  => (is => 'ro');
+has duel     => (is => 'ro');
+has countin  => (is => 'ro');
+has size     => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
+has msgs     => (is => 'rw', default => sub { [] }); # bucket for output messages
+has drummer  => (is => 'lazy');
+has creator  => (is => 'lazy');
 
 sub _build_drummer {
     my ($self) = @_;
