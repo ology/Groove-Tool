@@ -39,6 +39,8 @@ get '/' => sub ($c) {
       next unless $c->param($param);
       push @parts, { $param => $c->param($param) };
   }
+use Data::Dumper::Compact qw(ddc);
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\@parts, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
@@ -260,7 +262,7 @@ MIDI: &nbsp;
   </div>
   <p></p>
   <div class="d-inline-flex align-items-center">
-    <input class="form-check-input" type="radio" name="style" id="quarter_style" value="" title="Simple quarter note">
+    <input class="form-check-input" type="radio" name="style" id="quarter_style" value="quarter_style" title="Simple quarter note">
     &nbsp;
     &nbsp;
     <label for="quarter_style">Quarter notes</label>
@@ -269,20 +271,20 @@ MIDI: &nbsp;
   &nbsp;
   &nbsp;
   <div class="d-inline-flex align-items-center">
-    <input class="form-check-input" type="radio" name="style" id="eighth_style" value="" title="Simple eighth notes">
+    <input class="form-check-input" type="radio" name="style" id="eighth_style" value="eighth_style" title="Simple eighth notes">
     &nbsp;
     &nbsp;
     <label for="eighth_style">Eighth notes</label>
   </div>
   <p></p>
-  <input class="form-check-input" type="radio" name="style" id="euclid_style" value="" title="Euclidean word">
+  <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid_style" title="Euclidean word">
   &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
     <label for="onsets">Euclidean onsets</label>
   </div>
   <p></p>
-  <input class="form-check-input" type="radio" name="style" id="christo_style" value="" title="Christoffel word">
+  <input class="form-check-input" type="radio" name="style" id="christo_style" value="christo_style" title="Christoffel word">
   &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
