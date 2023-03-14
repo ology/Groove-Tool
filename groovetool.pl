@@ -254,29 +254,30 @@ MIDI: &nbsp;
     <div id="parts_<%= $top %>" class="parts">
 
 %   for my $key (sort grep { $_ =~ /^$top\_\d+$/ } keys %$phrases) {
+%     my $part = $phrases->{$key};
 
       <div id="part_<%= $key %>" class="part">
         <hr>
         <div class="form-floating d-inline-flex align-items-center">
           <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
-            <option value="44">Pedal Hihat</option>
-            <option value="42">Closed Hihat</option>
-            <option value="46">Open Hihat</option>
-            <option value="37">Side Stick</option>
-            <option value="38">Acoustic Snare</option>
-            <option value="40">Electric Snare</option>
-            <option value="35">Bass Drum</option>
-            <option value="36">Electric Drum</option>
+            <option value="44" <%= $part->{strike} == 44 ? 'selected' : '' %>>Pedal Hihat</option>
+            <option value="42" <%= $part->{strike} == 42 ? 'selected' : '' %>>Closed Hihat</option>
+            <option value="46" <%= $part->{strike} == 46 ? 'selected' : '' %>>Open Hihat</option>
+            <option value="37" <%= $part->{strike} == 37 ? 'selected' : '' %>>Side Stick</option>
+            <option value="38" <%= $part->{strike} == 38 ? 'selected' : '' %>>Acoustic Snare</option>
+            <option value="40" <%= $part->{strike} == 40 ? 'selected' : '' %>>Electric Snare</option>
+            <option value="35" <%= $part->{strike} == 35 ? 'selected' : '' %>>Bass Drum</option>
+            <option value="36" <%= $part->{strike} == 36 ? 'selected' : '' %>>Electric Bass Drum</option>
           </select>
           <label for="strike_<%= $key %>">Strike</label>
         </div>
         <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
+          <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
           <label for="shift_<%= $key %>">Shift by</label>
         </div>
         <p></p>
         <div class="d-inline-flex align-items-center">
-          <input class="form-check-input" type="radio" name="style" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note">
+          <input class="form-check-input" type="radio" name="style" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           &nbsp;
           &nbsp;
           <label for="quarter_style_<%= $key %>">Quarter notes</label>
@@ -285,20 +286,20 @@ MIDI: &nbsp;
         &nbsp;
         &nbsp;
         <div class="d-inline-flex align-items-center">
-          <input class="form-check-input" type="radio" name="style" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes">
+          <input class="form-check-input" type="radio" name="style" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
           &nbsp;
           &nbsp;
-          <label for="eighth_style">Eighth notes</label>
+          <label for="eighth_style_<%= $key %>">Eighth notes</label>
         </div>
         <p></p>
-        <input class="form-check-input" type="radio" name="style" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word">
+        <input class="form-check-input" type="radio" name="style" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
         &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
-          <label for="onsets">Euclidean onsets</label>
+          <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
+          <label for="onsets_<%= $key %>">Euclidean onsets</label>
         </div>
         <p></p>
-        <input class="form-check-input" type="radio" name="style" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word">
+        <input class="form-check-input" type="radio" name="style" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
         &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
@@ -358,7 +359,7 @@ MIDI: &nbsp;
       <option value="38">Acoustic Snare</option>
       <option value="40">Electric Snare</option>
       <option value="35">Bass Drum</option>
-      <option value="36">Electric Drum</option>
+      <option value="36">Electric Bass Drum</option>
     </select>
     <label for="strike">Strike</label>
   </div>
