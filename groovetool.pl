@@ -37,6 +37,12 @@ get '/' => sub ($c) {
       $phrases{$order}->{$key} = $c->param($param);
     }
   }
+  for my $key (sort keys %phrases) {
+    next unless $key =~ /^\d+$/;
+    my $parts = grep { $_ =~ /^$key\_/ } keys %phrases;
+    $phrases{$key}->{parts} = $parts;
+  }
+#warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
@@ -74,7 +80,7 @@ get '/' => sub ($c) {
     filename => $filename,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
-    phrases  => ddc(\%phrases),
+    phrases  => \%phrases,
     dvolume  => $dvolume,
     reverb   => $reverb,
     boctave  => $boctave,
@@ -225,7 +231,40 @@ MIDI: &nbsp;
   </div>
 </div>
 
-<div class="sections"></div>
+<div class="sections">
+
+% for my $top (sort map { $_ =~ /^\d+$/ } keys %$phrases) {
+
+  <div id="section_<%= $top %>" class="section">
+    <p></p>
+    <button type="button" id="btnRemoveSection_<%= $top %>" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
+    <button type="button" id="btnAddPart_<%= $top %>" class="btnAddPart btn btn-success btn-sm" data-section="<%= $top %>" data-lastpart="<%= $phrases->{$top}{parts} %>">Add Part</button>
+    <p></p>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="bars_<%= $top %>" name="bars_<%= $top %>" min="1" max="32" value="<%= $phrases->{$top}{bars} %>" title="1 to 32 measures">
+      <label for="bars_<%= $top %>">Bars</label>
+    </div>
+    <div class="d-inline-flex align-items-center">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="fill_in_<%= $top %>" name="fill_in_<%= $top %>" <%= '$fill_in' ? 'checked' : '' %> title="Play a fill on the last bar">
+        <label class="form-check-label" for="fill_in_<%= $top %>">Fill-in</label>
+      </div>
+    </div>
+
+    <div id="parts_<%= $top %>" class="parts">
+
+%   for my $key (sort grep { $_ =~ /^$top\_\d+$/ } keys %$phrases) {
+K: <%= $key %>
+%   }
+
+    </div>
+
+  </div>
+
+% }
+
+</div>
+
 <div class="defaultSection d-none">
   <p></p>
   <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
@@ -242,6 +281,7 @@ MIDI: &nbsp;
     </div>
   </div>
 </div>
+
 <div class="defaultPart d-none">
   <hr>
   <div class="form-floating d-inline-flex align-items-center">
@@ -313,9 +353,6 @@ MIDI: &nbsp;
 
 </form>
 
-<p></p>
-<pre><%= $phrases %></pre>
-
 <script>
 $(document).ready(function () {
   var i = 0; // section counter
@@ -342,7 +379,7 @@ $(document).ready(function () {
     var section = $(this).attr('data-section');
     var j = parseInt($("#btnAddPart_" + section).attr('data-lastpart'));
     j++;
-    console.log('S:',section,'J:',j);
+console.log('S:',section,'J:',j); // DEBUGGING
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + section + '_' + j }).append(
       $($appendItem)).appendTo("#parts_" + section);
