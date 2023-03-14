@@ -67,7 +67,7 @@ sub process {
 
         if ($key =~ /^\d+$/ && @phrases) {
             if ($part->{fillin}) {
-                my @parts = grep { $_ =~ /^$key\_/ } keys $self->phrases->%*;
+                my @parts = grep { $_ =~ /^$key\_/ } sort keys $self->phrases->%*;
                 push @phrases, sub { $self->fill_part(\@parts) };
             }
             push @phrases, sub { $self->counter_part() } if $self->duel;
@@ -104,7 +104,7 @@ sub process {
 
     if (@phrases) {
         if ($self->phrases->{$section}{fillin}) {
-            my @parts = grep { $_ =~ /^$section\_/ } keys $self->phrases->%*;
+            my @parts = grep { $_ =~ /^$section\_/ } sort keys $self->phrases->%*;
             push @phrases, sub { $self->fill_part(\@parts) };
         }
         push @phrases, sub { $self->counter_part() } if $self->duel;
@@ -203,6 +203,7 @@ sub fill_part {
 warn __PACKAGE__,' L',__LINE__,' ',ddc($parts, {max_width=>128});
     set_chan_patch($self->drummer->score, 9, 0);
     for my $part (@$parts) {
+warn __PACKAGE__,' L',__LINE__,' ',ddc($self->phrases->{$part}, {max_width=>128});
 #        if ($part->{style} eq 'quarter') {
 #            push @phrases, sub { $self->beat_part(4, $part) };
 #        }
