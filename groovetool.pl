@@ -12,21 +12,21 @@ use constant MIDI_GLOB  => '*.mid';
 use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
-  my $submit  = $c->param('submit')  || 0;
-  my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
-  my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
-  my $dvolume = $c->param('dvolume') // 100; # 0 - 127
-  my $dreverb = $c->param('reverb')  // 15; # 0 - 127
-  my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
-  my $bpatch  = $c->param('bpatch')  || 35; # 0 - 127 and -1 = off
-  my $bvolume = $c->param('bvolume') // 90; # 0 - 127
-  my $bnote   = $c->param('bnote')   // 'A'; # C, C#, Db, D, ... B
-  my $bscale  = $c->param('bscale')  // 'pminor'; # see Music::Scales
-  my $pool    = $c->param('pool')    || 'qn en sn'; # MIDI-Perl note durations
-  my $weights = $c->param('weights') // '1 1 1'; # weights of the note duration pool
-  my $groups  = $c->param('groups')  // '1 2 4'; # groupings of the pool notes
-  my $duel    = $c->param('duel')    || 0; # alternate with the hihat-only, counterpart section
-  my $countin = $c->param('countin') || 0; # play 4 hihat notes to start things off
+  my $submit   = $c->param('submit')   || 0;
+  my $my_bpm   = $c->param('my_bpm')   || 90; # 1 - ?
+  my $repeat   = $c->param('repeat')   || 1; # number of times to repeat
+  my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
+  my $dreverb  = $c->param('reverb')   // 15; # 0 - 127
+  my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
+  my $bpatch   = $c->param('bpatch')   || 35; # 0 - 127 and -1 = off
+  my $bvolume  = $c->param('bvolume')  // 90; # 0 - 127
+  my $bnote    = $c->param('bnote')    // 'A'; # C, C#, Db, D, ... B
+  my $bscale   = $c->param('bscale')   // 'pminor'; # see Music::Scales
+  my $bpool    = $c->param('bpool')    || 'qn en sn'; # MIDI-Perl note durations
+  my $bweights = $c->param('bweights') // '1 1 1'; # weights of the note duration pool
+  my $bgroups  = $c->param('bgroups')  // '1 2 4'; # groupings of the pool notes
+  my $duel     = $c->param('duel')     || 0; # alternate with the hihat-only, counterpart section
+  my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
 
   my %phrases;
   for my $param ($c->req->params->names->@*) {
@@ -64,9 +64,9 @@ get '/' => sub ($c) {
       bvolume  => $bvolume,
       bnote    => $bnote,
       bscale   => $bscale,
-      bpool    => $pool,
-      bweights => $weights,
-      bgroups  => $groups,
+      bpool    => $bpool,
+      bweights => $bweights,
+      bgroups  => $bgroups,
       duel     => $duel,
       countin  => $countin,
     );
@@ -88,9 +88,9 @@ get '/' => sub ($c) {
     bvolume  => $bvolume,
     bnote    => $bnote,
     bscale   => $bscale,
-    pool     => $pool,
-    weights  => $weights,
-    groups   => $groups,
+    bpool    => $bpool,
+    bweights => $bweights,
+    bgroups  => $bgroups,
     duel     => $duel,
     countin  => $countin,
   );
@@ -216,21 +216,21 @@ MIDI: &nbsp;
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="pool" name="pool" value="<%= $pool %>" title="Allowed bass durations" aria-describedby="poolHelp">
-    <label for="pool">Pool</label>
-    <small id="poolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
+    <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Allowed bass durations" aria-describedby="bpoolHelp">
+    <label for="bpool">Pool</label>
+    <small id="bpoolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
   </div>
   <br>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="weights" name="weights" value="<%= $weights %>" title="Weights of bass durations" aria-describedby="weightsHelp">
-    <label for="weights">Weights</label>
-    <small id="weightsHelp" class="form-text text-muted">pool duration weights</small>
+    <input type="text" class="form-control form-control-sm" id="bweights" name="bweights" value="<%= $bweights %>" title="Weights of bass durations" aria-describedby="bweightsHelp">
+    <label for="bweights">Weights</label>
+    <small id="bweightsHelp" class="form-text text-muted">pool duration weights</small>
   </div>
   <br>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="groups" name="groups" value="<%= $groups %>" title="Groupings of bass durations" aria-describedby="groupsHelp">
-    <label for="groups">Groups</label>
-    <small id="groupsHelp" class="form-text text-muted">pool duration groups (e.g. ten = 3)</small>
+    <input type="text" class="form-control form-control-sm" id="bgroups" name="bgroups" value="<%= $bgroups %>" title="Groupings of bass durations" aria-describedby="bgroupsHelp">
+    <label for="bgroups">Groups</label>
+    <small id="bgroupsHelp" class="form-text text-muted">pool duration groups (e.g. ten = 3)</small>
   </div>
 </div>
 
