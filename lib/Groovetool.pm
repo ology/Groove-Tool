@@ -61,6 +61,12 @@ sub process {
     my $bars;
 
     for my $key (sort { $a cmp $b} keys $self->phrases->%*) {
+        if ($key =~ /^\d+$/ && @phrases) {
+            push @phrases, sub { $self->counter_part() } if $self->duel;
+            $self->drummer->sync(@phrases);
+            @phrases = ();
+        }
+
         my $part = $self->phrases->{$key};
 
         if ($part->{bars}) {
@@ -83,20 +89,21 @@ sub process {
         elsif ($part->{style} eq 'christoffel') {
             push @phrases, sub { $self->christoffel_part($part) };
         }
-
-        push @phrases, sub { $self->counter_part() } if $self->duel;
     }
 
-#    my @msgs; # Message accumulator
-#    push @msgs, map { ddc($_) } @grooves;
-#    $self->msgs(\@msgs);
-
-    $self->drummer->sync(@phrases);
+    if (@phrases) {
+        push @phrases, sub { $self->counter_part() } if $self->duel;
+        $self->drummer->sync(@phrases);
+    }
 
     $self->drummer->write;
 
     return $self->msgs;
 }
+
+#    my @msgs; # Message accumulator
+#    push @msgs, map { ddc($_) } @grooves;
+#    $self->msgs(\@msgs);
 
 sub counter_part {
     my ($self) = @_;
