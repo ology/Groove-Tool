@@ -60,7 +60,7 @@ sub process {
     my @phrases; # phrases to add to the score
     my $bars; # number of measure in a section
 
-    for my $key (sort { $a cmp $b} keys $self->phrases->%*) {
+    for my $key (sort keys $self->phrases->%*) {
         if ($key =~ /^\d+$/ && @phrases) {
             push @phrases, sub { $self->counter_part() } if $self->duel;
             $self->drummer->sync(@phrases);
