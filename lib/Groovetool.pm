@@ -65,10 +65,14 @@ sub process {
         my $part = $self->phrases->{$key};
 
         if ($key =~ /^\d+$/ && @phrases) {
+            push @phrases, sub { $self->bass($bars) };
             $self->drummer->sync(@phrases);
             if ($part->{fillin}) {
                 my @parts = grep { $_ =~ /^$key\_/ } sort keys $self->phrases->%*;
-                $self->fill_part(\@parts);
+                $self->drummer->sync(
+                    sub { $self->fill_part(\@parts) },
+                    sub { $self->bass(1) },
+                );
             }
             $self->counter_part() if $self->duel;
             @phrases = ();
@@ -101,10 +105,14 @@ sub process {
     }
 
     if (@phrases) {
+        push @phrases, sub { $self->bass($bars) };
         $self->drummer->sync(@phrases);
         if ($self->phrases->{$section}{fillin}) {
             my @parts = grep { $_ =~ /^$section\_/ } sort keys $self->phrases->%*;
-            $self->fill_part(\@parts);
+            $self->drummer->sync(
+                sub { $self->fill_part(\@parts) },
+                sub { $self->bass(1) },
+            );
         }
         $self->counter_part() if $self->duel;
     }
