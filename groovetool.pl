@@ -42,6 +42,7 @@ get '/' => sub ($c) {
     my $parts = grep { $_ =~ /^$key\_/ } keys %phrases;
     $phrases{$key}->{parts} = $parts;
   }
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
@@ -248,8 +249,8 @@ MIDI: &nbsp;
     </div>
     <div class="d-inline-flex align-items-center">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="fill_in_<%= $top %>" name="fill_in_<%= $top %>" <%= '$fill_in' ? 'checked' : '' %> title="Play a fill on the last bar">
-        <label class="form-check-label" for="fill_in_<%= $top %>">Fill-in</label>
+        <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
+        <label class="form-check-label" for="fillin_<%= $top %>">Fill-in</label>
       </div>
     </div>
 
@@ -344,8 +345,8 @@ MIDI: &nbsp;
   </div>
   <div class="d-inline-flex align-items-center">
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="fill_in" name="fill_in" <%= '$fill_in' ? 'checked' : '' %> title="Play a fill on the last bar">
-      <label class="form-check-label" for="fill_in">Fill-in</label>
+      <input class="form-check-input" type="checkbox" id="fillin" name="fillin" <%= '$fillin' ? 'checked' : '' %> title="Play a fill on the last bar">
+      <label class="form-check-label" for="fillin">Fill-in</label>
     </div>
   </div>
 </div>
