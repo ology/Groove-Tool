@@ -321,7 +321,7 @@ $(document).ready(function () {
   $(".btnAddSection").click(function () {
     i++;
     var $appendItem = $(".defaultSection").html();
-    $("<div />", { "class":"section", id:"part_" + i }).append(
+    $("<div />", { "class":"section", id:"section_" + i }).append(
       $($appendItem)).appendTo(".sections");
   });
   $("body").on("click", ".btnRemoveSection", function() {
