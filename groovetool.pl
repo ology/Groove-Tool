@@ -74,7 +74,7 @@ get '/' => sub ($c) {
     filename => $filename,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
-    phrases  => ddc({ map { $_ => $phrases{$_} } sort keys %phrases }),
+    phrases  => ddc(\%phrases),
     dvolume  => $dvolume,
     reverb   => $reverb,
     boctave  => $boctave,
