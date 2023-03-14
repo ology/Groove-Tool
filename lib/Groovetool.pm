@@ -204,16 +204,35 @@ sub fill_part {
     );
 }
 
-# TODO Make this generic!
 sub _fill {
     my ($self, $parts) = @_;
-    my $snare_ons = 1 + int rand($self->size / 2);
+    my $pattern;
+    for my $key (@$parts) {
+        my $part = $self->phrases->{$key};
+        if ($part->{strike} == $self->drummer->snare) {
+            my $x = 1 + int rand($self->size / 2);
+            my $y = 1 + int rand $self->size;
+            if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
+                $pattern = sprintf '%08d', '1' x $x;
+            }
+            elsif ($part->{style} eq 'euclid') {
+                $part->{onsets} = $x;
+                $pattern = $self->euclidean_pattern($part);
+            }
+            elsif ($part->{style} eq 'christoffel') {
+                $part->{numerator} = $x;
+                $part->{denominator} = $y;
+                $pattern = $self->christoffel_pattern($part);
+            }
+            last;
+        }
+    }
     my $hh = '0' x ($self->size / 2);
     (my $kick = $hh) =~ s/^0/1/;
     return {
         duration                  => $self->size,
         $self->drummer->closed_hh => $hh,
-        $self->drummer->snare     => $self->drummer->euclidean($snare_ons, $self->size / 2),
+        $self->drummer->snare     => $pattern,
         $self->drummer->kick      => $kick,
     };
 }
