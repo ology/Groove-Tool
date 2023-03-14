@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
+use Data::Dumper::Compact qw(ddc);
 use File::Find::Rule ();
 use Time::HiRes qw(time);
 
@@ -73,7 +74,7 @@ get '/' => sub ($c) {
     filename => $filename,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
-    phrases  => \%phrases,
+    phrases  => ddc({ map { $_ => $phrases{$_} } sort keys %phrases }),
     dvolume  => $dvolume,
     reverb   => $reverb,
     boctave  => $boctave,
@@ -311,6 +312,9 @@ MIDI: &nbsp;
 <button type="button" id="btnAddSection2" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 </form>
+
+<p></p>
+<pre><%= $phrases %></pre>
 
 <script>
 $(document).ready(function () {
