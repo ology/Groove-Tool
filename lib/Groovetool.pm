@@ -85,10 +85,12 @@ sub process {
         }
 
         if ($part->{style} eq 'quarter') {
-            push @phrases, sub { $self->beat_part(4, $part) };
+            $part->{factor} = 4;
+            push @phrases, sub { $self->beat_part($part) };
         }
         elsif ($part->{style} eq 'eighth') {
-            push @phrases, sub { $self->beat_part(8, $part) };
+            $part->{factor} = 8;
+            push @phrases, sub { $self->beat_part($part) };
         }
         elsif ($part->{style} eq 'euclid') {
             push @phrases, sub { $self->euclidean_part($part) };
@@ -124,9 +126,9 @@ sub counter_part {
 }
 
 sub beat_part {
-    my ($self, $factor, $part) = @_;
+    my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $pattern = '1' x $factor;
+    my $pattern = '1' x $part->{factor};
     my $msgs = $self->msgs;
     $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
@@ -150,31 +152,6 @@ sub euclidean_part {
     );
 }
 
-sub euclid_fill {
-    my ($self, $snare_onset, $kick_onset) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
-    my $hh = '1' x ($self->size / 2);
-#    $self->drummer->add_fill(
-#        sub { $self->_euclid_fill },
-#        $self->drummer->closed_hh => [ $hh ],
-#        $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
-#        $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
-#    );
-}
-
-sub _euclid_fill {
-    my ($self) = @_;
-    my $snare_ons = 1 + int rand($self->size / 2);
-    my $hh = '0' x ($self->size / 2);
-    (my $kick = $hh) =~ s/^0/1/;
-    return {
-        duration                  => $self->size,
-        $self->drummer->closed_hh => $hh,
-        $self->drummer->snare     => $self->drummer->euclidean($snare_ons, $self->size / 2),
-        $self->drummer->kick      => $kick,
-    };
-}
-
 sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
@@ -196,30 +173,50 @@ sub christoffel_part {
 
 sub fill_part {
     my ($self, $parts) = @_;
-warn __PACKAGE__,' L',__LINE__,' ',ddc($parts, {max_width=>128});
     set_chan_patch($self->drummer->score, 9, 0);
-    for my $part (@$parts) {
-warn __PACKAGE__,' L',__LINE__,' ',ddc($self->phrases->{$part}, {max_width=>128});
-#        if ($part->{style} eq 'quarter') {
-#            push @phrases, sub { $self->beat_part(4, $part) };
-#        }
-#        elsif ($part->{style} eq 'eighth') {
-#            push @phrases, sub { $self->beat_part(8, $part) };
-#        }
-#        elsif ($part->{style} eq 'euclid') {
-#            push @phrases, sub { $self->euclidean_part($part) };
-#        }
-#        elsif ($part->{style} eq 'christoffel') {
-#            push @phrases, sub { $self->christoffel_part($part) };
-#        }
+    my %phrases;
+    for my $key (@$parts) {
+        my $part = $self->phrases->{$key};
+        my $pattern;
+        if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
+            $pattern = '1' x $part->{factor};
+        }
+        elsif ($part->{style} eq 'euclid') {
+            my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
+            $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+                if $part->{shift};
+            $pattern = join '', @$sequence;
+        }
+        elsif ($part->{style} eq 'christoffel') {
+            my $sequence = $self->creator->chsequl(
+                $part->{case},
+                $part->{numerator}, $part->{denominator},
+                $self->size
+            );
+            $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+                if $part->{shift};
+            $pattern = join '', @$sequence;
+        }
+        $phrases{ $part->{strike} } = [ $pattern ];
     }
 
-#    $self->drummer->add_fill(
-#        sub { $self->_euclid_fill },
-#        $self->drummer->closed_hh => [ $hh ],
-#        $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
-#        $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
-#    );
+    $self->drummer->add_fill(
+        sub { $self->_fill($parts) },
+        %phrases
+    );
+}
+
+sub _fill {
+    my ($self, $parts) = @_;
+    my $snare_ons = 1 + int rand($self->size / 2);
+    my $hh = '0' x ($self->size / 2);
+    (my $kick = $hh) =~ s/^0/1/;
+    return {
+        duration                  => $self->size,
+        $self->drummer->closed_hh => $hh,
+        $self->drummer->snare     => $self->drummer->euclidean($snare_ons, $self->size / 2),
+        $self->drummer->kick      => $kick,
+    };
 }
 
 sub bass {
