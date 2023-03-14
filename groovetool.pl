@@ -437,26 +437,26 @@ $(document).ready(function () {
         $(this).attr("name", $(this).attr("name") + "_" + i);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
-    $("#btnAddPart_" + i).attr('data-section', i);
+    $("#btnAddPart_" + i).attr("data-section", i);
   });
   $("body").on("click", ".btnRemoveSection", function() {
     var result = confirm("Remove this section?");
     if (result) $(this).closest(".section").remove();
   });
-  $("body").on('click', '.btnAddPart', function () {
-    var section = $(this).attr('data-section');
-    var j = parseInt($("#btnAddPart_" + section).attr('data-lastpart'));
+  $("body").on("click", ".btnAddPart", function () {
+    var section = $(this).attr("data-section");
+    var j = parseInt($("#btnAddPart_" + section).attr("data-lastpart"));
     j++;
     var $appendItem = $(".defaultPart").html();
-    $("<div />", { "class":"part", id:"part_" + section + '_' + j }).append(
+    $("<div />", { "class":"part", id:"part_" + section + "_" + j }).append(
       $($appendItem)).appendTo("#parts_" + section);
-    var $inputs = $("#part_" + section + '_' + j).find(":input");
+    var $inputs = $("#part_" + section + "_" + j).find(":input");
     $inputs.each(function (index) {
-        $(this).attr("id", $(this).attr("id") + "_" + section + '_' + j);
-        $(this).attr("name", $(this).attr("name") + "_" + section + '_' + j);
+        $(this).attr("id", $(this).attr("id") + "_" + section + "_" + j);
+        $(this).attr("name", $(this).attr("name") + "_" + section + "_" + j);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
-    $("#btnAddPart_" + section).attr('data-lastpart', j);
+    $("#btnAddPart_" + section).attr("data-lastpart", j);
   });
   $("body").on("click", ".btnRemovePart", function() {
     var result = confirm("Remove this part?");
