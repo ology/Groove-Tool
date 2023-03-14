@@ -341,12 +341,12 @@ $(document).ready(function () {
     //var section = $(this).attr('data-section');
     j++;
     var $appendItem = $(".defaultPart").html();
-    $("<div />", { "class":"part", id:"part_" + j }).append(
+    $("<div />", { "class":"part", id:"part_" + i + '_' + j }).append(
       $($appendItem)).appendTo("#parts_" + i);
-    var $inputs = $("#part_" + j).find(":input");
+    var $inputs = $("#part_" + i + '_' + j).find(":input");
     $inputs.each(function (index) {
-        $(this).attr("id", $(this).attr("id") + "_" + j);
-        $(this).attr("name", $(this).attr("name") + "_" + j);
+        $(this).attr("id", $(this).attr("id") + "_" + i + '_' + j);
+        $(this).attr("name", $(this).attr("name") + "_" + i + '_' + j);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
   });
