@@ -367,7 +367,7 @@ MIDI: &nbsp;
     <label for="strike">Strike</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
+    <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
     <label for="shift">Shift by</label>
   </div>
   <p></p>
@@ -390,18 +390,18 @@ MIDI: &nbsp;
   <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
   &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
+    <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
     <label for="onsets">Euclidean onsets</label>
   </div>
   <p></p>
   <input class="form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
   &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
+    <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
     <label for="numerator">Numerator</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
+    <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
     <label for="denominator">Denominator</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
