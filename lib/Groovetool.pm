@@ -213,6 +213,7 @@ sub fill_part {
     );
 }
 
+# TODO Make this generic!
 sub _fill {
     my ($self, $parts) = @_;
     my $snare_ons = 1 + int rand($self->size / 2);
