@@ -236,7 +236,7 @@ MIDI: &nbsp;
 <div class="defaultSection d-none">
   <p></p>
   <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
-  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="667">Add Part</button>
+  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="">Add Part</button>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="<%= '$bars' %>" title="1 to 32 measures">
@@ -250,7 +250,7 @@ MIDI: &nbsp;
   </div>
 </div>
 <div class="defaultPart d-none">
-  <p></p>
+  <hr>
   <div class="form-floating d-inline-flex align-items-center">
     <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
       <option value="44">Pedal Hihat</option>
@@ -331,6 +331,13 @@ $(document).ready(function () {
       $($appendItem)).appendTo(".sections");
     $("<div />", { "class":"parts", id:"parts_" + i })
       .appendTo("#section_" + i);
+    var $inputs = $("#section_" + i).find(":input");
+    $inputs.each(function (index) {
+        $(this).attr("id", $(this).attr("id") + "_" + i);
+        $(this).attr("name", $(this).attr("name") + "_" + i);
+        $(this).nextAll("label:first").attr("for", $(this).attr("id"));
+    });
+    $("#btnAddPart_" + i).data('section', i);
     j = 0; // reset the parts counter
   });
   $("body").on("click", ".btnRemoveSection", function() {
@@ -338,15 +345,15 @@ $(document).ready(function () {
     if (result) $(this).closest(".section").remove();
   });
   $("body").on('click', '.btnAddPart', function () {
-    //var section = $(this).attr('data-section');
+    var section = $(this).data('section');
     j++;
     var $appendItem = $(".defaultPart").html();
-    $("<div />", { "class":"part", id:"part_" + i + '_' + j }).append(
-      $($appendItem)).appendTo("#parts_" + i);
-    var $inputs = $("#part_" + i + '_' + j).find(":input");
+    $("<div />", { "class":"part", id:"part_" + section + '_' + j }).append(
+      $($appendItem)).appendTo("#parts_" + section);
+    var $inputs = $("#part_" + section + '_' + j).find(":input");
     $inputs.each(function (index) {
-        $(this).attr("id", $(this).attr("id") + "_" + i + '_' + j);
-        $(this).attr("name", $(this).attr("name") + "_" + i + '_' + j);
+        $(this).attr("id", $(this).attr("id") + "_" + section + '_' + j);
+        $(this).attr("name", $(this).attr("name") + "_" + section + '_' + j);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
   });
