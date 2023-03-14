@@ -236,7 +236,7 @@ MIDI: &nbsp;
 <div class="defaultSection d-none">
   <p></p>
   <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
-  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="">Add Part</button>
+  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="0" data-lastpart="0">Add Part</button>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="<%= '$bars' %>" title="1 to 32 measures">
@@ -323,7 +323,6 @@ MIDI: &nbsp;
 <script>
 $(document).ready(function () {
   var i = 0; // section counter
-  var j = 0; // parts counter
   $(".btnAddSection").click(function () {
     i++;
     var $appendItem = $(".defaultSection").html();
@@ -337,16 +336,17 @@ $(document).ready(function () {
         $(this).attr("name", $(this).attr("name") + "_" + i);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
-    $("#btnAddPart_" + i).data('section', i);
-    j = 0; // reset the parts counter
+    $("#btnAddPart_" + i).attr('data-section', i);
   });
   $("body").on("click", ".btnRemoveSection", function() {
     var result = confirm("Remove this section?");
     if (result) $(this).closest(".section").remove();
   });
   $("body").on('click', '.btnAddPart', function () {
-    var section = $(this).data('section');
+    var section = $(this).attr('data-section');
+    var j = parseInt($("#btnAddPart_" + section).attr('data-lastpart'));
     j++;
+    console.log('S:',section,'J:',j);
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + section + '_' + j }).append(
       $($appendItem)).appendTo("#parts_" + section);
@@ -356,10 +356,13 @@ $(document).ready(function () {
         $(this).attr("name", $(this).attr("name") + "_" + section + '_' + j);
         $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
+    $("#btnAddPart_" + section).attr('data-lastpart', j);
   });
   $("body").on("click", ".btnRemovePart", function() {
     var result = confirm("Remove this part?");
-    if (result) $(this).closest(".part").remove();
+    if (result) {
+      $(this).closest(".part").remove();
+    }
   });
 });
 </script>
