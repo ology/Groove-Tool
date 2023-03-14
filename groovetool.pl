@@ -42,7 +42,7 @@ get '/' => sub ($c) {
     my $parts = grep { $_ =~ /^$key\_/ } keys %phrases;
     $phrases{$key}->{parts} = $parts;
   }
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
+#warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
@@ -315,8 +315,8 @@ MIDI: &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
           <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
             <option value="">Choose...</option>
-            <option value="u" <%= $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
-            <option value="l" <%= $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
+            <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
+            <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
           </select>
           <label for="case_<%= $key %>">Case</label>
         </div>
