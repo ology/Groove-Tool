@@ -59,6 +59,7 @@ sub process {
 
     my @phrases; # phrases to add to the score
     my $bars; # number of measure in a section
+    my $fill; # to fill or not to fill...
 
     for my $key (sort keys $self->phrases->%*) {
         if ($key =~ /^\d+$/ && @phrases) {
@@ -71,7 +72,10 @@ sub process {
 
         if ($part->{bars}) {
             $bars = $part->{bars};
-            $bars-- if $part->{fillin};
+            if ($part->{fillin}) {
+                $bars--;
+                $fill++;
+            }
             next;
         }
         else {
@@ -90,6 +94,8 @@ sub process {
         elsif ($part->{style} eq 'christoffel') {
             push @phrases, sub { $self->christoffel_part($part) };
         }
+
+#        push @phrases, sub { $self->fill($part) } if $part->{fillin};
     }
 
     if (@phrases) {
