@@ -67,7 +67,7 @@ sub process {
         if ($key =~ /^\d+$/ && @phrases) {
             if ($part->{fillin}) {
                 my @parts = grep { $_ =~ /^$key\_/ } sort keys $self->phrases->%*;
-                push @phrases, sub { $self->fill_part(\@parts) };
+                push @phrases, $self->fill_part(\@parts);
             }
             push @phrases, sub { $self->counter_part() } if $self->duel;
             $self->drummer->sync(@phrases);
@@ -103,7 +103,7 @@ sub process {
     if (@phrases) {
         if ($self->phrases->{$section}{fillin}) {
             my @parts = grep { $_ =~ /^$section\_/ } sort keys $self->phrases->%*;
-            push @phrases, sub { $self->fill_part(\@parts) };
+            push @phrases, $self->fill_part(\@parts);
         }
         push @phrases, sub { $self->counter_part() } if $self->duel;
         $self->drummer->sync(@phrases);
@@ -199,10 +199,13 @@ sub fill_part {
         }
         $phrases{ $part->{strike} } = [ $pattern ];
     }
-
-    $self->drummer->add_fill(
-        sub { $self->_fill($parts) },
-        %phrases
+#    $self->drummer->add_fill(
+#        sub { $self->_fill($parts) },
+#        %phrases
+#    );
+    $self->drummer->pattern(
+        instrument => $self->drummer->snare,
+        patterns   => [ '11111111' ],
     );
 }
 
