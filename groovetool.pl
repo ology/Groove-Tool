@@ -16,7 +16,7 @@ get '/' => sub ($c) {
   my $my_bpm  = $c->param('my_bpm')  || 90; # 1 - ?
   my $repeat  = $c->param('repeat')  || 1; # number of times to repeat
   my $dvolume = $c->param('dvolume') // 100; # 0 - 127
-  my $reverb  = $c->param('reverb')  // 15; # 0 - 127
+  my $dreverb = $c->param('reverb')  // 15; # 0 - 127
   my $boctave = $c->param('boctave') || 1; # 1, 2, ...?
   my $bpatch  = $c->param('bpatch')  || 35; # 0 - 127 and -1 = off
   my $bvolume = $c->param('bvolume') // 90; # 0 - 127
@@ -58,7 +58,7 @@ get '/' => sub ($c) {
       repeat   => $repeat,
       phrases  => \%phrases,
       dvolume  => $dvolume,
-      reverb   => $reverb,
+      dreverb  => $dreverb,
       boctave  => $boctave,
       bpatch   => $bpatch,
       bvolume  => $bvolume,
@@ -82,7 +82,7 @@ get '/' => sub ($c) {
     repeat   => $repeat,
     phrases  => \%phrases,
     dvolume  => $dvolume,
-    reverb   => $reverb,
+    dreverb  => $dreverb,
     boctave  => $boctave,
     bpatch   => $bpatch,
     bvolume  => $bvolume,
@@ -187,7 +187,7 @@ MIDI: &nbsp;
     <label for="dvolume">Volume</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="0 to 127 drum reverb amount">
+    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
     <label for="reverb">Reverb</label>
   </div>
 </div>
