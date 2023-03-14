@@ -60,7 +60,6 @@ sub process {
     my $section; # top level
     my @phrases; # phrases to add to the score
     my $bars; # number of measure in a section
-    my $fill; # to fill or not to fill...
 
     for my $key (sort keys $self->phrases->%*) {
         my $part = $self->phrases->{$key};
@@ -80,7 +79,6 @@ sub process {
             $bars = $part->{bars};
             if ($part->{fillin}) {
                 $bars--;
-                $fill++;
             }
             next;
         }
