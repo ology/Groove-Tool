@@ -28,14 +28,6 @@ get '/' => sub ($c) {
   my $my_duel  = $c->param('my_duel')  || 0; # alternate with the hihat-only, counterpart section
   my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
 
-  my %dset;
-  for my $param ($c->req->params->names->@*) {
-    next unless $c->param($param);
-    if ($param =~ /^d\w+$/) {
-      $dset{$param} = $c->param($param);
-    }
-  }
-
   my %phrases;
   for my $param ($c->req->params->names->@*) {
     next unless $c->param($param);
