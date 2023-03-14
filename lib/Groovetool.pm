@@ -59,7 +59,7 @@ sub process {
 
     my $section; # top level
     my @phrases; # phrases to add to the score
-    my $bars; # number of measure in a section
+    my $bars; # number of measures in a section
 
     for my $key (sort keys $self->phrases->%*) {
         my $part = $self->phrases->{$key};
