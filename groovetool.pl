@@ -254,7 +254,72 @@ MIDI: &nbsp;
     <div id="parts_<%= $top %>" class="parts">
 
 %   for my $key (sort grep { $_ =~ /^$top\_\d+$/ } keys %$phrases) {
-K: <%= $key %>
+
+      <div id="part_<%= $key %>" class="part">
+        <hr>
+        <div class="form-floating d-inline-flex align-items-center">
+          <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
+            <option value="44">Pedal Hihat</option>
+            <option value="42">Closed Hihat</option>
+            <option value="46">Open Hihat</option>
+            <option value="37">Side Stick</option>
+            <option value="38">Acoustic Snare</option>
+            <option value="40">Electric Snare</option>
+            <option value="35">Bass Drum</option>
+            <option value="36">Electric Drum</option>
+          </select>
+          <label for="strike_<%= $key %>">Strike</label>
+        </div>
+        <div class="form-floating d-inline-flex align-items-center">
+          <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
+          <label for="shift_<%= $key %>">Shift by</label>
+        </div>
+        <p></p>
+        <div class="d-inline-flex align-items-center">
+          <input class="form-check-input" type="radio" name="style" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note">
+          &nbsp;
+          &nbsp;
+          <label for="quarter_style_<%= $key %>">Quarter notes</label>
+        </div>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <div class="d-inline-flex align-items-center">
+          <input class="form-check-input" type="radio" name="style" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes">
+          &nbsp;
+          &nbsp;
+          <label for="eighth_style">Eighth notes</label>
+        </div>
+        <p></p>
+        <input class="form-check-input" type="radio" name="style" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word">
+        &nbsp;
+        <div class="form-floating d-inline-flex align-items-center">
+          <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= '$onsets' %>" title="Number of Euclidean onsets">
+          <label for="onsets">Euclidean onsets</label>
+        </div>
+        <p></p>
+        <input class="form-check-input" type="radio" name="style" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word">
+        &nbsp;
+        <div class="form-floating d-inline-flex align-items-center">
+          <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
+          <label for="numerator_<%= $key %>">Numerator</label>
+        </div>
+        <div class="form-floating d-inline-flex align-items-center">
+          <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
+          <label for="denominator_<%= $key %>">Denominator</label>
+        </div>
+        <div class="form-floating d-inline-flex align-items-center">
+          <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+            <option value="">Choose...</option>
+            <option value="u">Upper</option>
+            <option value="l">Lower</option>
+          </select>
+          <label for="case_<%= $key %>">Case</label>
+        </div>
+        <p></p>
+        <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
+      </div>
+
 %   }
 
     </div>
