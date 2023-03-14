@@ -338,7 +338,7 @@ $(document).ready(function () {
     if (result) $(this).closest(".section").remove();
   });
   $("body").on('click', '.btnAddPart', function () {
-    var section = $(this).attr('data-section');
+    //var section = $(this).attr('data-section');
     j++;
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + j }).append(
