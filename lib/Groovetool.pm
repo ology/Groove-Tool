@@ -148,10 +148,7 @@ sub beat_part {
 sub euclidean_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
-    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
-        if $part->{shift};
-    my $pattern = join '', @$sequence;
+    my $pattern = euclidean_pattern($part);
     my $msgs = $self->msgs;
     $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
@@ -160,9 +157,28 @@ sub euclidean_part {
     );
 }
 
+sub euclidean_pattern {
+    my ($self, $part) = @_;
+    my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
+    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+        if $part->{shift};
+    return join '', @$sequence;
+}
+
 sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
+    my $pattern = christoffel_pattern($part);
+    my $msgs = $self->msgs;
+    $self->msgs([ @$msgs, ddc($part) ]);
+    $self->drummer->pattern(
+        instrument => $part->{strike},
+        patterns   => [ ($pattern) x $part->{bars} ],
+    );
+}
+
+sub christoffel_pattern {
+    my ($self, $part) = @_;
     my $sequence = $self->creator->chsequl(
         $part->{case},
         $part->{numerator}, $part->{denominator},
@@ -170,13 +186,7 @@ sub christoffel_part {
     );
     $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
         if $part->{shift};
-    my $pattern = join '', @$sequence;
-    my $msgs = $self->msgs;
-    $self->msgs([ @$msgs, ddc($part) ]);
-    $self->drummer->pattern(
-        instrument => $part->{strike},
-        patterns   => [ ($pattern) x $part->{bars} ],
-    );
+    return join '', @$sequence;
 }
 
 sub fill_part {
@@ -190,20 +200,10 @@ sub fill_part {
             $pattern = '1' x $part->{factor};
         }
         elsif ($part->{style} eq 'euclid') {
-            my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
-            $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
-                if $part->{shift};
-            $pattern = join '', @$sequence;
+            $pattern = euclidean_pattern($part);
         }
         elsif ($part->{style} eq 'christoffel') {
-            my $sequence = $self->creator->chsequl(
-                $part->{case},
-                $part->{numerator}, $part->{denominator},
-                $self->size
-            );
-            $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
-                if $part->{shift};
-            $pattern = join '', @$sequence;
+            $pattern = christoffel_pattern($part);
         }
         $phrases{ $part->{strike} } = [ $pattern ];
     }
