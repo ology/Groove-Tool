@@ -139,6 +139,8 @@ MIDI: &nbsp;
 <a href="#" onClick="MIDIjs.stop();" title="Stop MIDI"><i class="fa-solid fa-stop"></i></a>
 &nbsp; | &nbsp;
 <a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
+
+<!--
 <p></p>
 <ol>
 %   for my $msg (@$msgs) {
@@ -146,6 +148,7 @@ MIDI: &nbsp;
 %   }
 </ol>
 % }
+-->
 
 <p></p>
 <div>
