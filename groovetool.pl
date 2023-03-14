@@ -25,7 +25,7 @@ get '/' => sub ($c) {
   my $bpool    = $c->param('bpool')    || 'qn en sn'; # MIDI-Perl note durations
   my $bweights = $c->param('bweights') // '1 1 1'; # weights of the note duration pool
   my $bgroups  = $c->param('bgroups')  // '1 2 4'; # groupings of the pool notes
-  my $duel     = $c->param('duel')     || 0; # alternate with the hihat-only, counterpart section
+  my $my_duel  = $c->param('my_duel')  || 0; # alternate with the hihat-only, counterpart section
   my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
 
   my %dset;
@@ -35,7 +35,6 @@ get '/' => sub ($c) {
       $dset{$param} = $c->param($param);
     }
   }
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\%dset, {max_width=>128});
 
   my %phrases;
   for my $param ($c->req->params->names->@*) {
@@ -76,7 +75,7 @@ warn __PACKAGE__,' L',__LINE__,' ',ddc(\%dset, {max_width=>128});
       bpool    => $bpool,
       bweights => $bweights,
       bgroups  => $bgroups,
-      duel     => $duel,
+      my_duel     => $my_duel,
       countin  => $countin,
     );
 
@@ -100,7 +99,7 @@ warn __PACKAGE__,' L',__LINE__,' ',ddc(\%dset, {max_width=>128});
     bpool    => $bpool,
     bweights => $bweights,
     bgroups  => $bgroups,
-    duel     => $duel,
+    my_duel     => $my_duel,
     countin  => $countin,
   );
 } => 'index';
@@ -183,8 +182,8 @@ MIDI: &nbsp;
       <label class="form-check-label" for="countin">Count-in</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="duel" name="duel" <%= $duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
-      <label class="form-check-label" for="duel">Duel</label>
+      <input class="form-check-input" type="checkbox" id="my_duel" name="my_duel" <%= $my_duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
+      <label class="form-check-label" for="my_duel">Duel</label>
     </div>
   </div>
 </div>
