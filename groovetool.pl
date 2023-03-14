@@ -349,7 +349,7 @@ MIDI: &nbsp;
   <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="0" data-lastpart="0">Add Part</button>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="1" title="1 to 32 measures">
+    <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="2" title="1 to 32 measures">
     <label for="bars">Bars</label>
   </div>
   <div class="d-inline-flex align-items-center">
