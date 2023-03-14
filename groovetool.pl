@@ -447,7 +447,6 @@ $(document).ready(function () {
     var section = $(this).attr('data-section');
     var j = parseInt($("#btnAddPart_" + section).attr('data-lastpart'));
     j++;
-console.log('S:',section,'J:',j); // DEBUGGING
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + section + '_' + j }).append(
       $($appendItem)).appendTo("#parts_" + section);
