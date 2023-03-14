@@ -16,7 +16,7 @@ get '/' => sub ($c) {
   my $my_bpm   = $c->param('my_bpm')   || 90; # 1 - ?
   my $repeat   = $c->param('repeat')   || 1; # number of times to repeat
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
-  my $dreverb  = $c->param('reverb')   // 15; # 0 - 127
+  my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
   my $bpatch   = $c->param('bpatch')   || 35; # 0 - 127 and -1 = off
   my $bvolume  = $c->param('bvolume')  // 90; # 0 - 127
@@ -27,6 +27,15 @@ get '/' => sub ($c) {
   my $bgroups  = $c->param('bgroups')  // '1 2 4'; # groupings of the pool notes
   my $duel     = $c->param('duel')     || 0; # alternate with the hihat-only, counterpart section
   my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
+
+  my %dset;
+  for my $param ($c->req->params->names->@*) {
+    next unless $c->param($param);
+    if ($param =~ /^d\w+$/) {
+      $dset{$param} = $c->param($param);
+    }
+  }
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\%dset, {max_width=>128});
 
   my %phrases;
   for my $param ($c->req->params->names->@*) {
