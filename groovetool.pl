@@ -237,6 +237,17 @@ MIDI: &nbsp;
   <p></p>
   <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
   <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="667">Add Part</button>
+  <p></p>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="<%= '$bars' %>" title="1 to 32 measures">
+    <label for="bars">Bars</label>
+  </div>
+  <div class="d-inline-flex align-items-center">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="fill_in" name="fill_in" <%= '$fill_in' ? 'checked' : '' %> title="Play a fill on the last bar">
+      <label class="form-check-label" for="fill_in">Fill-in</label>
+    </div>
+  </div>
 </div>
 <div class="defaultPart d-none">
   <p></p>
@@ -252,10 +263,6 @@ MIDI: &nbsp;
       <option value="36">Electric Drum</option>
     </select>
     <label for="strike">Strike</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="<%= '$bars' %>" title="1 to 32 measures">
-    <label for="bars">Bars</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="<%= '$shift' %>" title="Shift sequence by N">
