@@ -18,7 +18,7 @@ has my_bpm   => (is => 'ro');
 has repeat   => (is => 'ro');
 has phrases  => (is => 'ro');
 has dvolume  => (is => 'ro');
-has reverb   => (is => 'ro');
+has dreverb  => (is => 'ro');
 has boctave  => (is => 'ro');
 has bpatch   => (is => 'ro');
 has bvolume  => (is => 'ro');
@@ -40,7 +40,7 @@ sub _build_drummer {
         file   => $self->filename,
         bars   => 4 * $self->repeat,
         bpm    => $self->my_bpm,
-        reverb => $self->reverb,
+        reverb => $self->dreverb,
         volume => $self->dvolume,
     );
     return $d;
