@@ -148,7 +148,7 @@ sub beat_part {
 sub euclidean_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $pattern = euclidean_pattern($part);
+    my $pattern = $self->euclidean_pattern($part);
     my $msgs = $self->msgs;
     $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
@@ -168,7 +168,7 @@ sub euclidean_pattern {
 sub christoffel_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $pattern = christoffel_pattern($part);
+    my $pattern = $self->christoffel_pattern($part);
     my $msgs = $self->msgs;
     $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
@@ -200,10 +200,10 @@ sub fill_part {
             $pattern = '1' x $part->{factor};
         }
         elsif ($part->{style} eq 'euclid') {
-            $pattern = euclidean_pattern($part);
+            $pattern = $self->euclidean_pattern($part);
         }
         elsif ($part->{style} eq 'christoffel') {
-            $pattern = christoffel_pattern($part);
+            $pattern = $self->christoffel_pattern($part);
         }
         $phrases{ $part->{strike} } = [ $pattern ];
     }
