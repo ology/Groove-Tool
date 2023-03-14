@@ -250,7 +250,7 @@ MIDI: &nbsp;
     <div class="d-inline-flex align-items-center">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
-        <label class="form-check-label" for="fillin_<%= $top %>">Fill-in</label>
+        <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
       </div>
     </div>
 
