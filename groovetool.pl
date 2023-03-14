@@ -277,7 +277,7 @@ MIDI: &nbsp;
         </div>
         <p></p>
         <div class="d-inline-flex align-items-center">
-          <input class="form-check-input" type="radio" name="style" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
+          <input class="form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           &nbsp;
           &nbsp;
           <label for="quarter_style_<%= $key %>">Quarter notes</label>
@@ -286,20 +286,20 @@ MIDI: &nbsp;
         &nbsp;
         &nbsp;
         <div class="d-inline-flex align-items-center">
-          <input class="form-check-input" type="radio" name="style" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
+          <input class="form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
           &nbsp;
           &nbsp;
           <label for="eighth_style_<%= $key %>">Eighth notes</label>
         </div>
         <p></p>
-        <input class="form-check-input" type="radio" name="style" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
+        <input class="form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
         &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
           <label for="onsets_<%= $key %>">Euclidean onsets</label>
         </div>
         <p></p>
-        <input class="form-check-input" type="radio" name="style" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
+        <input class="form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
         &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
@@ -312,8 +312,8 @@ MIDI: &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
           <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
             <option value="">Choose...</option>
-            <option value="u" <%= $part->{case} == 'u' ? 'selected' : '' %>>Upper</option>
-            <option value="l" <%= $part->{case} == 'l' ? 'selected' : '' %>>Lower</option>
+            <option value="u" <%= $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
+            <option value="l" <%= $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
           </select>
           <label for="case_<%= $key %>">Case</label>
         </div>
