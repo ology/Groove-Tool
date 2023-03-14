@@ -57,8 +57,8 @@ sub process {
 
     $self->drummer->count_in(1) if $self->countin;
 
-    my @phrases;
-    my $bars;
+    my @phrases; # phrases to add to the score
+    my $bars; # number of measure in a section
 
     for my $key (sort { $a cmp $b} keys $self->phrases->%*) {
         if ($key =~ /^\d+$/ && @phrases) {
@@ -100,10 +100,6 @@ sub process {
 
     return $self->msgs;
 }
-
-#    my @msgs; # Message accumulator
-#    push @msgs, map { ddc($_) } @grooves;
-#    $self->msgs(\@msgs);
 
 sub counter_part {
     my ($self) = @_;
