@@ -121,7 +121,7 @@ __DATA__
 <form id="groove_form">
 
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
-<button type="button" id="btnAddSection" class="btnAddSection btn btn-success btn-sm">Add Section</button>
+<button type="button" id="btnAddSection1" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 % if ($filename) {
 MIDI: &nbsp;
@@ -236,7 +236,7 @@ MIDI: &nbsp;
 <div class="defaultSection d-none">
   <p></p>
   <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
-  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
+  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="667">Add Part</button>
 </div>
 <div class="defaultPart d-none">
   <p></p>
@@ -309,14 +309,14 @@ MIDI: &nbsp;
 
 <p></p>
 <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
-<button type="button" id="btnAddSection" class="btnAddSection btn btn-success btn-sm">Add Section</button>
+<button type="button" id="btnAddSection2" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 </form>
 
 <script>
 $(document).ready(function () {
-  var i = 0;
-  var j = 0;
+  var i = 0; // section counter
+  var j = 0; // parts counter
   $(".btnAddSection").click(function () {
     i++;
     var $appendItem = $(".defaultSection").html();
@@ -324,16 +324,18 @@ $(document).ready(function () {
       $($appendItem)).appendTo(".sections");
     $("<div />", { "class":"parts", id:"parts_" + i })
       .appendTo("#section_" + i);
+    j = 0; // reset the parts counter
   });
   $("body").on("click", ".btnRemoveSection", function() {
     var result = confirm("Remove this section?");
     if (result) $(this).closest(".section").remove();
   });
-  $(".btnAddPart").click(function () {
+  $("body").on('click', '.btnAddPart', function () {
+    var section = $(this).attr('data-section');
     j++;
     var $appendItem = $(".defaultPart").html();
     $("<div />", { "class":"part", id:"part_" + j }).append(
-      $($appendItem)).appendTo(".parts");
+      $($appendItem)).appendTo("#parts_" + i);
     var $inputs = $("#part_" + j).find(":input");
     $inputs.each(function (index) {
         $(this).attr("id", $(this).attr("id") + "_" + j);
