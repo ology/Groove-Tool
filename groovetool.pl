@@ -235,9 +235,8 @@ MIDI: &nbsp;
 <div class="sections"></div>
 <div class="defaultSection d-none">
   <p></p>
-  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
-  <p></p>
   <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
+  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm">Add Part</button>
 </div>
 <div class="defaultPart d-none">
   <p></p>
@@ -323,6 +322,8 @@ $(document).ready(function () {
     var $appendItem = $(".defaultSection").html();
     $("<div />", { "class":"section", id:"section_" + i }).append(
       $($appendItem)).appendTo(".sections");
+    $("<div />", { "class":"parts", id:"parts_" + i })
+      .appendTo("#section_" + i);
   });
   $("body").on("click", ".btnRemoveSection", function() {
     var result = confirm("Remove this section?");
