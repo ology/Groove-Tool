@@ -57,20 +57,26 @@ sub process {
 
     $self->drummer->count_in(1) if $self->countin;
 
+    my $section; # top level
     my @phrases; # phrases to add to the score
     my $bars; # number of measure in a section
     my $fill; # to fill or not to fill...
 
     for my $key (sort keys $self->phrases->%*) {
+        my $part = $self->phrases->{$key};
+
         if ($key =~ /^\d+$/ && @phrases) {
+            if ($part->{fillin}) {
+                my @parts = grep { $_ =~ /^$key\_/ } keys $self->phrases->%*;
+                push @phrases, sub { $self->fill_part(\@parts) };
+            }
             push @phrases, sub { $self->counter_part() } if $self->duel;
             $self->drummer->sync(@phrases);
             @phrases = ();
         }
 
-        my $part = $self->phrases->{$key};
-
         if ($part->{bars}) {
+            $section = $key;
             $bars = $part->{bars};
             if ($part->{fillin}) {
                 $bars--;
@@ -94,11 +100,13 @@ sub process {
         elsif ($part->{style} eq 'christoffel') {
             push @phrases, sub { $self->christoffel_part($part) };
         }
-
-#        push @phrases, sub { $self->fill($part) } if $part->{fillin};
     }
 
     if (@phrases) {
+        if ($self->phrases->{$section}{fillin}) {
+            my @parts = grep { $_ =~ /^$section\_/ } keys $self->phrases->%*;
+            push @phrases, sub { $self->fill_part(\@parts) };
+        }
         push @phrases, sub { $self->counter_part() } if $self->duel;
         $self->drummer->sync(@phrases);
     }
@@ -188,6 +196,33 @@ sub christoffel_part {
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
     );
+}
+
+sub fill_part {
+    my ($self, $parts) = @_;
+warn __PACKAGE__,' L',__LINE__,' ',ddc($parts, {max_width=>128});
+    set_chan_patch($self->drummer->score, 9, 0);
+    for my $part (@$parts) {
+#        if ($part->{style} eq 'quarter') {
+#            push @phrases, sub { $self->beat_part(4, $part) };
+#        }
+#        elsif ($part->{style} eq 'eighth') {
+#            push @phrases, sub { $self->beat_part(8, $part) };
+#        }
+#        elsif ($part->{style} eq 'euclid') {
+#            push @phrases, sub { $self->euclidean_part($part) };
+#        }
+#        elsif ($part->{style} eq 'christoffel') {
+#            push @phrases, sub { $self->christoffel_part($part) };
+#        }
+    }
+
+#    $self->drummer->add_fill(
+#        sub { $self->_euclid_fill },
+#        $self->drummer->closed_hh => [ $hh ],
+#        $self->drummer->snare     => [ $self->rotate_sequence($snare_onset) ],
+#        $self->drummer->kick      => [ $self->drummer->euclidean($kick_onset, $self->size) ],
+#    );
 }
 
 sub bass {
