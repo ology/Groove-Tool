@@ -30,7 +30,7 @@ get '/' => sub ($c) {
   my %phrases;
   for my $param ($c->req->params->names->@*) {
     next unless $c->param($param);
-    if ($param =~ /^(\w+)_(\d+)$/) {
+    if ($param =~ /^([a-z]+)_([\d_]+)$/) {
       my $key   = $1;
       my $order = $2;
       $phrases{$order}->{$key} = $c->param($param);
