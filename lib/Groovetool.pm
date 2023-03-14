@@ -55,14 +55,22 @@ sub _build_creator {
 sub process {
     my ($self) = @_;
 
-    my $bars = $self->drummer->bars;# * $self->repeat;
-
     $self->drummer->count_in(1) if $self->countin;
 
     my @phrases;
+    my $bars;
 
-    for my $key (sort { $a <=> $b} keys $self->phrases->%*) {
+    for my $key (sort { $a cmp $b} keys $self->phrases->%*) {
         my $part = $self->phrases->{$key};
+
+        if ($part->{bars}) {
+            $bars = $part->{bars};
+            next;
+        }
+        else {
+             $part->{bars} = $bars;
+        }
+
         if ($part->{style} eq 'quarter') {
             push @phrases, sub { $self->beat_part(4, $part) };
         }
