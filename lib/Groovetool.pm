@@ -27,7 +27,7 @@ has bscale   => (is => 'ro');
 has bpool    => (is => 'ro');
 has bweights => (is => 'ro');
 has bgroups  => (is => 'ro');
-has duel     => (is => 'ro');
+has my_duel  => (is => 'ro');
 has countin  => (is => 'ro');
 has size     => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
 has msgs     => (is => 'rw', default => sub { [] }); # bucket for output messages
@@ -74,7 +74,7 @@ sub process {
                     sub { $self->bass(1) },
                 );
             }
-            $self->counter_part() if $self->duel;
+            $self->counter_part() if $self->my_duel;
             @phrases = ();
         }
 
@@ -114,7 +114,7 @@ sub process {
                 sub { $self->bass(1) },
             );
         }
-        $self->counter_part() if $self->duel;
+        $self->counter_part() if $self->my_duel;
     }
 
     $self->drummer->write;
