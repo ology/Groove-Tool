@@ -196,8 +196,8 @@ MIDI: &nbsp;
     <label for="dvolume">Volume</label>
   </div>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
-    <label for="reverb">Reverb</label>
+    <input type="number" class="form-control form-control-sm" id="dreverb" name="dreverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
+    <label for="dreverb">Reverb</label>
   </div>
 </div>
 
