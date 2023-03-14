@@ -104,13 +104,20 @@ sub process {
 sub counter_part {
     my ($self) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    $self->drummer->count_in($self->drummer->bars);
+    my $bars = $self->drummer->bars;
+    my $strike = $self->drummer->closed_hh;
+    my $msg = "{ bars => $bars, strike => $strike, style => 'counter' }";
+    my $msgs = $self->msgs;
+    $self->msgs([ @$msgs, $msg ]);
+    $self->drummer->count_in($bars);
 }
 
 sub beat_part {
     my ($self, $factor, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $pattern = '1' x $factor;
+    my $msgs = $self->msgs;
+    $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
@@ -124,6 +131,8 @@ sub euclidean_part {
     $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
         if $part->{shift};
     my $pattern = join '', @$sequence;
+    my $msgs = $self->msgs;
+    $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
@@ -166,6 +175,8 @@ sub christoffel_part {
     $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
         if $part->{shift};
     my $pattern = join '', @$sequence;
+    my $msgs = $self->msgs;
+    $self->msgs([ @$msgs, ddc($part) ]);
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
