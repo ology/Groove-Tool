@@ -73,6 +73,7 @@ get '/' => sub ($c) {
     filename => $filename,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
+    phrases  => \%phrases,
     dvolume  => $dvolume,
     reverb   => $reverb,
     boctave  => $boctave,
