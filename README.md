@@ -1,6 +1,6 @@
 # Groove-Tool
 MIDI beat generation
 
-Embryonic user interface:
+User interface:
 
 ![GrooveTool-UI.png](GrooveTool-UI.png)
