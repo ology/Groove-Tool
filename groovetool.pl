@@ -302,18 +302,18 @@ MIDI: &nbsp;
         <input class="form-check-input" type="radio" name="style" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
         &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= '$numerator' %>" title="Christoffel numerator">
+          <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
           <label for="numerator_<%= $key %>">Numerator</label>
         </div>
         <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= '$denominator' %>" title="Christoffel denominator">
+          <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
           <label for="denominator_<%= $key %>">Denominator</label>
         </div>
         <div class="form-floating d-inline-flex align-items-center">
           <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
             <option value="">Choose...</option>
-            <option value="u">Upper</option>
-            <option value="l">Lower</option>
+            <option value="u" <%= $part->{case} == 'u' ? 'selected' : '' %>>Upper</option>
+            <option value="l" <%= $part->{case} == 'l' ? 'selected' : '' %>>Lower</option>
           </select>
           <label for="case_<%= $key %>">Case</label>
         </div>
