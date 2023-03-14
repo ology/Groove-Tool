@@ -77,9 +77,7 @@ sub process {
         if ($part->{bars}) {
             $section = $key;
             $bars = $part->{bars};
-            if ($part->{fillin}) {
-                $bars--;
-            }
+            $bars-- if $part->{fillin};
             next;
         }
         else {
