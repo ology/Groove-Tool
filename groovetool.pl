@@ -125,6 +125,7 @@ __DATA__
 <button type="button" id="btnAddSection1" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 % if ($filename) {
+<p></p>
 MIDI: &nbsp;
 <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><i class="fa-solid fa-play"></i></a>
 &nbsp; | &nbsp;
