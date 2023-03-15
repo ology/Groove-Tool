@@ -213,7 +213,7 @@ sub _fill {
     for my $key (@$parts) {
         my $origpart = $self->phrases->{$key};
         my $part = { %$origpart };
-        if ($part->{strike} == $self->drummer->snare) {
+        if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
             if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
                 my $x = 1 + int rand($self->size / 2);
                 $pattern = sprintf '%08d', '1' x $x;
@@ -233,13 +233,19 @@ sub _fill {
             last;
         }
     }
-    my $hh = '0' x ($self->size / 2);
-    (my $kick = $hh) =~ s/^0/1/;
+    my %kit;
+    for my $key (@$parts) {
+        my $part = $self->phrases->{$key};
+        if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
+            $kit{ $part->{strike} } = $pattern;
+        }
+        else {
+            $kit{ $part->{strike} } = '0' x $self->size;
+        }
+    }
     return {
-        duration                  => $self->size,
-        $self->drummer->closed_hh => $hh,
-        $self->drummer->snare     => $pattern,
-        $self->drummer->kick      => $kick,
+        duration => $self->size,
+        %kit
     };
 }
 
