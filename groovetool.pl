@@ -23,8 +23,8 @@ get '/' => sub ($c) {
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
   my $bpatch   = $c->param('bpatch')   || 35; # 0 - 127 and -1 = off
   my $bvolume  = $c->param('bvolume')  // 90; # 0 - 127
-  my $bnote    = $c->param('bnote')    // 'A'; # C, C#, Db, D, ... B
-  my $bscale   = $c->param('bscale')   // 'pminor'; # see Music::Scales
+  my $bnote    = $c->param('bnote')    || 'A'; # C, C#, Db, D, ... B
+  my $bscale   = $c->param('bscale')   || 'pminor'; # see Music::Scales
   my $bpool    = $c->param('bpool')    || 'qn en sn'; # MIDI-Perl note durations
   my $bweights = $c->param('bweights') // '1 1 1'; # weights of the note duration pool
   my $bgroups  = $c->param('bgroups')  // '1 2 4'; # groupings of the pool notes
