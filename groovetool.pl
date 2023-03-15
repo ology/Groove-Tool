@@ -210,28 +210,30 @@ MIDI: &nbsp;
 <div class="collapse" id="bassSettings">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
-    <label for="bnote">Note</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
-    <label for="bscale">Scale</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
-    <label for="bpatch">Patch</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
-    <label for="bvolume">Volume</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
-    <label for="boctave">Octave</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="bsize" name="bsize" min="1" max="6" value="<%= $bsize %>" title="octave from 1 to 6">
-    <label for="bsize">Phrase size</label>
+    <div class="col-2">
+      <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
+      <label for="bnote">Note</label>
+    </div>
+    <div class="col-2">
+      <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
+      <label for="bscale">Scale</label>
+    </div>
+    <div class="col-2">
+      <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
+      <label for="bpatch">Patch</label>
+    </div>
+    <div class="col-2">
+      <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
+      <label for="bvolume">Volume</label>
+    </div>
+    <div class="col-2">
+      <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
+      <label for="boctave">Octave</label>
+    </div>
+    <div class="col-2">
+      <input type="number" class="form-control form-control-sm" id="bsize" name="bsize" min="1" max="4" value="<%= $bsize %>" title="Phrase size from 1 to 4 beats">
+      <label for="bsize">Phrase</label>
+    </div>
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
