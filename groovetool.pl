@@ -321,7 +321,7 @@ MIDI: &nbsp;
           <label for="case_<%= $key %>">Case</label>
         </div>
         <p></p>
-        <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
+        <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
       </div>
 
 %   }
