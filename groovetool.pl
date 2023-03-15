@@ -84,6 +84,8 @@ get '/' => sub ($c) {
     filename => $filename,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
+    my_duel  => $my_duel,
+    countin  => $countin,
     phrases  => \%phrases,
     kit      => $kit,
     dvolume  => $dvolume,
@@ -96,8 +98,6 @@ get '/' => sub ($c) {
     bpool    => $bpool,
     bweights => $bweights,
     bgroups  => $bgroups,
-    my_duel     => $my_duel,
-    countin  => $countin,
   );
 } => 'index';
 
