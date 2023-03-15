@@ -311,7 +311,6 @@ MIDI: &nbsp;
         </div>
         <div class="form-floating d-inline-flex align-items-center">
           <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-            <option value="">Choose...</option>
             <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
             <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
           </select>
