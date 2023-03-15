@@ -144,6 +144,8 @@ MIDI: &nbsp;
 <a href="#" onClick="MIDIjs.stop();" title="Stop MIDI"><i class="fa-solid fa-stop"></i></a>
 &nbsp; | &nbsp;
 <a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
+&nbsp;
+<%= $filename %>
 
 %   if (@$msgs) {
 <p></p>
@@ -290,14 +292,14 @@ MIDI: &nbsp;
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label class="px-2" for="christo_style_<%= $key %>">Christoffel</label>
         </div>
-        <div id="euclidwidgets" class="euclid toggle">
+        <div id="euclidwidgets_<%= $key %>" class="euclid toggle">
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
             <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
             <label for="onsets_<%= $key %>">Euclidean onsets</label>
           </div>
         </div>
-        <div id="christoffelwidgets" class="christoffel toggle">
+        <div id="christoffelwidgets_<%= $key %>" class="christoffel toggle">
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
             <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
