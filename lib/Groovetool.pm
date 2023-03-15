@@ -27,6 +27,7 @@ has bpatch   => (is => 'ro');
 has bvolume  => (is => 'ro');
 has bnote    => (is => 'ro');
 has bscale   => (is => 'ro');
+has bsize    => (is => 'ro');
 has bpool    => (is => 'ro');
 has bweights => (is => 'ro');
 has bgroups  => (is => 'ro');
@@ -249,7 +250,7 @@ sub bass {
     my $groups  = [ split /[\s,-]+/, $self->bgroups ];
 
     my $mdp = Music::Duration::Partition->new(
-        size => $self->drummer->beats - 1,
+        size => $self->bsize,
         pool => $pool,
         $self->bweights ? (weights => $weights) : (),
         $self->bgroups  ? (groups => $groups)   : (),
