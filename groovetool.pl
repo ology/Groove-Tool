@@ -280,20 +280,23 @@ MIDI: &nbsp;
         </div>
         <p></p>
         <div class="d-inline-flex">
-          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           <label for="quarter_style_<%= $key %>">Quarter</label>
-          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
           <label for="eighth_style_<%= $key %>">Eighth</label>
-          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
           <label for="euclid_style_<%= $key %>">Euclidean</label>
-          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label for="christo_style_<%= $key %>">Christoffel</label>
         </div>
+<div class="euclid toggle">
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
           <label for="onsets_<%= $key %>">Euclidean onsets</label>
         </div>
+</div>
+<div class="christoffel toggle">
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
@@ -310,6 +313,7 @@ MIDI: &nbsp;
           </select>
           <label for="case_<%= $key %>">Case</label>
         </div>
+</div>
         <p></p>
         <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
       </div>
@@ -357,20 +361,23 @@ MIDI: &nbsp;
   </div>
   <p></p>
   <div class="d-inline-flex">
-    <input class="toggle form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
+    <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
     <label for="quarter_style">Quarter notes</label>
-    <input class="toggle form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
+    <input class="trigger form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
     <label for="eighth_style">Eighth notes</label>
-    <input class="toggle form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
+    <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
     <label for="euclid_style">Euclidean</label>
-    <input class="toggle form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
+    <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
     <label for="christo_style">Christoffel</label>
   </div>
+<div class="euclid toggle">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
     <label for="onsets">Euclidean onsets</label>
   </div>
+</div>
+<div class="christoffel toggle">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
@@ -387,6 +394,7 @@ MIDI: &nbsp;
     </select>
     <label for="case">Case</label>
   </div>
+</div>
   <p></p>
   <button type="button" id="btnRemove" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
 </div>
@@ -409,9 +417,9 @@ $(document).ready(function () {
       .appendTo("#section_" + i);
     var $inputs = $("#section_" + i).find(":input");
     $inputs.each(function (index) {
-        $(this).attr("id", $(this).attr("id") + "_" + i);
-        $(this).attr("name", $(this).attr("name") + "_" + i);
-        $(this).nextAll("label:first").attr("for", $(this).attr("id"));
+      $(this).attr("id", $(this).attr("id") + "_" + i);
+      $(this).attr("name", $(this).attr("name") + "_" + i);
+      $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
     $("#btnAddPart_" + i).attr("data-section", i);
   });
@@ -428,9 +436,9 @@ $(document).ready(function () {
       $($appendItem)).appendTo("#parts_" + section);
     var $inputs = $("#part_" + section + "_" + j).find(":input");
     $inputs.each(function (index) {
-        $(this).attr("id", $(this).attr("id") + "_" + section + "_" + j);
-        $(this).attr("name", $(this).attr("name") + "_" + section + "_" + j);
-        $(this).nextAll("label:first").attr("for", $(this).attr("id"));
+      $(this).attr("id", $(this).attr("id") + "_" + section + "_" + j);
+      $(this).attr("name", $(this).attr("name") + "_" + section + "_" + j);
+      $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
     $("#btnAddPart_" + section).attr("data-lastpart", j);
   });
@@ -440,9 +448,9 @@ $(document).ready(function () {
       $(this).closest(".part").remove();
     }
   });
-  $("body").on("click", ".toggle", function() {
-    console.log('Hello??');
-    alert('Hello?');
+  $("body").on("click", ".trigger", function() {
+    var name = $(this).val();
+    $(".toggle").hide().filter("." + name).show()
   });
 });
 </script>
@@ -470,6 +478,9 @@ $(document).ready(function () {
       a:link, a:visited, a:hover, a:active, a:focus {
         color: #414A4C;
         text-decoration: none;
+      }
+      .toggle {
+        display: none
       }
       .padpage {
         padding-top: 10px;
