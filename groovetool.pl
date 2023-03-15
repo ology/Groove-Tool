@@ -97,6 +97,7 @@ get '/' => sub ($c) {
     bvolume  => $bvolume,
     bnote    => $bnote,
     bscale   => $bscale,
+    bsize    => $bsize,
     bpool    => $bpool,
     bweights => $bweights,
     bgroups  => $bgroups,
