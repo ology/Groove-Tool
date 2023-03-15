@@ -359,16 +359,10 @@ MIDI: &nbsp;
   <div class="d-inline-flex">
     <input class="form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
     <label for="quarter_style">Quarter notes</label>
-  </div>
-  <div class="d-inline-flex">
     <input class="form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
     <label for="eighth_style">Eighth notes</label>
-  </div>
-  <div class="d-inline-flex">
     <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
     <label for="euclid_style">Euclidean</label>
-  </div>
-  <div class="d-inline-flex">
     <input class="form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
     <label for="christo_style">Christoffel</label>
   </div>
