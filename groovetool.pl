@@ -475,6 +475,10 @@ $(document).ready(function () {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title><%= title %></title>
     <style>
+      a:link, a:visited, a:hover, a:active, a:focus {
+        color: #414A4C;
+        text-decoration: none;
+      }
       .padpage {
         padding-top: 10px;
       }
