@@ -21,7 +21,7 @@ get '/' => sub ($c) {
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
   my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
-  my $bpatch   = $c->param('bpatch')   || 35; # 0 - 127 and -1 = off
+  my $bpatch   = $c->param('bpatch')   // 35; # 0 - 127 and -1 = off
   my $bvolume  = $c->param('bvolume')  // 90; # 0 - 127
   my $bnote    = $c->param('bnote')    || 'A'; # C, C#, Db, D, ... B
   my $bscale   = $c->param('bscale')   || 'pminor'; # see Music::Scales
