@@ -9,6 +9,7 @@ use MIDI::Drummer::Tiny ();
 use MIDI::Util qw(set_chan_patch midi_format);
 use Music::CreatingRhythms ();
 use Music::Duration::Partition ();
+use Music::RhythmSet::Util qw(upsize);
 use Music::Scales qw(get_scale_MIDI);
 use Music::VoiceGen ();
 use namespace::clean;
@@ -132,6 +133,7 @@ sub beat_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $sequence = [ ('1') x $part->{factor} ];
+    $sequence = upsize($sequence, $self->size);
     $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
         if $part->{shift};
     my $pattern = join '', @$sequence;
