@@ -306,7 +306,7 @@ MIDI: &nbsp;
         &nbsp;
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
-          <label for="numerator_<%= $key %>">Numerator</label>
+          <label for="numerator_<%= $key %>">Christoffel Numerator</label>
         </div>
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
