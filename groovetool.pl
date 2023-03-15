@@ -281,13 +281,13 @@ MIDI: &nbsp;
         <p></p>
         <div class="d-inline-flex">
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
-          <label for="quarter_style_<%= $key %>">Quarter</label>
+          <label class="px-2" for="quarter_style_<%= $key %>">Quarter</label>
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
-          <label for="eighth_style_<%= $key %>">Eighth</label>
+          <label class="px-2" for="eighth_style_<%= $key %>">Eighth</label>
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
-          <label for="euclid_style_<%= $key %>">Euclidean</label>
+          <label class="px-2" for="euclid_style_<%= $key %>">Euclidean</label>
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
-          <label for="christo_style_<%= $key %>">Christoffel</label>
+          <label class="px-2" for="christo_style_<%= $key %>">Christoffel</label>
         </div>
         <div id="euclidwidgets" class="euclid toggle">
           <p></p>
@@ -362,13 +362,13 @@ MIDI: &nbsp;
   <p></p>
   <div class="d-inline-flex">
     <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
-    <label for="quarter_style">Quarter notes</label>
+    <label class="px-2" for="quarter_style">Quarter notes</label>
     <input class="trigger form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
-    <label for="eighth_style">Eighth notes</label>
+    <label class="px-2" for="eighth_style">Eighth notes</label>
     <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
-    <label for="euclid_style">Euclidean</label>
+    <label class="px-2" for="euclid_style">Euclidean</label>
     <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
-    <label for="christo_style">Christoffel</label>
+    <label class="px-2" for="christo_style">Christoffel</label>
   </div>
   <div id="euclidwidgets" class="euclid toggle">
     <p></p>
