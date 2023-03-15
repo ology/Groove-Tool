@@ -145,14 +145,15 @@ MIDI: &nbsp;
 &nbsp; | &nbsp;
 <a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
 
-<!--
+%   if (@$msgs) {
 <p></p>
 <ol>
-%   for my $msg (@$msgs) {
+%     for my $msg (@$msgs) {
   <li><%== $msg %></li>
-%   }
+%     }
 </ol>
--->
+%   }
+
 % }
 
 <p></p>
