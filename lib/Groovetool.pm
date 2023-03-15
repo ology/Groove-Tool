@@ -17,6 +17,8 @@ use namespace::clean;
 has filename => (is => 'ro', required => 1); # MIDI file name
 has my_bpm   => (is => 'ro');
 has repeat   => (is => 'ro');
+has my_duel  => (is => 'ro');
+has countin  => (is => 'ro');
 has phrases  => (is => 'ro');
 has dvolume  => (is => 'ro');
 has dreverb  => (is => 'ro');
@@ -28,8 +30,6 @@ has bscale   => (is => 'ro');
 has bpool    => (is => 'ro');
 has bweights => (is => 'ro');
 has bgroups  => (is => 'ro');
-has my_duel  => (is => 'ro');
-has countin  => (is => 'ro');
 has size     => (is => 'ro', default => sub { 16 }); # changing this will make a mess usually
 has msgs     => (is => 'rw', default => sub { [] }); # bucket for output messages
 has drummer  => (is => 'lazy');
