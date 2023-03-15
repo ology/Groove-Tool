@@ -289,14 +289,14 @@ MIDI: &nbsp;
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label for="christo_style_<%= $key %>">Christoffel</label>
         </div>
-<div class="euclid toggle">
+<div id="euclidwidgets" class="euclid toggle">
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
           <label for="onsets_<%= $key %>">Euclidean onsets</label>
         </div>
 </div>
-<div class="christoffel toggle">
+<div id="christoffelwidgets" class="christoffel toggle">
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
           <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
@@ -370,14 +370,14 @@ MIDI: &nbsp;
     <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
     <label for="christo_style">Christoffel</label>
   </div>
-<div class="euclid toggle">
+<div id="euclidwidgets" class="euclid toggle">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
     <label for="onsets">Euclidean onsets</label>
   </div>
 </div>
-<div class="christoffel toggle">
+<div id="christoffelwidgets" class="christoffel toggle">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
@@ -440,6 +440,11 @@ $(document).ready(function () {
       $(this).attr("name", $(this).attr("name") + "_" + section + "_" + j);
       $(this).nextAll("label:first").attr("for", $(this).attr("id"));
     });
+    var $divs = $("#part_" + section + "_" + j).find("div");
+    $divs.each(function (index) {
+      if ($(this).attr("id"))
+        $(this).attr("id", $(this).attr("id") + "_" + section + "_" + j);
+    });
     $("#btnAddPart_" + section).attr("data-lastpart", j);
   });
   $("body").on("click", ".btnRemovePart", function() {
@@ -448,12 +453,12 @@ $(document).ready(function () {
       $(this).closest(".part").remove();
     }
   });
-//  $("body").on("click", ".trigger", function() {
-//    var name = $(this).val();
-//    var id = $(this).attr("id");
-//    var num = id.substring(id.length - 4);
-//    $(".toggle").hide().filter("." + name).show()
-//  });
+  $("body").on("click", ".trigger", function() {
+    var name = $(this).val();
+    var id = $(this).attr("id");
+    var num = id.substring(id.length - 4);
+    $("div[class~=toggle][id$=" + num + "]").hide().filter("." + name).show()
+  });
 });
 </script>
 
@@ -481,9 +486,9 @@ $(document).ready(function () {
         color: #414A4C;
         text-decoration: none;
       }
-//      .toggle {
-//        display: none
-//      }
+      .toggle {
+        display: none
+      }
       .padpage {
         padding-top: 10px;
       }
