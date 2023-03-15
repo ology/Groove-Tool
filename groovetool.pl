@@ -42,7 +42,6 @@ get '/' => sub ($c) {
     my $parts = grep { $_ =~ /^$key\_/ } keys %phrases;
     $phrases{$key}->{parts} = $parts;
   }
-#warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   _purge($c); # purge defunct midi files
 
