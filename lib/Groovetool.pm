@@ -210,17 +210,19 @@ sub _fill {
     for my $key (@$parts) {
         my $part = $self->phrases->{$key};
         if ($part->{strike} == $self->drummer->snare) {
-            my $x = 1 + int rand($self->size / 2);
-            my $y = 1 + int rand $self->size;
             if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
+                my $x = 1 + int rand($self->size / 2);
                 $pattern = sprintf '%08d', '1' x $x;
             }
             elsif ($part->{style} eq 'euclid') {
+                my $x = 1 + int rand($self->size / 2);
                 $part->{onsets} = $x;
                 $pattern = $self->euclidean_pattern($part);
             }
             elsif ($part->{style} eq 'christoffel') {
-                $part->{numerator} = $x;
+                my $x = 1 + int rand $self->size;
+                my $y = 1 + int rand $self->size;
+                $part->{numerator}   = $x;
                 $part->{denominator} = $y;
                 $pattern = $self->christoffel_pattern($part);
             }
