@@ -196,12 +196,14 @@ MIDI: &nbsp;
 <div class="collapse" id="drumSettings">
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
-    <label for="dvolume">Volume</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="dreverb" name="dreverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
-    <label for="dreverb">Reverb</label>
+    <div class="col-3">
+      <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
+      <label for="dvolume">Volume</label>
+    </div>
+    <div class="col-3">
+      <input type="number" class="form-control form-control-sm" id="dreverb" name="dreverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
+      <label for="dreverb">Reverb</label>
+    </div>
   </div>
 </div>
 
