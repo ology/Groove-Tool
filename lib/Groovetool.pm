@@ -132,15 +132,20 @@ sub counter_part {
 sub beat_part {
     my ($self, $part) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $sequence = [ ('1') x $part->{factor} ];
-    $sequence = upsize($sequence, $self->size);
-    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
-        if $part->{shift};
-    my $pattern = join '', @$sequence;
+    my $pattern = $self->beat_pattern($part);
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
     );
+}
+
+sub beat_pattern {
+    my ($self, $part) = @_;
+    my $sequence = [ ('1') x $part->{factor} ];
+    $sequence = upsize($sequence, $self->size);
+    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+        if $part->{shift};
+    return join '', @$sequence;
 }
 
 sub euclidean_part {
@@ -191,7 +196,7 @@ sub fill_part {
         my $part = $self->phrases->{$key};
         my $pattern;
         if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
-            $pattern = '1' x $part->{factor};
+            $pattern = $self->beat_pattern($part);
         }
         elsif ($part->{style} eq 'euclid') {
             $pattern = $self->euclidean_pattern($part);
@@ -202,43 +207,19 @@ sub fill_part {
         $phrases{ $part->{strike} } = [ $pattern ];
     }
     $self->drummer->add_fill(
-        sub { $self->_fill($parts) },
+        sub { $self->_fill(\%phrases) },
         %phrases
     );
 }
 
 sub _fill {
-    my ($self, $parts) = @_;
-    my %kit;
-    for my $key (@$parts) {
-        my $origpart = $self->phrases->{$key};
-        my $part = { %$origpart };
-        my $pattern;
-#        if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
-            # XXX these pattern creations are really lame
-            if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
-                my $x = 1 + int rand($self->size / 2);
-                $pattern = sprintf '%08d', '1' x $x;
-            }
-            elsif ($part->{style} eq 'euclid') {
-                my $x = 1 + int rand($self->size / 2);
-                $part->{onsets} = $x;
-                $pattern = $self->euclidean_pattern($part);
-            }
-            elsif ($part->{style} eq 'christoffel') {
-                my $x = 1 + int rand $self->size;
-                my $y = 1 + int rand $self->size;
-                $part->{numerator}   = $x;
-                $part->{denominator} = $y;
-                $pattern = $self->christoffel_pattern($part);
-            }
-            $kit{ $part->{strike} } = $pattern;
-#            last;
-#        }
+    my ($self, $phrases) = @_;
+    for (keys %$phrases) {
+        $phrases->{$_} = $phrases->{$_}[0];
     }
     return {
         duration => $self->size,
-        %kit
+        %$phrases
     };
 }
 
