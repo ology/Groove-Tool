@@ -214,6 +214,7 @@ sub _fill {
         my $origpart = $self->phrases->{$key};
         my $part = { %$origpart };
         if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
+            # XXX these pattern creations are really lame
             if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
                 my $x = 1 + int rand($self->size / 2);
                 $pattern = sprintf '%08d', '1' x $x;
