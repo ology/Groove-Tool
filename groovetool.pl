@@ -1,8 +1,11 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
+use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util); # local author libs
+
 use Data::Dumper::Compact qw(ddc);
 use File::Find::Rule ();
+use MIDI::Util qw(midi_dump);
 use Time::HiRes qw(time);
 
 use lib 'lib';
@@ -43,6 +46,8 @@ get '/' => sub ($c) {
     $phrases{$key}->{parts} = $parts;
   }
 
+  my $kit = midi_dump('percussion2notenum');
+
   _purge($c); # purge defunct midi files
 
   my $filename = '';
@@ -80,6 +85,7 @@ get '/' => sub ($c) {
     my_bpm   => $my_bpm,
     repeat   => $repeat,
     phrases  => \%phrases,
+    kit      => $kit,
     dvolume  => $dvolume,
     dreverb  => $dreverb,
     boctave  => $boctave,
@@ -354,14 +360,9 @@ MIDI: &nbsp;
   <hr>
   <div class="form-floating d-inline-flex align-items-center">
     <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
-      <option value="44">Pedal Hihat</option>
-      <option value="42">Closed Hihat</option>
-      <option value="46">Open Hihat</option>
-      <option value="37">Side Stick</option>
-      <option value="38">Acoustic Snare</option>
-      <option value="40">Electric Snare</option>
-      <option value="35">Bass Drum</option>
-      <option value="36">Electric Bass Drum</option>
+% for my $perc (sort keys %$kit) {
+    <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
+% }
     </select>
     <label for="strike">Strike</label>
   </div>
