@@ -448,10 +448,12 @@ $(document).ready(function () {
       $(this).closest(".part").remove();
     }
   });
-  $("body").on("click", ".trigger", function() {
-    var name = $(this).val();
-    $(".toggle").hide().filter("." + name).show()
-  });
+//  $("body").on("click", ".trigger", function() {
+//    var name = $(this).val();
+//    var id = $(this).attr("id");
+//    var num = id.substring(id.length - 4);
+//    $(".toggle").hide().filter("." + name).show()
+//  });
 });
 </script>
 
@@ -479,9 +481,9 @@ $(document).ready(function () {
         color: #414A4C;
         text-decoration: none;
       }
-      .toggle {
-        display: none
-      }
+//      .toggle {
+//        display: none
+//      }
       .padpage {
         padding-top: 10px;
       }
