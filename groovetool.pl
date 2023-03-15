@@ -316,17 +316,17 @@ MIDI: &nbsp;
         </div>
         <p></p>
         <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
-      </div>
+      </div> <!-- part -->
 
 %   }
 
-    </div>
+    </div> <!-- parts -->
 
-  </div>
+  </div> <!-- section -->
 
 % }
 
-</div>
+</div> <!-- sections -->
 
 <div class="defaultSection d-none">
   <p></p>
