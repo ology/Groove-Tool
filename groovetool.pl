@@ -282,16 +282,10 @@ MIDI: &nbsp;
         <div class="d-inline-flex">
           <input class="form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           <label for="quarter_style_<%= $key %>">Quarter</label>
-        </div>
-        <div class="d-inline-flex">
           <input class="form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
           <label for="eighth_style_<%= $key %>">Eighth</label>
-        </div>
-        <div class="d-inline-flex">
           <input class="form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
           <label for="euclid_style_<%= $key %>">Euclidean</label>
-        </div>
-        <div class="d-inline-flex">
           <input class="form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label for="christo_style_<%= $key %>">Christoffel</label>
         </div>
