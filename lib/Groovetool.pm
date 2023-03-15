@@ -219,8 +219,11 @@ sub _fill {
             my $onsets = 1 + int rand $self->size;
             $phrases->{$_} = $self->euclidean_pattern({ onsets => $onsets });
         }
-        else {
+        elsif ($_ == $self->drummer->acoustic_bass || $_ == $self->drummer->electric_bass) {
             $phrases->{$_} = $phrases->{$_}[0];
+        }
+        else {
+            $phrases->{$_} = '0' x $self->size;
         }
     }
     return {
