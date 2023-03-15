@@ -502,7 +502,7 @@ $(document).ready(function () {
       .padpage {
         padding-top: 10px;
       }
-      .small {
+      .smalltext {
         font-size: small;
         color: darkgrey;
       }
@@ -513,7 +513,7 @@ $(document).ready(function () {
       <h3><a href="/"><%= title %></a></h3>
       <%= content %>
       <p></p>
-      <div id="footer" class="small">
+      <div id="footer" class="smalltext">
         <hr>
         Built by <a href="http://gene.ology.net/">Gene</a>
         with <a href="https://www.perl.org/">Perl</a> and
