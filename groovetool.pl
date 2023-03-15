@@ -16,7 +16,7 @@ use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
   my $submit   = $c->param('submit')   || 0;
-  my $my_bpm   = $c->param('my_bpm')   || 90; # 1 - ?
+  my $my_bpm   = $c->param('my_bpm')   || 60; # 1 - ?
   my $repeat   = $c->param('repeat')   || 1; # number of times to repeat
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
   my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
