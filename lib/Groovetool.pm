@@ -241,7 +241,7 @@ sub _fill {
             $kit{ $part->{strike} } = $pattern;
         }
         else {
-            $kit{ $part->{strike} } = '0' x $self->size;
+            $kit{ $part->{strike} } = '0' x $self->size; # XXX this is also very lame
         }
     }
     return {
