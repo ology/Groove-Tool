@@ -60,6 +60,8 @@ get '/' => sub ($c) {
       filename => 'public' . $filename,
       my_bpm   => $my_bpm,
       repeat   => $repeat,
+      my_duel  => $my_duel,
+      countin  => $countin,
       phrases  => \%phrases,
       dvolume  => $dvolume,
       dreverb  => $dreverb,
@@ -71,8 +73,6 @@ get '/' => sub ($c) {
       bpool    => $bpool,
       bweights => $bweights,
       bgroups  => $bgroups,
-      my_duel     => $my_duel,
-      countin  => $countin,
     );
 
     $msgs = $groove->process;
