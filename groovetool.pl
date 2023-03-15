@@ -225,6 +225,10 @@ MIDI: &nbsp;
     <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
     <label for="boctave">Octave</label>
   </div>
+  <div class="form-floating d-inline-flex align-items-center">
+    <input type="number" class="form-control form-control-sm" id="bsize" name="bsize" min="1" max="6" value="<%= $bsize %>" title="octave from 1 to 6">
+    <label for="bsize">Phrase size</label>
+  </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Allowed bass durations" aria-describedby="bpoolHelp">
