@@ -214,21 +214,22 @@ sub fill_part {
 
 sub _fill {
     my ($self, $phrases) = @_;
-    for (keys %$phrases) {
+    my $parts = { %$phrases };
+    for (keys %$parts) {
         if ($_ == $self->drummer->acoustic_snare || $_ == $self->drummer->electric_snare) {
-            my $onsets = 1 + int rand $self->size;
-            $phrases->{$_} = $self->euclidean_pattern({ onsets => $onsets });
+            my $onsets = 1 + int rand $self->size; # XXX this is sometimes lame
+            $parts->{$_} = $self->euclidean_pattern({ onsets => $onsets });
         }
         elsif ($_ == $self->drummer->acoustic_bass || $_ == $self->drummer->electric_bass) {
-            $phrases->{$_} = $phrases->{$_}[0];
+            $parts->{$_} = $parts->{$_}[0];
         }
         else {
-            $phrases->{$_} = '0' x $self->size;
+            $parts->{$_} = '0' x $self->size;
         }
     }
     return {
         duration => $self->size,
-        %$phrases
+        %$parts
     };
 }
 
