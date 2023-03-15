@@ -279,19 +279,12 @@ MIDI: &nbsp;
           <label for="shift_<%= $key %>">Shift by</label>
         </div>
         <p></p>
-        <div class="d-inline-flex align-items-center">
+        <div class="d-inline-flex">
           <input class="form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
-          &nbsp;
-          &nbsp;
           <label for="quarter_style_<%= $key %>">Quarter notes</label>
         </div>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <div class="d-inline-flex align-items-center">
+        <div class="d-inline-flex">
           <input class="form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
-          &nbsp;
-          &nbsp;
           <label for="eighth_style_<%= $key %>">Eighth notes</label>
         </div>
         <p></p>
