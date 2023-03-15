@@ -280,13 +280,13 @@ MIDI: &nbsp;
         </div>
         <p></p>
         <div class="d-inline-flex">
-          <input class="form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" class="toggle" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
+          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           <label for="quarter_style_<%= $key %>">Quarter</label>
-          <input class="form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" class="toggle" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
+          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
           <label for="eighth_style_<%= $key %>">Eighth</label>
-          <input class="form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" class="toggle" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
+          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
           <label for="euclid_style_<%= $key %>">Euclidean</label>
-          <input class="form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" class="toggle" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
+          <input class="toggle form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label for="christo_style_<%= $key %>">Christoffel</label>
         </div>
         <p></p>
@@ -357,13 +357,13 @@ MIDI: &nbsp;
   </div>
   <p></p>
   <div class="d-inline-flex">
-    <input class="form-check-input" type="radio" name="style" id="quarter_style" class="toggle" value="quarter" title="Simple quarter note">
+    <input class="toggle form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
     <label for="quarter_style">Quarter notes</label>
-    <input class="form-check-input" type="radio" name="style" id="eighth_style" class="toggle" value="eighth" title="Simple eighth notes">
+    <input class="toggle form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
     <label for="eighth_style">Eighth notes</label>
-    <input class="form-check-input" type="radio" name="style" id="euclid_style" class="toggle" value="euclid" title="Euclidean word">
+    <input class="toggle form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
     <label for="euclid_style">Euclidean</label>
-    <input class="form-check-input" type="radio" name="style" id="christo_style" class="toggle" value="christoffel" title="Christoffel word">
+    <input class="toggle form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
     <label for="christo_style">Christoffel</label>
   </div>
   <p></p>
@@ -439,6 +439,10 @@ $(document).ready(function () {
     if (result) {
       $(this).closest(".part").remove();
     }
+  });
+  $("body").on("click", ".toggle", function() {
+    console.log('Hello??');
+    alert('Hello?');
   });
 });
 </script>
