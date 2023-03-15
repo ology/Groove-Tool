@@ -209,11 +209,12 @@ sub fill_part {
 
 sub _fill {
     my ($self, $parts) = @_;
-    my $pattern;
+    my %kit;
     for my $key (@$parts) {
         my $origpart = $self->phrases->{$key};
         my $part = { %$origpart };
-        if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
+        my $pattern;
+#        if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
             # XXX these pattern creations are really lame
             if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
                 my $x = 1 + int rand($self->size / 2);
@@ -231,18 +232,9 @@ sub _fill {
                 $part->{denominator} = $y;
                 $pattern = $self->christoffel_pattern($part);
             }
-            last;
-        }
-    }
-    my %kit;
-    for my $key (@$parts) {
-        my $part = $self->phrases->{$key};
-        if ($part->{strike} == $self->drummer->acoustic_snare || $part->{strike} == $self->drummer->electric_snare) {
             $kit{ $part->{strike} } = $pattern;
-        }
-        else {
-            $kit{ $part->{strike} } = '0' x $self->size; # XXX this is also very lame
-        }
+#            last;
+#        }
     }
     return {
         duration => $self->size,
