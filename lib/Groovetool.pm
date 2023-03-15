@@ -125,9 +125,7 @@ sub process {
 sub counter_part {
     my ($self) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
-    my $bars = $self->drummer->bars;
-    my $strike = $self->drummer->closed_hh;
-    $self->drummer->count_in($bars);
+    $self->drummer->count_in($self->drummer->bars);
 }
 
 sub beat_part {
