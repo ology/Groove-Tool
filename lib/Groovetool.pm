@@ -211,7 +211,8 @@ sub _fill {
     my ($self, $parts) = @_;
     my $pattern;
     for my $key (@$parts) {
-        my $part = $self->phrases->{$key};
+        my $origpart = $self->phrases->{$key};
+        my $part = { %$origpart };
         if ($part->{strike} == $self->drummer->snare) {
             if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
                 my $x = 1 + int rand($self->size / 2);
