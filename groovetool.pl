@@ -237,21 +237,24 @@ MIDI: &nbsp;
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Allowed bass durations" aria-describedby="bpoolHelp">
-    <label for="bpool">Pool</label>
-    <small id="bpoolHelp" class="form-text text-muted">qn = quarter note, ten = triplet eighth, etc.</small>
+    <div class="col-auto">
+      <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Required allowed durations: qn = quarter note, en = eighth, etc." placeholder="Required allowed durations">
+      <label for="bpool">Pool</label>
+    </div>
   </div>
   <br>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="bweights" name="bweights" value="<%= $bweights %>" title="Weights of bass durations" aria-describedby="bweightsHelp">
-    <label for="bweights">Weights</label>
-    <small id="bweightsHelp" class="form-text text-muted">pool duration weights</small>
+    <div class="col-auto">
+      <input type="text" class="form-control form-control-sm" id="bweights" name="bweights" value="<%= $bweights %>" title="Optional weights of durations" placeholder="Optional weights of durations">
+      <label for="bweights">Weights</label>
+    </div>
   </div>
   <br>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="text" class="form-control form-control-sm" id="bgroups" name="bgroups" value="<%= $bgroups %>" title="Groupings of bass durations" aria-describedby="bgroupsHelp">
-    <label for="bgroups">Groups</label>
-    <small id="bgroupsHelp" class="form-text text-muted">pool duration groups (e.g. ten = 3)</small>
+    <div class="col-auto">
+      <input type="text" class="form-control form-control-sm" id="bgroups" name="bgroups" value="<%= $bgroups %>" title="Optional groupings of durations" placeholder="Optional groupings of durations">
+      <label for="bgroups">Groups</label>
+    </div>
   </div>
 </div>
 
