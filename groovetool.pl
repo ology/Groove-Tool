@@ -289,31 +289,31 @@ MIDI: &nbsp;
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label for="christo_style_<%= $key %>">Christoffel</label>
         </div>
-<div id="euclidwidgets" class="euclid toggle">
-        <p></p>
-        <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
-          <label for="onsets_<%= $key %>">Euclidean onsets</label>
+        <div id="euclidwidgets" class="euclid toggle">
+          <p></p>
+          <div class="form-floating d-inline-flex align-items-center">
+            <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
+            <label for="onsets_<%= $key %>">Euclidean onsets</label>
+          </div>
         </div>
-</div>
-<div id="christoffelwidgets" class="christoffel toggle">
-        <p></p>
-        <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
-          <label for="numerator_<%= $key %>">Christoffel Numerator</label>
+        <div id="christoffelwidgets" class="christoffel toggle">
+          <p></p>
+          <div class="form-floating d-inline-flex align-items-center">
+            <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
+            <label for="numerator_<%= $key %>">Christoffel Numerator</label>
+          </div>
+          <div class="form-floating d-inline-flex align-items-center">
+            <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
+            <label for="denominator_<%= $key %>">Denominator</label>
+          </div>
+          <div class="form-floating d-inline-flex align-items-center">
+            <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+              <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
+              <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
+            </select>
+            <label for="case_<%= $key %>">Case</label>
+          </div>
         </div>
-        <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
-          <label for="denominator_<%= $key %>">Denominator</label>
-        </div>
-        <div class="form-floating d-inline-flex align-items-center">
-          <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-            <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
-            <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
-          </select>
-          <label for="case_<%= $key %>">Case</label>
-        </div>
-</div>
         <p></p>
         <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
       </div>
@@ -370,31 +370,31 @@ MIDI: &nbsp;
     <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
     <label for="christo_style">Christoffel</label>
   </div>
-<div id="euclidwidgets" class="euclid toggle">
-  <p></p>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
-    <label for="onsets">Euclidean onsets</label>
+  <div id="euclidwidgets" class="euclid toggle">
+    <p></p>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
+      <label for="onsets">Euclidean onsets</label>
+    </div>
   </div>
-</div>
-<div id="christoffelwidgets" class="christoffel toggle">
-  <p></p>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
-    <label for="numerator">Numerator</label>
+  <div id="christoffelwidgets" class="christoffel toggle">
+    <p></p>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
+      <label for="numerator">Numerator</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
+      <label for="denominator">Denominator</label>
+    </div>
+    <div class="form-floating d-inline-flex align-items-center">
+      <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+        <option value="u">Upper</option>
+        <option value="l">Lower</option>
+      </select>
+      <label for="case">Case</label>
+    </div>
   </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
-    <label for="denominator">Denominator</label>
-  </div>
-  <div class="form-floating d-inline-flex align-items-center">
-    <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-      <option value="u">Upper</option>
-      <option value="l">Lower</option>
-    </select>
-    <label for="case">Case</label>
-  </div>
-</div>
   <p></p>
   <button type="button" id="btnRemove" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
 </div>
