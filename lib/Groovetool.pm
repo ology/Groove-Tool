@@ -90,11 +90,11 @@ sub process {
         }
 
         if ($part->{style} eq 'quarter') {
-            $part->{factor} = 4;
+            $part->{factor} = 4; # XXX this should be assigned earlier?
             push @phrases, sub { $self->beat_part($part) };
         }
         elsif ($part->{style} eq 'eighth') {
-            $part->{factor} = 8;
+            $part->{factor} = 8; # XXX this should be assigned earlier?
             push @phrases, sub { $self->beat_part($part) };
         }
         elsif ($part->{style} eq 'euclid') {
