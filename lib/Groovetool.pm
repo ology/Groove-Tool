@@ -212,11 +212,16 @@ sub fill_part {
     );
 }
 
-# TODO enhance this to be an actual fill
 sub _fill {
     my ($self, $phrases) = @_;
     for (keys %$phrases) {
-        $phrases->{$_} = $phrases->{$_}[0];
+        if ($_ == $self->drummer->acoustic_snare || $_ == $self->drummer->electric_snare) {
+            my $onsets = 1 + int rand $self->size;
+            $phrases->{$_} = $self->euclidean_pattern({ onsets => $onsets });
+        }
+        else {
+            $phrases->{$_} = $phrases->{$_}[0];
+        }
     }
     return {
         duration => $self->size,
