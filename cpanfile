@@ -6,6 +6,7 @@ requires 'Mojolicious';
 requires 'Moo';
 requires 'Music::CreatingRhythms';
 requires 'Music::Duration::Partition';
+requires 'Music::RhythmSet::Util';
 requires 'Music::Scales';
 requires 'Music::VoiceGen';
 requires 'Time::HiRes';
