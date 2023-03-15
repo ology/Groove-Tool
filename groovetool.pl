@@ -363,31 +363,28 @@ MIDI: &nbsp;
     <label for="shift">Shift by</label>
   </div>
   <p></p>
-  <div class="d-inline-flex align-items-center">
+  <div class="d-inline-flex">
     <input class="form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
-    &nbsp;
-    &nbsp;
     <label for="quarter_style">Quarter notes</label>
   </div>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <div class="d-inline-flex align-items-center">
+  <div class="d-inline-flex">
     <input class="form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
-    &nbsp;
-    &nbsp;
     <label for="eighth_style">Eighth notes</label>
   </div>
+  <div class="d-inline-flex">
+    <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
+    <label for="euclid_style">Euclidean</label>
+  </div>
+  <div class="d-inline-flex">
+    <input class="form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
+    <label for="christo_style">Christoffel</label>
+  </div>
   <p></p>
-  <input class="form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
-  &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
     <label for="onsets">Euclidean onsets</label>
   </div>
   <p></p>
-  <input class="form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
-  &nbsp;
   <div class="form-floating d-inline-flex align-items-center">
     <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
     <label for="numerator">Numerator</label>
@@ -405,7 +402,7 @@ MIDI: &nbsp;
     <label for="case">Case</label>
   </div>
   <p></p>
-  <button type="button" id="btnRemove" class="btnRemovePart btn btn-danger btn-sm">Remove Part</button>
+  <button type="button" id="btnRemove" class="btnRemovePart btn btn-secondary btn-sm">Remove Part</button>
 </div>
 
 <p></p>
