@@ -268,14 +268,9 @@ MIDI: &nbsp;
         <hr>
         <div class="form-floating d-inline-flex align-items-center">
           <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
-            <option value="44" <%= $part->{strike} == 44 ? 'selected' : '' %>>Pedal Hihat</option>
-            <option value="42" <%= $part->{strike} == 42 ? 'selected' : '' %>>Closed Hihat</option>
-            <option value="46" <%= $part->{strike} == 46 ? 'selected' : '' %>>Open Hihat</option>
-            <option value="37" <%= $part->{strike} == 37 ? 'selected' : '' %>>Side Stick</option>
-            <option value="38" <%= $part->{strike} == 38 ? 'selected' : '' %>>Acoustic Snare</option>
-            <option value="40" <%= $part->{strike} == 40 ? 'selected' : '' %>>Electric Snare</option>
-            <option value="35" <%= $part->{strike} == 35 ? 'selected' : '' %>>Bass Drum</option>
-            <option value="36" <%= $part->{strike} == 36 ? 'selected' : '' %>>Electric Bass Drum</option>
+%     for my $perc (sort keys %$kit) {
+            <option value="<%= $kit->{$perc} %>" <%= $part->{strike} == $kit->{$perc} ? 'selected' : '' %>><%= $perc %></option>
+%     }
           </select>
           <label for="strike_<%= $key %>">Strike</label>
         </div>
