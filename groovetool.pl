@@ -554,6 +554,13 @@ $(document).ready(function () {
       $(this).closest(".part").remove();
     }
   });
+  $("body").on("click", "#removeg", function() {
+    var result = confirm("Remove this groove?");
+    if (result) {
+      return true;
+    }
+    return false;
+  });
   $("body").on("click", ".trigger", function() {
     var name = $(this).val();
     var id = $(this).attr("id");
