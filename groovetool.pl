@@ -418,8 +418,8 @@ Settings:
   <div class="form-floating d-inline-flex">
     <div class="col-12">
       <div class="form-check form-check-inline">
-        <label class="form-check-label" for="fillin">Fill-in</label>
         <input class="form-check-input" type="checkbox" id="fillin" name="fillin" title="Play a fill on the last bar">
+        <label class="form-check-label" for="fillin">Add Fill</label>
       </div>
     </div>
   </div>
