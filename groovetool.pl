@@ -403,26 +403,35 @@ Settings:
   <div id="euclidwidgets" class="euclid toggle">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
-      <label for="onsets">Euclidean onsets</label>
+      <div class="col-auto">
+        <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
+        <label for="onsets">Euclidean onsets</label>
+      </div>
     </div>
   </div>
   <div id="christoffelwidgets" class="christoffel toggle">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
-      <label for="numerator">Numerator</label>
+      <div class="col-auto">
+        <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
+        <label for="numerator">Numerator</label>
+      </div>
     </div>
     <div class="form-floating d-inline-flex align-items-center">
-      <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
-      <label for="denominator">Denominator</label>
+      <div class="col-auto">
+        <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
+        <label for="denominator">Denominator</label>
+      </div>
     </div>
+    <br>
     <div class="form-floating d-inline-flex align-items-center">
-      <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-        <option value="u">Upper</option>
-        <option value="l">Lower</option>
-      </select>
-      <label for="case">Case</label>
+      <div class="col-auto">
+        <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+          <option value="u">Upper</option>
+          <option value="l">Lower</option>
+        </select>
+        <label for="case">Case</label>
+      </div>
     </div>
   </div>
   <p></p>
