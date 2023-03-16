@@ -6,7 +6,7 @@ use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util); # local author libs
 use Data::Dumper::Compact qw(ddc);
 use File::Find::Rule ();
 use MIDI::Util qw(midi_dump);
-use Storable qw(retrieve store);
+use Storable qw(retrieve nstore);
 use Time::HiRes qw(time);
 
 use lib 'lib';
@@ -61,7 +61,7 @@ get '/' => sub ($c) {
   # save or load grooves
   if ($saveg) {
     my $name = $path . $saveg;
-    store(\%phrases, $name);
+    nstore(\%phrases, $name);
     # flash success/fail?
   }
   if ($loadg) {
