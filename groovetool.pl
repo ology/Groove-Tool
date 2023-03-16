@@ -73,8 +73,8 @@ get '/' => sub ($c) {
   }
   if ($loadg) {
     $filename = "/$loadg";
-    $loadg = $path . $filename;
-    %phrases = %{ retrieve $loadg };
+    my $name = $path . $filename;
+    %phrases = %{ retrieve $name };
     # flash success/fail?
   }
   # gather saved grooves
