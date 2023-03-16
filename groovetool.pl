@@ -238,15 +238,15 @@ Settings:
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
-    <div class="col-auto">
+    <div class="col-4">
       <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Required allowed durations: qn = quarter note, en = eighth, etc." placeholder="Required allowed durations">
       <label for="bpool">Pool</label>
     </div>
-    <div class="col-auto">
+    <div class="col-4">
       <input type="text" class="form-control form-control-sm" id="bweights" name="bweights" value="<%= $bweights %>" title="Optional weights of durations" placeholder="Optional weights of durations">
       <label for="bweights">Weights</label>
     </div>
-    <div class="col-auto">
+    <div class="col-4">
       <input type="text" class="form-control form-control-sm" id="bgroups" name="bgroups" value="<%= $bgroups %>" title="Optional groupings of durations" placeholder="Optional groupings of durations">
       <label for="bgroups">Groups</label>
     </div>
