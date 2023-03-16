@@ -295,7 +295,7 @@ Settings:
             <label for="shift_<%= $key %>">Shift by</label>
           </div>
         </div>
-        <p></p>
+        <br>
         <div class="d-inline-flex">
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           <label class="px-2" for="quarter_style_<%= $key %>">Quarter</label>
@@ -309,8 +309,10 @@ Settings:
         <div id="euclidwidgets_<%= $key %>" class="euclid toggle">
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
-            <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
-            <label for="onsets_<%= $key %>">Euclidean onsets</label>
+            <div class="col-12">
+              <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
+              <label for="onsets_<%= $key %>">Euclidean onsets</label>
+            </div>
           </div>
         </div>
         <div id="christoffelwidgets_<%= $key %>" class="christoffel toggle">
@@ -393,7 +395,7 @@ Settings:
   <div id="euclidwidgets" class="euclid toggle">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
-      <div class="col-auto">
+      <div class="col-12">
         <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
         <label for="onsets">Euclidean onsets</label>
       </div>
