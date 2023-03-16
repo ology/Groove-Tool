@@ -18,6 +18,8 @@ get '/' => sub ($c) {
   my $submit   = $c->param('submit')   || 0;
   my $my_bpm   = $c->param('my_bpm')   || 60; # 1 - ?
   my $repeat   = $c->param('repeat')   || 1; # number of times to repeat
+  my $my_duel  = $c->param('my_duel')  || 0; # alternate with the hihat-only, counterpart section
+  my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
   my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
@@ -29,8 +31,6 @@ get '/' => sub ($c) {
   my $bpool    = $c->param('bpool')    || 'qn en sn'; # MIDI-Perl note durations
   my $bweights = $c->param('bweights') // '1 1 1'; # weights of the note duration pool
   my $bgroups  = $c->param('bgroups')  // '1 2 4'; # groupings of the pool notes
-  my $my_duel  = $c->param('my_duel')  || 0; # alternate with the hihat-only, counterpart section
-  my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
 
   my %phrases;
   for my $param ($c->req->params->names->@*) {
