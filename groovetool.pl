@@ -313,8 +313,8 @@ Settings:
     <div class="form-floating d-inline-flex">
       <div class="col-12">
         <div class="form-check form-check-inline">
-          <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
           <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
+          <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
         </div>
       </div>
     </div>
