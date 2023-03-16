@@ -262,13 +262,12 @@ Settings:
     <button type="button" id="btnRemoveSection_<%= $top %>" class="btnRemoveSection btn btn-danger btn-sm">Remove Section</button>
     <button type="button" id="btnAddPart_<%= $top %>" class="btnAddPart btn btn-success btn-sm" data-section="<%= $top %>" data-lastpart="<%= $phrases->{$top}{parts} %>">Add Part</button>
     <p></p>
-    <div class="form-floating d-inline-flex align-items-center">
-      <div class="col-auto">
+    <div class="form-floating d-inline-flex">
+      <div class="col-6">
         <input type="number" class="form-control form-control-sm" id="bars_<%= $top %>" name="bars_<%= $top %>" min="1" max="32" value="<%= $phrases->{$top}{bars} %>" title="1 to 32 measures">
         <label for="bars_<%= $top %>">Bars</label>
       </div>
-    </div>
-    <div class="d-inline-flex align-items-center">
+      &nbsp;
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
         <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
@@ -283,16 +282,18 @@ Settings:
       <div id="part_<%= $key %>" class="part">
         <hr>
         <div class="form-floating d-inline-flex align-items-center">
-          <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
-%     for my $perc (sort keys %$kit) {
-            <option value="<%= $kit->{$perc} %>" <%= $part->{strike} == $kit->{$perc} ? 'selected' : '' %>><%= $perc %></option>
-%     }
-          </select>
-          <label for="strike_<%= $key %>">Strike</label>
-        </div>
-        <div class="form-floating d-inline-flex align-items-center">
-          <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
-          <label for="shift_<%= $key %>">Shift by</label>
+          <div class="col-6">
+            <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
+  %     for my $perc (sort keys %$kit) {
+              <option value="<%= $kit->{$perc} %>" <%= $part->{strike} == $kit->{$perc} ? 'selected' : '' %>><%= $perc %></option>
+  %     }
+            </select>
+            <label for="strike_<%= $key %>">Strike</label>
+          </div>
+          <div class="col-6">
+            <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
+            <label for="shift_<%= $key %>">Shift by</label>
+          </div>
         </div>
         <p></p>
         <div class="d-inline-flex">
