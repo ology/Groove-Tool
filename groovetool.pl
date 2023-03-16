@@ -367,7 +367,7 @@ Settings:
 <div class="defaultPart d-none">
   <hr>
   <div class="form-floating d-inline-flex align-items-center">
-    <div class="col-auto">
+    <div class="col-6">
       <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
 % for my $perc (sort keys %$kit) {
         <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
@@ -375,7 +375,7 @@ Settings:
       </select>
       <label for="strike">Strike</label>
     </div>
-    <div class="col-auto">
+    <div class="col-6">
       <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
       <label for="shift">Shift by</label>
     </div>
