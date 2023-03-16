@@ -323,7 +323,7 @@ Settings:
           <div class="form-floating d-inline-flex align-items-center">
             <div class="col-4">
               <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
-              <label for="numerator_<%= $key %>">Christoffel Numerator</label>
+              <label for="numerator_<%= $key %>">Numerator</label>
             </div>
 &nbsp;
             <div class="col-4">
