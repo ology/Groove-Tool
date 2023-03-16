@@ -198,6 +198,20 @@ Settings:
 
 <div class="collapse" id="generalSettings">
   <p></p>
+  <div class="d-inline-flex">
+    <div class="col-6">
+      <select id="loadg" name="loadg" class="form-select" title="Load a saved groove" onchange="this.form.submit()">
+        <option value="">Load...</option>
+% for my $file (@$grooves) {
+        <option value="<%= $file %>"><%= $file %></option>
+% }
+      </select>
+    </div>
+    <div class="col-6 px-2">
+      <button type="submit" id="saveg" name="saveg" class="btn btn-warning btn-sm" value="<%= $filename %>">Save groove</button>
+    </div>
+  </div>
+  <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-3">
       <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
@@ -217,20 +231,6 @@ Settings:
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="my_duel" name="my_duel" <%= $my_duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
       <label class="form-check-label" for="my_duel">Duel</label>
-    </div>
-  </div>
-  <p></p>
-  <div class="d-inline-flex">
-    <div class="col-6">
-      <select id="loadg" name="loadg" class="form-select" title="Load a saved groove" onchange="this.form.submit()">
-        <option value="">Load...</option>
-% for my $file (@$grooves) {
-        <option value="<%= $file %>"><%= $file %></option>
-% }
-      </select>
-    </div>
-    <div class="col-6 px-2">
-      <button type="submit" id="saveg" name="saveg" class="btn btn-warning btn-sm" value="<%= $filename %>">Save groove</button>
     </div>
   </div>
 </div>
