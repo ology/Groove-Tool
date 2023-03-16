@@ -375,9 +375,6 @@ Settings:
       </select>
       <label for="strike">Strike</label>
     </div>
-  </div>
-  <br>
-  <div class="form-floating d-inline-flex align-items-center">
     <div class="col-auto">
       <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
       <label for="shift">Shift by</label>
