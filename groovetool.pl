@@ -290,6 +290,7 @@ Settings:
             </select>
             <label for="strike_<%= $key %>">Strike</label>
           </div>
+&nbsp;
           <div class="col-6">
             <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
             <label for="shift_<%= $key %>">Shift by</label>
@@ -322,10 +323,12 @@ Settings:
               <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
               <label for="numerator_<%= $key %>">Christoffel Numerator</label>
             </div>
+&nbsp;
             <div class="col-4">
               <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
               <label for="denominator_<%= $key %>">Denominator</label>
             </div>
+&nbsp;
             <div class="col-4">
               <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
                 <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
@@ -378,6 +381,7 @@ Settings:
       </select>
       <label for="strike">Strike</label>
     </div>
+&nbsp;
     <div class="col-6">
       <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
       <label for="shift">Shift by</label>
@@ -410,10 +414,12 @@ Settings:
         <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
         <label for="numerator">Numerator</label>
       </div>
+&nbsp;
       <div class="col-4">
         <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
         <label for="denominator">Denominator</label>
       </div>
+&nbsp;
       <div class="col-4">
         <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
           <option value="u">Upper</option>
