@@ -163,9 +163,10 @@ MIDI: &nbsp;
 
 <p></p>
 <div>
-  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#generalSettings">General Settings</button>
-  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum Settings</button>
-  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass Settings</button>
+Settings:
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#generalSettings">General</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#drumSettings">Drum</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" data-bs-target="#bassSettings">Bass</button>
 </div>
 
 <div class="collapse" id="generalSettings">
