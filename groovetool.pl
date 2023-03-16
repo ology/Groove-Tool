@@ -382,9 +382,9 @@ Settings:
   <p></p>
   <div class="d-inline-flex">
     <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
-    <label class="px-2" for="quarter_style">Quarter notes</label>
+    <label class="px-2" for="quarter_style">Quarter</label>
     <input class="trigger form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
-    <label class="px-2" for="eighth_style">Eighth notes</label>
+    <label class="px-2" for="eighth_style">Eighth</label>
     <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
     <label class="px-2" for="euclid_style">Euclidean</label>
     <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
