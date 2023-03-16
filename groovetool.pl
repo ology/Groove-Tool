@@ -282,7 +282,7 @@ Settings:
       <div id="part_<%= $key %>" class="part">
         <hr>
         <div class="form-floating d-inline-flex align-items-center">
-          <div class="col-6">
+          <div class="col-7">
             <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
   %     for my $perc (sort keys %$kit) {
               <option value="<%= $kit->{$perc} %>" <%= $part->{strike} == $kit->{$perc} ? 'selected' : '' %>><%= $perc %></option>
@@ -291,7 +291,7 @@ Settings:
             <label for="strike_<%= $key %>">Strike</label>
           </div>
 &nbsp;
-          <div class="col-6">
+          <div class="col-5">
             <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
             <label for="shift_<%= $key %>">Shift by</label>
           </div>
@@ -373,7 +373,7 @@ Settings:
 <div class="defaultPart d-none">
   <hr>
   <div class="form-floating d-inline-flex align-items-center">
-    <div class="col-6">
+    <div class="col-7">
       <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
 % for my $perc (sort keys %$kit) {
         <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
@@ -382,7 +382,7 @@ Settings:
       <label for="strike">Strike</label>
     </div>
 &nbsp;
-    <div class="col-6">
+    <div class="col-5">
       <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
       <label for="shift">Shift by</label>
     </div>
