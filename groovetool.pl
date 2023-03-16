@@ -6,6 +6,7 @@ use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util); # local author libs
 use Data::Dumper::Compact qw(ddc);
 use File::Find::Rule ();
 use MIDI::Util qw(midi_dump);
+use Storable qw(retrieve store);
 use Time::HiRes qw(time);
 
 use lib 'lib';
@@ -15,11 +16,13 @@ use constant MIDI_GLOB  => '*.mid';
 use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
-  my $submit   = $c->param('submit')   || 0;
+  my $submit   = $c->param('generate') || 0;
   my $my_bpm   = $c->param('my_bpm')   || 60; # 1 - ?
   my $repeat   = $c->param('repeat')   || 1; # number of times to repeat
   my $my_duel  = $c->param('my_duel')  || 0; # alternate with the hihat-only, counterpart section
   my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
+  my $loadg    = $c->param('loadg')    || ''; # load the given groove
+  my $saveg    = $c->param('saveg')    || ''; # save the current groove
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
   my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
@@ -53,6 +56,27 @@ get '/' => sub ($c) {
 
   my $filename = '';
   my $msgs = [];
+
+  # save or load grooves
+  if ($saveg) {
+    my $name = 'public/grooves' . $saveg;
+    store(\%phrases, $name);
+    # flash success/fail
+  }
+  if ($loadg) {
+    $loadg = 'public/grooves/' . $loadg;
+    my $data = retrieve $loadg;
+    %phrases = $data->%*;
+    # flash success/fail
+  }
+  # gather saved grooves
+  my @grooves = File::Find::Rule
+    ->file()
+    ->name('*.mid')
+    ->in('public/grooves');
+  for (@grooves) {
+    $_ =~ s/^public\/grooves\/([\d.]+\.mid)$/$1/;
+  }
 
   if ($submit) {
     $filename = '/' . time() . '.mid';
@@ -88,6 +112,7 @@ get '/' => sub ($c) {
     repeat   => $repeat,
     my_duel  => $my_duel,
     countin  => $countin,
+    grooves  => \@grooves,
     phrases  => \%phrases,
     kit      => $kit,
     dvolume  => $dvolume,
@@ -136,7 +161,7 @@ __DATA__
 
 <form id="groove_form">
 
-<input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
+<input type="submit" class="btn btn-sm btn-primary" name="generate" value="Generate">
 <button type="button" id="btnAddSection1" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 % if ($filename) {
@@ -190,6 +215,20 @@ Settings:
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="my_duel" name="my_duel" <%= $my_duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
       <label class="form-check-label" for="my_duel">Duel</label>
+    </div>
+  </div>
+  <p></p>
+  <div class="d-inline-flex">
+    <div class="col-6">
+      <select id="loadg" name="loadg" class="form-select" title="Load a saved groove" onchange="this.form.submit()">
+        <option value="">Load...</option>
+% for my $file (@$grooves) {
+        <option value="<%= $file %>"><%= $file %></option>
+% }
+      </select>
+    </div>
+    <div class="col-6 px-2">
+      <button type="submit" id="saveg" name="saveg" class="btn btn-warning btn-sm" value="<%= $filename %>">Save groove</button>
     </div>
   </div>
 </div>
@@ -450,7 +489,7 @@ Settings:
 </div>
 
 <p></p>
-<input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
+<input type="submit" class="btn btn-sm btn-primary" name="generate" value="Generate">
 <button type="button" id="btnAddSection2" class="btnAddSection btn btn-success btn-sm">Add Section</button>
 
 </form>
