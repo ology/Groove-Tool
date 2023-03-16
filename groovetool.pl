@@ -373,18 +373,23 @@ Settings:
 <div class="defaultPart d-none">
   <hr>
   <div class="form-floating d-inline-flex align-items-center">
-    <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
+    <div class="col-auto">
+      <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
 % for my $perc (sort keys %$kit) {
-    <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
+        <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
 % }
-    </select>
-    <label for="strike">Strike</label>
+      </select>
+      <label for="strike">Strike</label>
+    </div>
   </div>
+  <br>
   <div class="form-floating d-inline-flex align-items-center">
-    <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
-    <label for="shift">Shift by</label>
+    <div class="col-auto">
+      <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
+      <label for="shift">Shift by</label>
+    </div>
   </div>
-  <p></p>
+  <br>
   <div class="d-inline-flex">
     <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
     <label class="px-2" for="quarter_style">Quarter</label>
