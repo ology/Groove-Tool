@@ -318,19 +318,21 @@ Settings:
         <div id="christoffelwidgets_<%= $key %>" class="christoffel toggle">
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
-            <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
-            <label for="numerator_<%= $key %>">Christoffel Numerator</label>
-          </div>
-          <div class="form-floating d-inline-flex align-items-center">
-            <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
-            <label for="denominator_<%= $key %>">Denominator</label>
-          </div>
-          <div class="form-floating d-inline-flex align-items-center">
-            <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
-              <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
-              <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
-            </select>
-            <label for="case_<%= $key %>">Case</label>
+            <div class="col-4">
+              <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
+              <label for="numerator_<%= $key %>">Christoffel Numerator</label>
+            </div>
+            <div class="col-4">
+              <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
+              <label for="denominator_<%= $key %>">Denominator</label>
+            </div>
+            <div class="col-4">
+              <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+                <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
+                <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
+              </select>
+              <label for="case_<%= $key %>">Case</label>
+            </div>
           </div>
         </div>
         <p></p>
@@ -404,20 +406,15 @@ Settings:
   <div id="christoffelwidgets" class="christoffel toggle">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
-      <div class="col-auto">
+      <div class="col-4">
         <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
         <label for="numerator">Numerator</label>
       </div>
-    </div>
-    <div class="form-floating d-inline-flex align-items-center">
-      <div class="col-auto">
+      <div class="col-4">
         <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
         <label for="denominator">Denominator</label>
       </div>
-    </div>
-    <br>
-    <div class="form-floating d-inline-flex align-items-center">
-      <div class="col-auto">
+      <div class="col-4">
         <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
           <option value="u">Upper</option>
           <option value="l">Lower</option>
