@@ -65,7 +65,7 @@ get '/' => sub ($c) {
   }
   if ($loadg) {
     $filename = "/$loadg";
-    $loadg = 'public/grooves/' . $loadg;
+    $loadg = 'public/grooves' . $filename;
     my $data = retrieve $loadg;
     %phrases = $data->%*;
     # flash success/fail
