@@ -35,6 +35,10 @@ get '/' => sub ($c) {
   my $bweights = $c->param('bweights') // '1 1 1'; # weights of the note duration pool
   my $bgroups  = $c->param('bgroups')  // '1 2 4'; # groupings of the pool notes
 
+  my $path = 'public/grooves';
+  my $filename = '';
+  my $msgs = [];
+
   my %phrases;
   for my $param ($c->req->params->names->@*) {
     next unless $c->param($param);
@@ -54,18 +58,15 @@ get '/' => sub ($c) {
 
   _purge($c); # purge defunct midi files
 
-  my $filename = '';
-  my $msgs = [];
-
   # save or load grooves
   if ($saveg) {
-    my $name = 'public/grooves' . $saveg;
+    my $name = $path . $saveg;
     store(\%phrases, $name);
     # flash success/fail
   }
   if ($loadg) {
     $filename = "/$loadg";
-    $loadg = 'public/grooves' . $filename;
+    $loadg = $path . $filename;
     my $data = retrieve $loadg;
     %phrases = $data->%*;
     # flash success/fail
@@ -74,9 +75,9 @@ get '/' => sub ($c) {
   my @grooves = File::Find::Rule
     ->file()
     ->name('*.mid')
-    ->in('public/grooves');
+    ->in($path);
   for (@grooves) {
-    $_ =~ s/^public\/grooves\/([\d.]+\.mid)$/$1/;
+    $_ =~ s/^$path\/([\d.]+\.mid)$/$1/;
   }
 
   if ($submit) {
