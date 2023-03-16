@@ -268,9 +268,11 @@ Settings:
         <label for="bars_<%= $top %>">Bars</label>
       </div>
       &nbsp;
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
-        <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
+      <div class="col-6">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
+          <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
+        </div>
       </div>
     </div>
 
@@ -363,9 +365,11 @@ Settings:
       <label for="bars">Bars</label>
     </div>
     &nbsp;
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="fillin" name="fillin" title="Play a fill on the last bar">
-      <label class="form-check-label" for="fillin">Fill-in</label>
+    <div class="col-6">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="fillin" name="fillin" title="Play a fill on the last bar">
+        <label class="form-check-label" for="fillin">Fill-in</label>
+      </div>
     </div>
   </div>
 </div>
