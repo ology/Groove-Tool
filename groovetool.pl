@@ -63,6 +63,7 @@ get '/' => sub ($c) {
   if ($removeg) {
     my $name = $path . $removeg;
     unlink $name or warn "Can't unlink $name: $!\n";
+    # flash success/fail?
   }
   if ($saveg) {
     $filename = $saveg;
