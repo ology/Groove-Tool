@@ -67,7 +67,7 @@ get '/' => sub ($c) {
   }
   if ($saveg) {
     $filename = $saveg;
-    my $name = $path . $saveg;
+    my $name = $path . $filename;
     nstore(\%phrases, $name);
     # flash success/fail?
   }
