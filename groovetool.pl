@@ -214,23 +214,23 @@ Settings:
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-3">
-      <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
       <label for="my_bpm">BPM</label>
+      <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
     </div>
     <div class="col-3">
-      <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
       <label for="repeat">Repeat</label>
+      <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats">
     </div>
   </div>
   <p></p>
   <div class="d-inline-flex align-items-center">
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
       <label class="form-check-label" for="countin">Count-in</label>
+      <input class="form-check-input" type="checkbox" id="countin" name="countin" <%= $countin ? 'checked' : '' %> title="Play 4 hihat notes to start things off">
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="my_duel" name="my_duel" <%= $my_duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
       <label class="form-check-label" for="my_duel">Duel</label>
+      <input class="form-check-input" type="checkbox" id="my_duel" name="my_duel" <%= $my_duel ? 'checked' : '' %> title="alternate with a hihat-only, 'counterpart' section">
     </div>
   </div>
 </div>
@@ -239,12 +239,12 @@ Settings:
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-3">
-      <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
       <label for="dvolume">Volume</label>
+      <input type="number" class="form-control form-control-sm" id="dvolume" name="dvolume" min="0" max="127" value="<%= $dvolume %>" title="0 to 127 defining the drums volume">
     </div>
     <div class="col-3">
-      <input type="number" class="form-control form-control-sm" id="dreverb" name="dreverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
       <label for="dreverb">Reverb</label>
+      <input type="number" class="form-control form-control-sm" id="dreverb" name="dreverb" min="0" max="127" value="<%= $dreverb %>" title="0 to 127 drum reverb amount">
     </div>
   </div>
 </div>
@@ -253,43 +253,43 @@ Settings:
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-2">
-      <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
       <label for="bnote">Note</label>
+      <input type="text" class="form-control form-control-sm" id="bnote" name="bnote" value="<%= $bnote %>" maxlength="2" title="C, C#, Db, D, ... B bass scale starting note">
     </div>
     <div class="col-2">
-      <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
       <label for="bscale">Scale</label>
+      <input type="text" class="form-control form-control-sm" id="bscale" name="bscale" value="<%= $bscale %>" title="bass scale name">
     </div>
     <div class="col-2">
-      <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
       <label for="bpatch">Patch</label>
+      <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
     </div>
     <div class="col-2">
-      <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
       <label for="bvolume">Volume</label>
+      <input type="number" class="form-control form-control-sm" id="bvolume" name="bvolume" min="0" max="127" value="<%= $bvolume %>" title="0 to 127 defining the bass volume">
     </div>
     <div class="col-2">
-      <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
       <label for="boctave">Octave</label>
+      <input type="number" class="form-control form-control-sm" id="boctave" name="boctave" min="1" max="4" value="<%= $boctave %>" title="Bass octave from 1 to 4">
     </div>
     <div class="col-2">
-      <input type="number" class="form-control form-control-sm" id="bsize" name="bsize" min="1" max="4" value="<%= $bsize %>" title="Phrase size from 1 to 4 beats">
       <label for="bsize">Phrase</label>
+      <input type="number" class="form-control form-control-sm" id="bsize" name="bsize" min="1" max="4" value="<%= $bsize %>" title="Phrase size from 1 to 4 beats">
     </div>
   </div>
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-4">
-      <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Required allowed durations: qn = quarter note, en = eighth, etc." placeholder="Required allowed durations">
       <label for="bpool">Pool</label>
+      <input type="text" class="form-control form-control-sm" id="bpool" name="bpool" value="<%= $bpool %>" title="Required allowed durations: qn = quarter note, en = eighth, etc." placeholder="Required allowed durations">
     </div>
     <div class="col-4">
-      <input type="text" class="form-control form-control-sm" id="bweights" name="bweights" value="<%= $bweights %>" title="Optional weights of durations" placeholder="Optional weights of durations">
       <label for="bweights">Weights</label>
+      <input type="text" class="form-control form-control-sm" id="bweights" name="bweights" value="<%= $bweights %>" title="Optional weights of durations" placeholder="Optional weights of durations">
     </div>
     <div class="col-4">
-      <input type="text" class="form-control form-control-sm" id="bgroups" name="bgroups" value="<%= $bgroups %>" title="Optional groupings of durations" placeholder="Optional groupings of durations">
       <label for="bgroups">Groups</label>
+      <input type="text" class="form-control form-control-sm" id="bgroups" name="bgroups" value="<%= $bgroups %>" title="Optional groupings of durations" placeholder="Optional groupings of durations">
     </div>
   </div>
 </div>
@@ -304,15 +304,17 @@ Settings:
     <button type="button" id="btnAddPart_<%= $top %>" class="btnAddPart btn btn-success btn-sm" data-section="<%= $top %>" data-lastpart="<%= $phrases->{$top}{parts} %>"><i class="fa fa-plus" aria-hidden="true"></i> Add Part</button>
     <p></p>
     <div class="form-floating d-inline-flex">
-      <div class="col-6">
-        <input type="number" class="form-control form-control-sm" id="bars_<%= $top %>" name="bars_<%= $top %>" min="1" max="32" value="<%= $phrases->{$top}{bars} %>" title="1 to 32 measures">
+      <div class="col-12">
         <label for="bars_<%= $top %>">Bars</label>
+        <input type="number" class="form-control form-control-sm" id="bars_<%= $top %>" name="bars_<%= $top %>" min="1" max="32" value="<%= $phrases->{$top}{bars} %>" title="1 to 32 measures">
       </div>
-      &nbsp;
-      <div class="col-6">
+    </div>
+    <p></p>
+    <div class="form-floating d-inline-flex">
+      <div class="col-12">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
           <label class="form-check-label" for="fillin_<%= $top %>">Add Fill</label>
+          <input class="form-check-input" type="checkbox" id="fillin_<%= $top %>" name="fillin_<%= $top %>" <%= $phrases->{$top}{fillin} ? 'checked' : '' %> title="Play a fill on the last bar">
         </div>
       </div>
     </div>
@@ -326,42 +328,42 @@ Settings:
         <hr>
         <div class="form-floating d-inline-flex align-items-center">
           <div class="col-7">
+            <label for="strike_<%= $key %>">Strike</label>
             <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
   %     for my $perc (sort keys %$kit) {
               <option value="<%= $kit->{$perc} %>" <%= $part->{strike} == $kit->{$perc} ? 'selected' : '' %>><%= $perc %></option>
   %     }
             </select>
-            <label for="strike_<%= $key %>">Strike</label>
           </div>
 &nbsp;
           <div class="col-5">
-            <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
             <label for="shift_<%= $key %>">Shift by</label>
+            <input type="number" class="form-control form-control-sm" id="shift_<%= $key %>" name="shift_<%= $key %>" min="0" max="15" value="<%= $part->{shift} %>" title="Shift sequence by N">
           </div>
         </div>
-        <br>
+        <p></p>
         <div class="d-inline-flex">
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
           <label class="px-1" for="quarter_style_<%= $key %>">Quarter</label>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
         </div>
         <div class="d-inline-flex">
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
           <label class="px-1" for="eighth_style_<%= $key %>">Eighth</label>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
         </div>
         <div class="d-inline-flex">
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
           <label class="px-1" for="euclid_style_<%= $key %>">Euclid</label>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
         </div>
         <div class="d-inline-flex">
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
           <label class="px-1" for="christo_style_<%= $key %>">Christoffel</label>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
         </div>
         <div id="euclidwidgets_<%= $key %>" class="euclid toggle">
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
             <div class="col-12">
-              <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
               <label for="onsets_<%= $key %>">Euclidean onsets</label>
+              <input type="number" class="form-control form-control-sm" id="onsets_<%= $key %>" name="onsets_<%= $key %>" min="1" max="16" value="<%= $part->{onsets} %>" title="Number of Euclidean onsets">
             </div>
           </div>
         </div>
@@ -369,21 +371,21 @@ Settings:
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
             <div class="col-4">
-              <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
               <label for="numerator_<%= $key %>">Numerator</label>
+              <input type="number" class="form-control form-control-sm" id="numerator_<%= $key %>" name="numerator_<%= $key %>" min="1" max="16" value="<%= $part->{numerator} %>" title="Christoffel numerator">
             </div>
 &nbsp;
             <div class="col-4">
-              <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
               <label for="denominator_<%= $key %>">Denominator</label>
+              <input type="number" class="form-control form-control-sm" id="denominator_<%= $key %>" name="denominator_<%= $key %>" min="1" max="16" value="<%= $part->{denominator} %>" title="Christoffel denominator">
             </div>
 &nbsp;
             <div class="col-4">
+              <label for="case_<%= $key %>">Case</label>
               <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
                 <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
                 <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
               </select>
-              <label for="case_<%= $key %>">Case</label>
             </div>
           </div>
         </div>
@@ -407,15 +409,17 @@ Settings:
   <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="0" data-lastpart="0"><i class="fa fa-plus" aria-hidden="true"></i> Add Part</button>
   <p></p>
   <div class="form-floating d-inline-flex">
-    <div class="col-6">
-      <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="2" title="1 to 32 measures">
+    <div class="col-12">
       <label for="bars">Bars</label>
+      <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="2" title="1 to 32 measures">
     </div>
-    &nbsp;
-    <div class="col-6">
+  </div>
+  <p></p>
+  <div class="form-floating d-inline-flex">
+    <div class="col-12">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="fillin" name="fillin" title="Play a fill on the last bar">
         <label class="form-check-label" for="fillin">Fill-in</label>
+        <input class="form-check-input" type="checkbox" id="fillin" name="fillin" title="Play a fill on the last bar">
       </div>
     </div>
   </div>
@@ -425,42 +429,42 @@ Settings:
   <hr>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-7">
+      <label for="strike">Strike</label>
       <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
 % for my $perc (sort keys %$kit) {
         <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
 % }
       </select>
-      <label for="strike">Strike</label>
     </div>
 &nbsp;
     <div class="col-5">
-      <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
       <label for="shift">Shift by</label>
+      <input type="number" class="form-control form-control-sm" id="shift" name="shift" min="0" max="15" value="" title="Shift sequence by N">
     </div>
   </div>
-  <br>
+  <p></p>
   <div class="d-inline-flex">
-    <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
     <label class="px-1" for="quarter_style">Quarter</label>
+    <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
   </div>
   <div class="d-inline-flex">
-    <input class="trigger form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
     <label class="px-1" for="eighth_style">Eighth</label>
+    <input class="trigger form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
   </div>
   <div class="d-inline-flex">
-    <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
     <label class="px-1" for="euclid_style">Euclid</label>
+    <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
   </div>
   <div class="d-inline-flex">
-    <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
     <label class="px-1" for="christo_style">Christoffel</label>
+    <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
   </div>
   <div id="euclidwidgets" class="euclid toggle">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
       <div class="col-12">
-        <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
         <label for="onsets">Euclidean onsets</label>
+        <input type="number" class="form-control form-control-sm" id="onsets" name="onsets" min="1" max="16" value="" title="Number of Euclidean onsets">
       </div>
     </div>
   </div>
@@ -468,21 +472,21 @@ Settings:
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
       <div class="col-4">
-        <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
         <label for="numerator">Numerator</label>
+        <input type="number" class="form-control form-control-sm" id="numerator" name="numerator" min="1" max="16" value="" title="Christoffel numerator">
       </div>
 &nbsp;
       <div class="col-4">
-        <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
         <label for="denominator">Denominator</label>
+        <input type="number" class="form-control form-control-sm" id="denominator" name="denominator" min="1" max="16" value="" title="Christoffel denominator">
       </div>
 &nbsp;
       <div class="col-4">
+        <label for="case">Case</label>
         <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
           <option value="u">Upper</option>
           <option value="l">Lower</option>
         </select>
-        <label for="case">Case</label>
       </div>
     </div>
   </div>
@@ -510,7 +514,7 @@ $(document).ready(function () {
     $inputs.each(function (index) {
       $(this).attr("id", $(this).attr("id") + "_" + i);
       $(this).attr("name", $(this).attr("name") + "_" + i);
-      $(this).nextAll("label:first").attr("for", $(this).attr("id"));
+      $(this).prevAll("label:first").attr("for", $(this).attr("id"));
     });
     $("#btnAddPart_" + i).attr("data-section", i);
   });
@@ -529,7 +533,7 @@ $(document).ready(function () {
     $inputs.each(function (index) {
       $(this).attr("id", $(this).attr("id") + "_" + section + "_" + j);
       $(this).attr("name", $(this).attr("name") + "_" + section + "_" + j);
-      $(this).nextAll("label:first").attr("for", $(this).attr("id"));
+      $(this).prevAll("label:first").attr("for", $(this).attr("id"));
     });
     var $divs = $("#part_" + section + "_" + j).find("div");
     $divs.each(function (index) {
