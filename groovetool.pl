@@ -65,6 +65,7 @@ get '/' => sub ($c) {
     unlink $name or warn "Can't unlink $name: $!\n";
   }
   if ($saveg) {
+    $filename = $saveg;
     my $name = $path . $saveg;
     nstore(\%phrases, $name);
     # flash success/fail?
