@@ -62,14 +62,14 @@ get '/' => sub ($c) {
   if ($saveg) {
     my $name = $path . $saveg;
     store(\%phrases, $name);
-    # flash success/fail
+    # flash success/fail?
   }
   if ($loadg) {
     $filename = "/$loadg";
     $loadg = $path . $filename;
     my $data = retrieve $loadg;
     %phrases = $data->%*;
-    # flash success/fail
+    # flash success/fail?
   }
   # gather saved grooves
   my @grooves = File::Find::Rule
