@@ -23,6 +23,7 @@ get '/' => sub ($c) {
   my $countin  = $c->param('countin')  || 0; # play 4 hihat notes to start things off
   my $loadg    = $c->param('loadg')    || ''; # load the given groove
   my $saveg    = $c->param('saveg')    || ''; # save the current groove
+  my $removeg  = $c->param('removeg')  || ''; # remove the current groove
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
   my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
@@ -58,7 +59,11 @@ get '/' => sub ($c) {
 
   _purge($c); # purge defunct midi files
 
-  # save or load grooves
+  # remove, save or load grooves
+  if ($removeg) {
+    my $name = $path . $removeg;
+    unlink $name or warn "Can't unlink $name: $!\n";
+  }
   if ($saveg) {
     my $name = $path . $saveg;
     nstore(\%phrases, $name);
@@ -199,7 +204,7 @@ Settings:
 <div class="collapse" id="generalSettings">
   <p></p>
   <div class="d-inline-flex">
-    <div class="col-6">
+    <div class="col-5">
       <select id="loadg" name="loadg" class="form-select" title="Load a saved groove" onchange="this.form.submit()">
         <option value="">Load...</option>
 % for my $file (@$grooves) {
@@ -207,8 +212,9 @@ Settings:
 % }
       </select>
     </div>
-    <div class="col-6 px-2">
-      <button type="submit" id="saveg" name="saveg" class="btn btn-warning btn-sm" value="<%= $filename %>">Save groove</button>
+    <div class="col-7 px-2">
+      <button type="submit" id="saveg" name="saveg" class="btn btn-warning btn-sm" value="<%= $filename %>">Save</button>
+      <button type="submit" id="removeg" name="removeg" class="btn btn-warning btn-sm" value="<%= $filename %>">Remove</button>
     </div>
   </div>
   <p></p>
