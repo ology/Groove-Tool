@@ -643,7 +643,7 @@ $(document).ready(function () {
   </head>
   <body>
     <p></p>
-    <div class="container padpage faded">
+    <div class="container padpage faded rounded">
       <h3><a href="/"><%= title %></a></h3>
       <%= content %>
       <p></p>
