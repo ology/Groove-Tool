@@ -356,12 +356,12 @@ Settings:
         </div>
         <p></p>
         <div class="d-inline-flex">
-          <label class="px-1" for="euclid_style_<%= $key %>">Euclid</label>
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
-        </div>
-        <div class="d-inline-flex">
           <label class="px-1" for="christo_style_<%= $key %>">Christoffel</label>
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
+        </div>
+        <div class="d-inline-flex">
+          <label class="px-1" for="euclid_style_<%= $key %>">Euclid</label>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
         </div>
         <div class="d-inline-flex">
           <label class="px-1" for="pfold_style_<%= $key %>">Fold</label>
@@ -479,12 +479,12 @@ Settings:
   </div>
   <p></p>
   <div class="d-inline-flex">
-    <label class="px-1" for="euclid_style">Euclid</label>
-    <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
-  </div>
-  <div class="d-inline-flex">
     <label class="px-1" for="christo_style">Christoffel</label>
     <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
+  </div>
+  <div class="d-inline-flex">
+    <label class="px-1" for="euclid_style">Euclid</label>
+    <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
   </div>
   <div class="d-inline-flex">
     <label class="px-1" for="fold_style">Fold</label>
