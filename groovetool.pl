@@ -212,7 +212,7 @@ Settings:
   <p></p>
   <div class="d-inline-flex">
     <div class="col-5">
-      <select id="loadg" name="loadg" class="form-select" title="Load a saved groove" onchange="this.form.submit()">
+      <select id="loadg" name="loadg" class="form-select form-select-sm" title="Load a saved groove" onchange="this.form.submit()">
         <option value="">Load...</option>
 % for my $file (@$grooves) {
         <option value="<%= $file %>"><%= $file %></option>
@@ -342,7 +342,7 @@ Settings:
         <div class="form-floating d-inline-flex align-items-center">
           <div class="col-7">
             <label for="strike_<%= $key %>">Strike</label>
-            <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select" aria-label="Drum strike">
+            <select id="strike_<%= $key %>" name="strike_<%= $key %>" class="form-select form-select-sm" aria-label="Drum strike">
   %     for my $perc (sort keys %$kit) {
               <option value="<%= $kit->{$perc} %>" <%= $part->{strike} == $kit->{$perc} ? 'selected' : '' %>><%= $perc %></option>
   %     }
@@ -395,7 +395,7 @@ Settings:
 &nbsp;
             <div class="col-4">
               <label for="case_<%= $key %>">Case</label>
-              <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+              <select id="case_<%= $key %>" name="case_<%= $key %>" class="form-select form-select-sm" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
                 <option value="u" <%= $part->{case} && $part->{case} eq 'u' ? 'selected' : '' %>>Upper</option>
                 <option value="l" <%= $part->{case} && $part->{case} eq 'l' ? 'selected' : '' %>>Lower</option>
               </select>
@@ -455,7 +455,7 @@ Settings:
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-7">
       <label for="strike">Strike</label>
-      <select id="strike" name="strike" class="form-select" aria-label="Drum strike">
+      <select id="strike" name="strike" class="form-select form-select-sm" aria-label="Drum strike">
 % for my $perc (sort keys %$kit) {
         <option value="<%= $kit->{$perc} %>"><%= $perc %></option>
 % }
@@ -508,7 +508,7 @@ Settings:
 &nbsp;
       <div class="col-4">
         <label for="case">Case</label>
-        <select id="case" name="case" class="form-select" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
+        <select id="case" name="case" class="form-select form-select-sm" aria-label="Upper or lower word" title="Upper or lower Christoffel word">
           <option value="u">Upper</option>
           <option value="l">Lower</option>
         </select>
