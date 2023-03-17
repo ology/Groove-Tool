@@ -43,6 +43,7 @@ get '/' => sub ($c) {
 
   my %phrases;
   for my $param ($c->req->params->names->@*) {
+    next if $param =~ /^bit/;
     next unless $c->param($param);
     if ($param =~ /^([a-z]+)_([\d_]+)$/) {
       my $key   = $1;
@@ -51,6 +52,7 @@ get '/' => sub ($c) {
     }
   }
   for my $key (sort keys %phrases) {
+    next if $key =~ /^bit/;
     next unless $key =~ /^\d+$/;
     my $parts = grep { $_ =~ /^$key\_/ } keys %phrases;
     $phrases{$key}->{parts} = $parts;
@@ -70,6 +72,7 @@ get '/' => sub ($c) {
   if ($saveg) {
     $filename = $saveg;
     my $name = $path . $filename;
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
     nstore(\%phrases, $name);
     # flash success/fail?
   }
