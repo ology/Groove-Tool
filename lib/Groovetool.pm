@@ -92,17 +92,17 @@ sub process {
 
         if ($part->{style} eq 'quarter') {
             $part->{factor} = 4; # XXX this should be assigned earlier?
-            push @phrases, sub { $self->beat_part($part) };
+            push @phrases, sub { $self->beat_part($part, $key) };
         }
         elsif ($part->{style} eq 'eighth') {
             $part->{factor} = 8; # XXX this should be assigned earlier?
-            push @phrases, sub { $self->beat_part($part) };
+            push @phrases, sub { $self->beat_part($part, $key) };
         }
         elsif ($part->{style} eq 'euclid') {
-            push @phrases, sub { $self->euclidean_part($part) };
+            push @phrases, sub { $self->euclidean_part($part, $key) };
         }
         elsif ($part->{style} eq 'christoffel') {
-            push @phrases, sub { $self->christoffel_part($part) };
+            push @phrases, sub { $self->christoffel_part($part, $key) };
         }
     }
 
@@ -131,9 +131,10 @@ sub counter_part {
 }
 
 sub beat_part {
-    my ($self, $part) = @_;
+    my ($self, $part, $key) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $pattern = $self->beat_pattern($part);
+    $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
@@ -150,9 +151,10 @@ sub beat_pattern {
 }
 
 sub euclidean_part {
-    my ($self, $part) = @_;
+    my ($self, $part, $key) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $pattern = $self->euclidean_pattern($part);
+    $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
@@ -168,9 +170,10 @@ sub euclidean_pattern {
 }
 
 sub christoffel_part {
-    my ($self, $part) = @_;
+    my ($self, $part, $key) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
     my $pattern = $self->christoffel_pattern($part);
+    $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
         instrument => $part->{strike},
         patterns   => [ ($pattern) x $part->{bars} ],
