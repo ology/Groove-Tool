@@ -113,7 +113,6 @@ get '/' => sub ($c) {
 
     $msgs = $groove->process;
   }
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   $c->render(
     template => 'index',
@@ -614,6 +613,9 @@ $(document).ready(function () {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title><%= title %></title>
     <style>
+      body {
+        background-image: url("/bg.jpg");
+      }
       a:link, a:visited, a:hover, a:active, a:focus {
         color: #414A4C;
         text-decoration: none;
@@ -623,6 +625,11 @@ $(document).ready(function () {
       }
       .padpage {
         padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .faded {
+        opacity: 0.8;
+        background-color: lightgray;
       }
       .smalltext {
         font-size: small;
@@ -631,7 +638,8 @@ $(document).ready(function () {
     </style>
   </head>
   <body>
-    <div class="container padpage">
+    <p></p>
+    <div class="container padpage faded">
       <h3><a href="/"><%= title %></a></h3>
       <%= content %>
       <p></p>
