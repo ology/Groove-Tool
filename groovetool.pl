@@ -401,10 +401,12 @@ Settings:
           </div>
         </div>
 %   if ($part->{pattern}) {
+%     my $i = 0;
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
 %     for my $bit (split //, $part->{pattern}) {
-          <input class="form-check-input" type="checkbox" name="bit_<%= $bit %>" id="bit_<%= $bit %>" value="1" title="Beat bit # <%= $bit %>" <%= $bit ? 'checked' : '' %>>
+%       $i++;
+          <input class="form-check-input" type="checkbox" name="bit_<%= $i %>" id="bit_<%= $i %>" value="1" title="Beat bit # <%= $i %>" <%= $bit ? 'checked' : '' %>>
 %     }
         </div>
 %   }
