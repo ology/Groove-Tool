@@ -44,7 +44,7 @@ get '/' => sub ($c) {
   my %phrases;
   for my $param ($c->req->params->names->@*) {
     next if $param =~ /^bit/;
-    next unless $c->param($param);
+    next unless defined $c->param($param);
     if ($param =~ /^([a-z]+)_([\d_]+)$/) {
       my $key   = $1;
       my $order = $2;
