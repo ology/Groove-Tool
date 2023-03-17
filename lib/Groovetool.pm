@@ -122,6 +122,7 @@ sub counter_part {
     $self->drummer->count_in($self->drummer->bars);
 }
 
+# XXX unused
 sub beat_part {
     my ($self, $part, $key) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
@@ -132,7 +133,6 @@ sub beat_part {
         patterns   => [ ($pattern) x $part->{bars} ],
     );
 }
-
 sub beat_pattern {
     my ($self, $part) = @_;
     my $sequence = [ ('1') x $part->{factor} ];
@@ -152,7 +152,6 @@ sub euclidean_part {
         patterns   => [ ($pattern) x $part->{bars} ],
     );
 }
-
 sub euclidean_pattern {
     my ($self, $part) = @_;
     my $sequence = $self->creator->euclid($part->{onsets}, $self->size);
@@ -171,7 +170,6 @@ sub christoffel_part {
         patterns   => [ ($pattern) x $part->{bars} ],
     );
 }
-
 sub christoffel_pattern {
     my ($self, $part) = @_;
     my $sequence = $self->creator->chsequl(
