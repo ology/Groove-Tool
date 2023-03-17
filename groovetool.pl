@@ -409,7 +409,7 @@ Settings:
         <div class="form-floating d-inline-flex align-items-center">
 %     for my $bit (split //, $part->{pattern}) {
 %       $j++;
-          <input class="form-check-input" type="checkbox" name="bit_<%= $j %>" id="bit_<%= $j %>" value="1" title="Beat bit # <%= $j %>" <%= $bit ? 'checked' : '' %>>
+          <input class="form-check-input" type="checkbox" name="bit_<%= $j %>" id="bit_<%= $j %>" value="1" title="Beat bit # <%= $j %>" <%= $bit ? 'checked' : '' %> disabled>
 %     }
         </div>
 %   }
