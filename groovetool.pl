@@ -404,6 +404,7 @@ Settings:
         </div>
 %   if ($part->{pattern}) {
 %     my $j = 0;
+        <input type="hidden" name="pattern_<%= $key %>" id="pattern_<%= $key %>" value="<%= $part->{pattern} %>">
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
 %     for my $bit (split //, $part->{pattern}) {
