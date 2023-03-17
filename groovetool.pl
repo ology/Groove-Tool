@@ -72,7 +72,6 @@ get '/' => sub ($c) {
   if ($saveg) {
     $filename = $saveg;
     my $name = $path . $filename;
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
     nstore(\%phrases, $name);
     # flash success/fail?
   }
