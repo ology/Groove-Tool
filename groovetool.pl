@@ -64,6 +64,7 @@ get '/' => sub ($c) {
   if ($removeg) {
     my $name = $path . $removeg;
     unlink $name or warn "Can't unlink $name: $!\n";
+    %phrases = ();
     # flash success/fail?
   }
   if ($saveg) {
@@ -400,12 +401,12 @@ Settings:
           </div>
         </div>
 %   if ($part->{pattern}) {
-%     my $i = 0;
+%     my $j = 0;
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
 %     for my $bit (split //, $part->{pattern}) {
-%       $i++;
-          <input class="form-check-input" type="checkbox" name="bit_<%= $i %>" id="bit_<%= $i %>" value="1" title="Beat bit # <%= $i %>" <%= $bit ? 'checked' : '' %>>
+%       $j++;
+          <input class="form-check-input" type="checkbox" name="bit_<%= $j %>" id="bit_<%= $j %>" value="1" title="Beat bit # <%= $j %>" <%= $bit ? 'checked' : '' %>>
 %     }
         </div>
 %   }
