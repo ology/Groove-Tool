@@ -615,6 +615,13 @@ $(document).ready(function () {
     <style>
       body {
         background-image: url("/bg.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
       }
       a:link, a:visited, a:hover, a:active, a:focus {
         color: #414A4C;
