@@ -435,7 +435,7 @@ Settings:
   <div class="form-floating d-inline-flex">
     <div class="col-12">
       <label for="bars">Bars</label>
-      <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="2" title="1 to 32 measures">
+      <input type="number" class="form-control form-control-sm" id="bars" name="bars" min="1" max="32" value="4" title="1 to 32 measures">
     </div>
   </div>
   <p></p>
