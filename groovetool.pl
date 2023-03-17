@@ -570,6 +570,7 @@ $(document).ready(function () {
     var id = $(this).attr("id");
     var num = id.substring(id.length - 4);
     $("div[class~=toggle][id$=" + num + "]").hide().filter("." + name).show()
+    // TODO .focus()
   });
 });
 </script>
