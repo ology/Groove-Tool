@@ -637,7 +637,7 @@ $(document).ready(function () {
       }
       .smalltext {
         font-size: small;
-        color: darkgrey;
+        color: black;
       }
     </style>
   </head>
