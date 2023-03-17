@@ -371,6 +371,10 @@ Settings:
           <label class="px-1" for="christo_style_<%= $key %>">Christoffel</label>
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="christo_style_<%= $key %>" value="christoffel" title="Christoffel word" <%= $part->{style} eq 'christoffel' ? 'checked' : '' %>>
         </div>
+        <div class="d-inline-flex">
+          <label class="px-1" for="pfold_style_<%= $key %>">Fold</label>
+          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="pfold_style_<%= $key %>" value="pfold" title="Paper folding" <%= $part->{style} eq 'pfold' ? 'checked' : '' %>>
+        </div>
         <div id="euclidwidgets_<%= $key %>" class="euclid toggle">
           <p></p>
           <div class="form-floating d-inline-flex align-items-center">
@@ -402,6 +406,20 @@ Settings:
             </div>
           </div>
         </div>
+  <div id="pfoldwidgets_<%= $key %>" class="pfold toggle">
+    <p></p>
+    <div class="form-floating d-inline-flex align-items-center">
+      <div class="col-6">
+        <label for="fsize_<%= $key %>">Size</label>
+        <input type="number" class="form-control form-control-sm" id="fsize_<%= $key %>" name="fsize_<%= $key %>" min="1" max="16" value="<%= $part->{fsize} %>" title="Fold size">
+      </div>
+&nbsp;
+      <div class="col-6">
+        <label for="ffunction_<%= $key %>">Function</label>
+        <input type="number" class="form-control form-control-sm" id="ffunction_<%= $key %>" name="ffunction_<%= $key %>" min="1" max="16" value="<%= $part->{ffunction} %>" title="Fold function">
+      </div>
+    </div>
+  </div>
 %       if ($part->{pattern}) {
 %         my $j = 0;
         <input type="hidden" name="pattern_<%= $key %>" id="pattern_<%= $key %>" value="<%= $part->{pattern} %>">
@@ -484,6 +502,10 @@ Settings:
     <label class="px-1" for="christo_style">Christoffel</label>
     <input class="trigger form-check-input" type="radio" name="style" id="christo_style" value="christoffel" title="Christoffel word">
   </div>
+  <div class="d-inline-flex">
+    <label class="px-1" for="fold_style">Fold</label>
+    <input class="trigger form-check-input" type="radio" name="style" id="pfold_style" value="pfold" title="Paper folding">
+  </div>
   <div id="euclidwidgets" class="euclid toggle">
     <p></p>
     <div class="form-floating d-inline-flex align-items-center">
@@ -512,6 +534,20 @@ Settings:
           <option value="u">Upper</option>
           <option value="l">Lower</option>
         </select>
+      </div>
+    </div>
+  </div>
+  <div id="pfoldwidgets" class="pfold toggle">
+    <p></p>
+    <div class="form-floating d-inline-flex align-items-center">
+      <div class="col-6">
+        <label for="fsize">Size</label>
+        <input type="number" class="form-control form-control-sm" id="fsize" name="fsize" min="1" max="16" value="" title="Fold size">
+      </div>
+&nbsp;
+      <div class="col-6">
+        <label for="ffunction">Function</label>
+        <input type="number" class="form-control form-control-sm" id="ffunction" name="ffunction" min="1" max="16" value="" title="Fold function">
       </div>
     </div>
   </div>
