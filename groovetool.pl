@@ -24,6 +24,7 @@ get '/' => sub ($c) {
   my $loadg    = $c->param('loadg')    || ''; # load the given groove
   my $saveg    = $c->param('saveg')    || ''; # save the current groove
   my $removeg  = $c->param('removeg')  || ''; # remove the current groove
+  my $section  = $c->param('section')  || 0; # current section number
   my $dvolume  = $c->param('dvolume')  // 100; # 0 - 127
   my $dreverb  = $c->param('dreverb')  // 15; # 0 - 127
   my $boctave  = $c->param('boctave')  || 1; # 1, 2, ...?
@@ -75,6 +76,7 @@ get '/' => sub ($c) {
     $filename = "/$loadg";
     my $name = $path . $filename;
     %phrases = %{ retrieve $name };
+    $section = grep { $_ =~ /^\d+$/ } keys %phrases;
     # flash success/fail?
   }
   # gather saved grooves
@@ -120,6 +122,7 @@ get '/' => sub ($c) {
     repeat   => $repeat,
     my_duel  => $my_duel,
     countin  => $countin,
+    section  => $section,
     grooves  => \@grooves,
     phrases  => \%phrases,
     kit      => $kit,
@@ -509,7 +512,7 @@ Settings:
 
 <script>
 $(document).ready(function () {
-  var i = 0; // section counter
+  var i = <%= $section || 0 %>; // section counter
   $(".btnAddSection").click(function () {
     i++;
     var $appendItem = $(".defaultSection").html();
