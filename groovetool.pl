@@ -635,7 +635,7 @@ $(document).ready(function () {
         padding-bottom: 10px;
       }
       .faded {
-        opacity: 0.9;
+        opacity: 0.95;
         background-color: lightgray;
       }
       .smalltext {
