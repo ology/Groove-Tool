@@ -96,6 +96,9 @@ sub process {
         elsif ($part->{style} eq 'christoffel') {
             push @phrases, sub { $self->christoffel_part($part, $key) };
         }
+        elsif ($part->{style} eq 'pfold') {
+            push @phrases, sub { $self->pfold_part($part, $key) };
+        }
     }
 
     if (@phrases) {
