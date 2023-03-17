@@ -628,7 +628,7 @@ $(document).ready(function () {
         padding-bottom: 10px;
       }
       .faded {
-        opacity: 0.8;
+        opacity: 0.9;
         background-color: lightgray;
       }
       .smalltext {
