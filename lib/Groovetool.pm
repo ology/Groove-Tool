@@ -182,6 +182,28 @@ sub christoffel_pattern {
     return join '', @$sequence;
 }
 
+sub pfold_part {
+    my ($self, $part, $key) = @_;
+    set_chan_patch($self->drummer->score, 9, 0);
+    my $pattern = $self->pfold_pattern($part);
+    $self->phrases->{$key}{pattern} = $pattern;
+    $self->drummer->pattern(
+        instrument => $part->{strike},
+        patterns   => [ ($pattern) x $part->{bars} ],
+    );
+}
+sub pfold_pattern {
+    my ($self, $part) = @_;
+    my $sequence = $self->creator->pfold(
+        $self->size,
+        $part->{fsize},
+        $part->{ffunction},
+    );
+    $sequence = $self->creator->rotate_n($part->{shift}, $sequence)
+        if $part->{shift};
+    return join '', @$sequence;
+}
+
 sub fill_part {
     my ($self, $parts) = @_;
     set_chan_patch($self->drummer->score, 9, 0);
