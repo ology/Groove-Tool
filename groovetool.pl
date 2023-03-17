@@ -402,17 +402,17 @@ Settings:
             </div>
           </div>
         </div>
-%   if ($part->{pattern}) {
-%     my $j = 0;
+%       if ($part->{pattern}) {
+%         my $j = 0;
         <input type="hidden" name="pattern_<%= $key %>" id="pattern_<%= $key %>" value="<%= $part->{pattern} %>">
         <p></p>
         <div class="form-floating d-inline-flex align-items-center">
-%     for my $bit (split //, $part->{pattern}) {
-%       $j++;
+%         for my $bit (split //, $part->{pattern}) {
+%           $j++;
           <input class="form-check-input" type="checkbox" name="bit_<%= $key %>_<%= $j %>" id="bit_<%= $key %>_<%= $j %>" value="1" title="Beat bit # <%= $j %>" <%= $bit ? 'checked' : '' %> disabled>
-%     }
+%         }
         </div>
-%   }
+%       }
         <p></p>
         <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Remove Part</button>
       </div> <!-- part -->
