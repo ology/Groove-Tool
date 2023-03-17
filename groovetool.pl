@@ -408,7 +408,7 @@ Settings:
 &nbsp;
       <div class="col-6">
         <label for="ffunction_<%= $key %>">Function</label>
-        <input type="number" class="form-control form-control-sm" id="ffunction_<%= $key %>" name="ffunction_<%= $key %>" min="1" max="16" value="<%= $part->{ffunction} %>" title="Fold function">
+        <input type="number" class="form-control form-control-sm" id="ffunction_<%= $key %>" name="ffunction_<%= $key %>" min="0" max="16" value="<%= $part->{ffunction} %>" title="Fold function">
       </div>
     </div>
   </div>
@@ -531,7 +531,7 @@ Settings:
 &nbsp;
       <div class="col-6">
         <label for="ffunction">Function</label>
-        <input type="number" class="form-control form-control-sm" id="ffunction" name="ffunction" min="1" max="16" value="" title="Fold function">
+        <input type="number" class="form-control form-control-sm" id="ffunction" name="ffunction" min="0" max="16" value="" title="Fold function">
       </div>
     </div>
   </div>
