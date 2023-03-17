@@ -176,7 +176,7 @@ __DATA__
 <form id="groove_form">
 
 <button type="submit" class="btn btn-sm btn-primary" name="generate" value="Generate"><i class="fa fa-cogs" aria-hidden="true"></i> Generate</button>
-<button type="button" id="btnAddSection1" class="btnAddSection btn btn-success btn-sm"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Add Section</button>
+<button type="button" id="btnAddSection1" class="btnAddSection btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Section</button>
 
 % if ($filename) {
 <p></p>
@@ -313,8 +313,8 @@ Settings:
 
   <div id="section_<%= $top %>" class="section">
     <p></p>
-    <button type="button" id="btnRemoveSection_<%= $top %>" class="btnRemoveSection btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Remove Section</button>
-    <button type="button" id="btnAddPart_<%= $top %>" class="btnAddPart btn btn-success btn-sm" data-section="<%= $top %>" data-lastpart="<%= $phrases->{$top}{parts} %>"><i class="fa fa-plus" aria-hidden="true"></i> Add Part</button>
+    <button type="button" id="btnRemoveSection_<%= $top %>" class="btnRemoveSection btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Remove Section</button>
+    <button type="button" id="btnAddPart_<%= $top %>" class="btnAddPart btn btn-success btn-sm" data-section="<%= $top %>" data-lastpart="<%= $phrases->{$top}{parts} %>"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Add Part</button>
     <p></p>
     <div class="form-floating d-inline-flex">
       <div class="col-12">
@@ -414,7 +414,7 @@ Settings:
         </div>
 %       }
         <p></p>
-        <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Remove Part</button>
+        <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Remove Part</button>
       </div> <!-- part -->
 
 %   }
@@ -429,8 +429,8 @@ Settings:
 
 <div class="defaultSection d-none">
   <p></p>
-  <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Remove Section</button>
-  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="0" data-lastpart="0"><i class="fa fa-plus" aria-hidden="true"></i> Add Part</button>
+  <button type="button" id="btnRemoveSection" class="btnRemoveSection btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Remove Section</button>
+  <button type="button" id="btnAddPart" class="btnAddPart btn btn-success btn-sm" data-section="0" data-lastpart="0"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Add Part</button>
   <p></p>
   <div class="form-floating d-inline-flex">
     <div class="col-12">
@@ -451,13 +451,6 @@ Settings:
 
 <div class="defaultPart d-none">
   <hr>
-<!--
-  <div class="form-floating d-inline-flex align-items-center">
-% for my $bit (1 .. 16) {
-    <input class="form-check-input" type="checkbox" name="bit_<%= $bit %>" id="bit_<%= $bit %>" value="1" title="Beat bit # <%= $bit %>">
-% }
-  </div>
--->
   <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-7">
@@ -523,12 +516,12 @@ Settings:
     </div>
   </div>
   <p></p>
-  <button type="button" id="btnRemove" class="btnRemovePart btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Remove Part</button>
+  <button type="button" id="btnRemove" class="btnRemovePart btn btn-secondary btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Remove Part</button>
 </div>
 
 <p></p>
 <button type="submit" class="btn btn-sm btn-primary" name="generate" value="Generate"><i class="fa fa-cogs" aria-hidden="true"></i> Generate</button>
-<button type="button" id="btnAddSection2" class="btnAddSection btn btn-success btn-sm"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Add Section</button>
+<button type="button" id="btnAddSection2" class="btnAddSection btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Section</button>
 
 </form>
 
