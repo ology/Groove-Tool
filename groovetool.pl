@@ -437,6 +437,14 @@ Settings:
 
 <div class="defaultPart d-none">
   <hr>
+<!--
+  <div class="form-floating d-inline-flex align-items-center">
+% for my $bit (1 .. 16) {
+    <input class="form-check-input" type="checkbox" name="bit_<%= $bit %>" id="bit_<%= $bit %>" value="1" title="Beat bit # <%= $bit %>">
+% }
+  </div>
+-->
+  <p></p>
   <div class="form-floating d-inline-flex align-items-center">
     <div class="col-7">
       <label for="strike">Strike</label>
