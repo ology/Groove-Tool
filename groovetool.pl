@@ -356,14 +356,6 @@ Settings:
         </div>
         <p></p>
         <div class="d-inline-flex">
-          <label class="px-1" for="quarter_style_<%= $key %>">Quarter</label>
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="quarter_style_<%= $key %>" value="quarter" title="Simple quarter note" <%= $part->{style} eq 'quarter' ? 'checked' : '' %>>
-        </div>
-        <div class="d-inline-flex">
-          <label class="px-1" for="eighth_style_<%= $key %>">Eighth</label>
-          <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="eighth_style_<%= $key %>" value="eighth" title="Simple eighth notes" <%= $part->{style} eq 'eighth' ? 'checked' : '' %>>
-        </div>
-        <div class="d-inline-flex">
           <label class="px-1" for="euclid_style_<%= $key %>">Euclid</label>
           <input class="trigger form-check-input" type="radio" name="style_<%= $key %>" id="euclid_style_<%= $key %>" value="euclid" title="Euclidean word" <%= $part->{style} eq 'euclid' ? 'checked' : '' %>>
         </div>
@@ -486,14 +478,6 @@ Settings:
     </div>
   </div>
   <p></p>
-  <div class="d-inline-flex">
-    <label class="px-1" for="quarter_style">Quarter</label>
-    <input class="trigger form-check-input" type="radio" name="style" id="quarter_style" value="quarter" title="Simple quarter note">
-  </div>
-  <div class="d-inline-flex">
-    <label class="px-1" for="eighth_style">Eighth</label>
-    <input class="trigger form-check-input" type="radio" name="style" id="eighth_style" value="eighth" title="Simple eighth notes">
-  </div>
   <div class="d-inline-flex">
     <label class="px-1" for="euclid_style">Euclid</label>
     <input class="trigger form-check-input" type="radio" name="style" id="euclid_style" value="euclid" title="Euclidean word">
