@@ -113,6 +113,7 @@ get '/' => sub ($c) {
 
     $msgs = $groove->process;
   }
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\%phrases, {max_width=>128});
 
   $c->render(
     template => 'index',
@@ -399,6 +400,15 @@ Settings:
             </div>
           </div>
         </div>
+% if ($part->{pattern}) {
+  <p></p>
+  <div class="form-floating d-inline-flex align-items-center">
+% for my $bit (split //, $part->{pattern}) {
+    <input class="form-check-input" type="checkbox" name="bit_<%= $bit %>" id="bit_<%= $bit %>" value="1" title="Beat bit # <%= $bit %>" <%= $bit ? 'checked' : '' %>>
+% }
+  </div>
+% }
+
         <p></p>
         <button type="button" id="btnRemove_<%= $key %>" class="btnRemovePart btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Remove Part</button>
       </div> <!-- part -->
