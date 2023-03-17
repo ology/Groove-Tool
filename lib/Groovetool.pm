@@ -90,15 +90,7 @@ sub process {
              $part->{bars} = $bars;
         }
 
-        if ($part->{style} eq 'quarter') {
-            $part->{factor} = 4; # XXX this should be assigned earlier?
-            push @phrases, sub { $self->beat_part($part, $key) };
-        }
-        elsif ($part->{style} eq 'eighth') {
-            $part->{factor} = 8; # XXX this should be assigned earlier?
-            push @phrases, sub { $self->beat_part($part, $key) };
-        }
-        elsif ($part->{style} eq 'euclid') {
+        if ($part->{style} eq 'euclid') {
             push @phrases, sub { $self->euclidean_part($part, $key) };
         }
         elsif ($part->{style} eq 'christoffel') {
@@ -199,10 +191,7 @@ sub fill_part {
     for my $key (@$parts) {
         my $part = $self->phrases->{$key};
         my $pattern;
-        if ($part->{style} eq 'quarter' || $part->{style} eq 'eighth') {
-            $pattern = $self->beat_pattern($part);
-        }
-        elsif ($part->{style} eq 'euclid') {
+        if ($part->{style} eq 'euclid') {
             $pattern = $self->euclidean_pattern($part);
         }
         elsif ($part->{style} eq 'christoffel') {
