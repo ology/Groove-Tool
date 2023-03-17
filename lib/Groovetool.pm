@@ -220,6 +220,9 @@ sub fill_part {
         elsif ($part->{style} eq 'christoffel') {
             $pattern = $self->christoffel_pattern($part);
         }
+        elsif ($part->{style} eq 'pfold') {
+            $pattern = $self->pfold_pattern($part);
+        }
         $phrases{ $part->{strike} } = [ $pattern ];
     }
     $self->drummer->add_fill(
