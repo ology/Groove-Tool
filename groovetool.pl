@@ -614,9 +614,9 @@ $(document).ready(function () {
 % layout 'default';
 % title 'Help!';
 
-<p>A straight quarter note beat pattern can be generated with a Christoffel word of numerator=1, denominator=3 in upper case.</p>
-<p>An eighth note pattern can be generated with a Christoffel word of numerator=1, denominator=1 in upper case.</p>
-<p>Sixteenth notes can be generated with a Christoffel word of numerator=16, denominator=1 in upper case.</p>
+<p>A straight quarter note beat pattern can be generated with either a Christoffel word of numerator=1, denominator=3 in upper case, or a Euclidean word of onsets=4.</p>
+<p>An eighth note pattern can be generated with either a Christoffel word of numerator=1, denominator=1 in upper case, or a Euclidean word of onsets=8.</p>
+<p>Sixteenth notes can be generated with either a Christoffel word of numerator=16, denominator=1 in upper case, or a Euclidean word of onsets=16.</p>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
