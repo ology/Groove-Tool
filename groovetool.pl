@@ -630,7 +630,8 @@ $(document).ready(function () {
 % layout 'default';
 % title 'Help!';
 
-<p>TBD...</p>
+<p>A straight quarter note beat pattern can be generated with a Christoffel word of numerator=1, denominator=3 in upper case.</p>
+<p>An eighth note pattern can be generated with a Christoffel word of numerator=1, denominator=1 in upper case.</p>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
