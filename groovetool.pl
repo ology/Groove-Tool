@@ -211,7 +211,7 @@ Settings:
 <div class="collapse" id="generalSettings">
   <p></p>
   <div class="d-inline-flex">
-    <div class="col-5">
+    <div class="col-4">
       <select id="loadg" name="loadg" class="form-select form-select-sm" title="Load a saved groove" onchange="this.form.submit()">
         <option value="">Load...</option>
 % for my $file (@$grooves) {
@@ -219,7 +219,7 @@ Settings:
 % }
       </select>
     </div>
-    <div class="col-7 px-2">
+    <div class="col-8 px-2">
       <button type="submit" id="saveg" name="saveg" class="btn btn-warning btn-sm" value="<%= $filename %>">Save</button>
       <button type="submit" id="removeg" name="removeg" class="btn btn-warning btn-sm" value="<%= $filename %>">Remove</button>
     </div>
