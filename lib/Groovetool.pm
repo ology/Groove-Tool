@@ -63,15 +63,50 @@ sub process {
     my @phrases; # phrases to add to the score
     my $bars; # number of measures in a section
 
-for my $n (1 .. $self->repeat) {
-    for my $key (sort keys $self->phrases->%*) {
-        my $part = $self->phrases->{$key};
+    for my $n (1 .. $self->repeat) {
+        for my $key (sort keys $self->phrases->%*) {
+            my $part = $self->phrases->{$key};
 
-        if ($key =~ /^\d+$/ && @phrases) {
+            if ($key =~ /^\d+$/ && @phrases) {
+                push @phrases, sub { $self->bass($bars) };
+                $self->drummer->sync(@phrases);
+                if ($part->{fillin}) {
+                    my @parts = grep { $_ =~ /^$key\_/ } sort keys $self->phrases->%*;
+                    $self->drummer->sync(
+                        sub { $self->fill_part(\@parts) },
+                        sub { $self->bass(1) },
+                    );
+                }
+                $self->counter_part() if $self->my_duel;
+                @phrases = ();
+            }
+
+            if ($key =~ /^\d+$/ && $part->{bars}) {
+                $section = $key;
+                $bars = $part->{bars};
+                $bars-- if $part->{fillin};
+                next;
+            }
+            else {
+                $part->{bars} = $bars;
+            }
+
+            if ($part->{style} eq 'euclid') {
+                push @phrases, sub { $self->euclidean_part($part, $key) };
+            }
+            elsif ($part->{style} eq 'christoffel') {
+                push @phrases, sub { $self->christoffel_part($part, $key) };
+            }
+            elsif ($part->{style} eq 'pfold') {
+                push @phrases, sub { $self->pfold_part($part, $key) };
+            }
+        }
+
+        if (@phrases) {
             push @phrases, sub { $self->bass($bars) };
             $self->drummer->sync(@phrases);
-            if ($part->{fillin}) {
-                my @parts = grep { $_ =~ /^$key\_/ } sort keys $self->phrases->%*;
+            if ($self->phrases->{$section}{fillin}) {
+                my @parts = grep { $_ =~ /^$section\_/ } sort keys $self->phrases->%*;
                 $self->drummer->sync(
                     sub { $self->fill_part(\@parts) },
                     sub { $self->bass(1) },
@@ -80,42 +115,7 @@ for my $n (1 .. $self->repeat) {
             $self->counter_part() if $self->my_duel;
             @phrases = ();
         }
-
-        if ($key =~ /^\d+$/ && $part->{bars}) {
-            $section = $key;
-            $bars = $part->{bars};
-            $bars-- if $part->{fillin};
-            next;
-        }
-        else {
-             $part->{bars} = $bars;
-        }
-
-        if ($part->{style} eq 'euclid') {
-            push @phrases, sub { $self->euclidean_part($part, $key) };
-        }
-        elsif ($part->{style} eq 'christoffel') {
-            push @phrases, sub { $self->christoffel_part($part, $key) };
-        }
-        elsif ($part->{style} eq 'pfold') {
-            push @phrases, sub { $self->pfold_part($part, $key) };
-        }
     }
-
-    if (@phrases) {
-        push @phrases, sub { $self->bass($bars) };
-        $self->drummer->sync(@phrases);
-        if ($self->phrases->{$section}{fillin}) {
-            my @parts = grep { $_ =~ /^$section\_/ } sort keys $self->phrases->%*;
-            $self->drummer->sync(
-                sub { $self->fill_part(\@parts) },
-                sub { $self->bass(1) },
-            );
-        }
-        $self->counter_part() if $self->my_duel;
-        @phrases = ();
-    }
-}
 
     $self->drummer->write;
 
