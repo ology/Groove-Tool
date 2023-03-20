@@ -63,6 +63,7 @@ sub process {
     my @phrases; # phrases to add to the score
     my $bars; # number of measures in a section
 
+for my $n (1 .. $self->repeat) {
     for my $key (sort keys $self->phrases->%*) {
         my $part = $self->phrases->{$key};
 
@@ -80,7 +81,7 @@ sub process {
             @phrases = ();
         }
 
-        if ($part->{bars}) {
+        if ($key =~ /^\d+$/ && $part->{bars}) {
             $section = $key;
             $bars = $part->{bars};
             $bars-- if $part->{fillin};
@@ -112,7 +113,9 @@ sub process {
             );
         }
         $self->counter_part() if $self->my_duel;
+        @phrases = ();
     }
+}
 
     $self->drummer->write;
 
