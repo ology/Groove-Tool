@@ -242,7 +242,7 @@ sub _fill {
             my $onsets = 1 + int rand $self->size; # XXX this is sometimes lame
             $parts->{$_} = $self->euclidean_pattern({ onsets => $onsets });
         }
-        elsif ($_ == $self->drummer->acoustic_bass || $_ == $self->drummer->electric_bass) {
+        elsif ($_ == $self->drummer->pedal_hh || $_ == $self->drummer->acoustic_bass || $_ == $self->drummer->electric_bass) {
             $parts->{$_} = $parts->{$_}[0];
         }
         else {
