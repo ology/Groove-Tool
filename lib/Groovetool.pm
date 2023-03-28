@@ -124,14 +124,14 @@ sub process {
 
 sub counter_part {
     my ($self) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->set_channel;
     $self->drummer->count_in($self->drummer->bars);
 }
 
 # XXX unused
 sub beat_part {
     my ($self, $part, $key) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->set_channel;
     my $pattern = $self->beat_pattern($part);
     $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
@@ -150,7 +150,7 @@ sub beat_pattern {
 
 sub euclidean_part {
     my ($self, $part, $key) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->set_channel;
     my $pattern = $self->euclidean_pattern($part);
     $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
@@ -168,7 +168,7 @@ sub euclidean_pattern {
 
 sub christoffel_part {
     my ($self, $part, $key) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->set_channel;
     my $pattern = $self->christoffel_pattern($part);
     $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
@@ -190,7 +190,7 @@ sub christoffel_pattern {
 
 sub pfold_part {
     my ($self, $part, $key) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->set_channel;
     my $pattern = $self->pfold_pattern($part);
     $self->phrases->{$key}{pattern} = $pattern;
     $self->drummer->pattern(
@@ -212,7 +212,7 @@ sub pfold_pattern {
 
 sub fill_part {
     my ($self, $parts) = @_;
-    set_chan_patch($self->drummer->score, 9, 0);
+    $self->drummer->set_channel;
     my %phrases;
     for my $key (@$parts) {
         my $part = $self->phrases->{$key};
@@ -262,7 +262,7 @@ sub bass {
 
     $bars ||= $self->drummer->bars;
 
-    set_chan_patch($self->drummer->score, 1, $self->bpatch);
+    $self->drummer->set_channel(0);
 
     $self->drummer->score->Volume($self->bvolume);
 
