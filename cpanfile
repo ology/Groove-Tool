@@ -1,6 +1,6 @@
 requires 'Data::Dumper::Compact', '>= 0.006000';
 requires 'File::Find::Rule', '>= 0.34';
-requires 'MIDI::Drummer::Tiny', '>= 0.4103';
+requires 'MIDI::Drummer::Tiny', '>= 0.4201';
 requires 'MIDI::Util', '>= 0.1101';
 requires 'Mojolicious', '>= 9.31';
 requires 'Moo', '>= 2.005005';
