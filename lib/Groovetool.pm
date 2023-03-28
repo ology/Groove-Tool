@@ -264,7 +264,7 @@ sub bass {
 
     $self->drummer->set_channel(0);
 
-    $self->drummer->score->Volume($self->bvolume);
+    $self->drummer->set_volume($self->bvolume);
 
     my $pool    = [ split /[\s,-]+/, $self->bpool ];
     my $weights = [ split /[\s,-]+/, $self->bweights ];
