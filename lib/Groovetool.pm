@@ -262,7 +262,7 @@ sub bass {
 
     $bars ||= $self->drummer->bars;
 
-    $self->drummer->set_channel(0);
+    set_chan_patch($self->drummer->score, 0, $self->bpatch);
 
     $self->drummer->set_volume($self->bvolume);
 
