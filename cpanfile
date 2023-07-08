@@ -1,3 +1,4 @@
+requires 'Capture::Tiny', '>= 0.48';
 requires 'Data::Dumper::Compact', '>= 0.006000';
 requires 'File::Find::Rule', '>= 0.34';
 requires 'MIDI::Drummer::Tiny', '>= 0.4201';
