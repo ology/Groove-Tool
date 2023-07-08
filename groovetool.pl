@@ -189,6 +189,10 @@ __DATA__
 <button type="submit" class="btn btn-sm btn-primary" name="generate" value="Generate"><i class="fa fa-cogs" aria-hidden="true"></i> Generate</button>
 <button type="button" id="btnAddSection1" class="btnAddSection btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Section</button>
 
+% if ($mp3) {
+<p><audio controls><source src="<%= $mp3 %>" type="audio/mp3"></audio></p>
+% }
+
 % if ($filename) {
 <p></p>
 MIDI: &nbsp;
