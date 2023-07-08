@@ -91,8 +91,10 @@ get '/' => sub ($c) {
     $_ =~ s/^$path\/([\d.]+\.mid)$/$1/;
   }
 
+  my $stamp = time();
+
   if ($submit) {
-    $filename = '/' . time() . '.mid';
+    $filename = "/$stamp.mid";
 
     my $groove = Groovetool->new(
       filename => 'public' . $filename,
@@ -117,10 +119,14 @@ get '/' => sub ($c) {
     $msgs = $groove->process;
   }
 
+  my $mp3 = "/$stamp.mp3";
+  my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg $filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k $mp3);
+
   $c->render(
     template => 'index',
     msgs     => $msgs,
     filename => $filename,
+    mp3      => $mp3,
     my_bpm   => $my_bpm,
     repeat   => $repeat,
     my_duel  => $my_duel,
