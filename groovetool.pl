@@ -120,10 +120,9 @@ get '/' => sub ($c) {
 
     $msgs = $groove->process;
 
-    $mp3 = "public/$stamp.mp3";
-    my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg -A100a public/$filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k $mp3);
+    $mp3 = "/$stamp.mp3";
+    my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg -A100a public/$filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k public/$mp3);
     my ($stdout, $stderr, $exit) = capture { system($cmd) };
-    $mp3 =~ s/public//;
   }
 
   $c->render(
