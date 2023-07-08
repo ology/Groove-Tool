@@ -3,6 +3,7 @@ use Mojolicious::Lite -signatures;
 
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util); # local author libs
 
+use Capture::Tiny qw(capture);
 use Data::Dumper::Compact qw(ddc);
 use File::Find::Rule ();
 use MIDI::Util qw(midi_dump);
@@ -119,8 +120,11 @@ get '/' => sub ($c) {
     $msgs = $groove->process;
   }
 
-  my $mp3 = "/$stamp.mp3";
+  my $mp3 = "public/$stamp.mp3";
   my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg $filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k $mp3);
+  my ($stdout, $stderr, $exit) = capture { system($cmd) };
+  die 'Something went wrong' unless -e $mp3;
+  $mp3 =~ s/public//;
 
   $c->render(
     template => 'index',
