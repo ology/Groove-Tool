@@ -40,6 +40,7 @@ get '/' => sub ($c) {
 
   my $path = 'public/grooves';
   my $filename = '';
+  my $mp3 = '';
   my $msgs = [];
 
   my %phrases;
@@ -118,13 +119,13 @@ get '/' => sub ($c) {
     );
 
     $msgs = $groove->process;
-  }
 
-  my $mp3 = "public/$stamp.mp3";
-  my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg $filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k $mp3);
-  my ($stdout, $stderr, $exit) = capture { system($cmd) };
-  die 'Something went wrong' unless -e $mp3;
-  $mp3 =~ s/public//;
+    $mp3 = "public/$stamp.mp3";
+    my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg $filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k $mp3);
+    my ($stdout, $stderr, $exit) = capture { system($cmd) };
+    die 'Something went wrong' unless -e $mp3;
+    $mp3 =~ s/public//;
+  }
 
   $c->render(
     template => 'index',
