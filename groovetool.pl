@@ -123,7 +123,6 @@ get '/' => sub ($c) {
     $mp3 = "public/$stamp.mp3";
     my $cmd = qq(timidity -c $ENV{HOME}/timidity.cfg -A100a public/$filename -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k $mp3);
     my ($stdout, $stderr, $exit) = capture { system($cmd) };
-#    die 'Something went wrong' unless -e $mp3;
     $mp3 =~ s/public//;
   }
 
