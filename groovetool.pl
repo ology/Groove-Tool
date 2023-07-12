@@ -13,7 +13,7 @@ use Time::HiRes qw(time);
 use lib 'lib';
 use Groovetool ();
 
-use constant MIDI_GLOB  => '*.mid';
+use constant TYPES  => qr/\.(?:mid|mp3)$/i;
 use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
 
 get '/' => sub ($c) {
@@ -167,7 +167,7 @@ sub _purge {
   my $threshold = time() - TIME_LIMIT;
   my @files = File::Find::Rule
     ->file()
-    ->name(MIDI_GLOB)
+    ->name(TYPES)
     ->ctime("<$threshold")
     ->in('public');
   for my $file (@files) {
