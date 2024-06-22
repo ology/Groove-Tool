@@ -14,7 +14,7 @@ use lib 'lib';
 use Groovetool ();
 
 use constant TYPES  => qr/\.(?:mid|mp3)$/i;
-use constant TIME_LIMIT => 60 * 60 * 24; # 1 day
+use constant TIME_LIMIT => 60 * 60 * 24 * 7; # 1 week
 
 get '/' => sub ($c) {
   my $submit   = $c->param('generate') || 0;
