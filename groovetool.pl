@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util); # local author libs
+use if $ENV{USER} eq "gene", lib => map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util); # local author libs
 
 use Capture::Tiny qw(capture);
 use Data::Dumper::Compact qw(ddc);
